@@ -10,6 +10,9 @@
     <ClCompile Include="E:\projects\qt\report_sider\MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="E:\projects\qt\report_sider\ContentWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="E:\projects\qt\report_sider\build\report_sider_autogen\mocs_compilation_Release.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -22,6 +25,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="E:\projects\qt\report_sider\MainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\qt\report_sider\ContentWidget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

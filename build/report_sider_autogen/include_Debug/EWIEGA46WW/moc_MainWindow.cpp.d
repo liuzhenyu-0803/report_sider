@@ -90,7 +90,6 @@ E:/projects/qt/report_sider/build/report_sider_autogen/include_Debug/EWIEGA46WW/
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtGui/qwindowdefs_win.h \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/QHBoxLayout \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/QLabel \
-  D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/QMainWindow \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/QPushButton \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/QVBoxLayout \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/QWidget \
@@ -101,10 +100,9 @@ E:/projects/qt/report_sider/build/report_sider_autogen/include_Debug/EWIEGA46WW/
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qlabel.h \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qlayout.h \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qlayoutitem.h \
-  D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qmainwindow.h \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qpushbutton.h \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qsizepolicy.h \
-  D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qtabwidget.h \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qtwidgets-config.h \
   D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qtwidgetsglobal.h \
-  D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qwidget.h
+  D:/Qt/Qt5.15.17/5.15.17/msvc2019_64/include/QtWidgets/qwidget.h \
+  E:/projects/qt/report_sider/ContentWidget.h

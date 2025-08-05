@@ -1,24 +1,27 @@
 #include "MainWindow.h"
+#include <QApplication>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), isDragging(false) {
+    : QWidget(parent), isDragging(false), isResizing(false), resizeDirection(None) {
     
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
     resize(800, 600);
+    setMouseTracking(true);
+
+    QApplication::instance()->installEventFilter(this);
     
-    centralWidget = new QWidget(this);
-    setCentralWidget(centralWidget);
+    // centralWidget = new QWidget(this);
+    // QWidget基类无需 setCentralWidget
     
     setupCustomTitleBar();
     
-    QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(0);
     mainLayout->addWidget(titleBar);
     
-    QWidget *contentArea = new QWidget();
-    contentArea->setStyleSheet("background-color: #f0f0f0;");
-    mainLayout->addWidget(contentArea, 1);
+    contentWidget = new ContentWidget();
+    mainLayout->addWidget(contentWidget, 1);
 }
 
 MainWindow::~MainWindow() = default;
@@ -57,22 +60,144 @@ void MainWindow::setupCustomTitleBar() {
 
 void MainWindow::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
-        QRect titleBarRect = titleBar->geometry();
-        if (titleBarRect.contains(event->pos())) {
-            isDragging = true;
-            dragPosition = event->globalPos() - frameGeometry().topLeft();
+        ResizeDirection direction = getResizeDirection(event->pos());
+        
+        if (direction != None) {
+            
+            isResizing = true;
+            resizeDirection = direction;
+            dragPosition = event->globalPos();
+            originalGeometry = geometry();
             event->accept();
+        } else {
+            QRect titleBarRect = titleBar->geometry();
+            if (titleBarRect.contains(event->pos())) {
+                isDragging = true;
+                dragPosition = event->globalPos() - frameGeometry().topLeft();
+                event->accept();
+            }
         }
     }
-    QMainWindow::mousePressEvent(event);
+    QWidget::mousePressEvent(event);
+}
+
+MainWindow::ResizeDirection MainWindow::getResizeDirection(const QPoint &pos) {
+    ResizeDirection direction = None;
+    
+    if (pos.x() <= RESIZE_BORDER_WIDTH) {
+        direction = static_cast<ResizeDirection>(direction | Left);
+    } else if (pos.x() >= width() - RESIZE_BORDER_WIDTH) {
+        direction = static_cast<ResizeDirection>(direction | Right);
+    }
+    
+    if (pos.y() <= RESIZE_BORDER_WIDTH) {
+        direction = static_cast<ResizeDirection>(direction | Top);
+    } else if (pos.y() >= height() - RESIZE_BORDER_WIDTH) {
+        direction = static_cast<ResizeDirection>(direction | Bottom);
+    }
+    
+    return direction;
+}
+
+void MainWindow::updateCursor(ResizeDirection direction) {
+    switch (direction) {
+        case Left:
+        case Right:
+            setCursor(Qt::SizeHorCursor);
+            break;
+        case Top:
+        case Bottom:
+            setCursor(Qt::SizeVerCursor);
+            break;
+        case TopLeft:
+        case BottomRight:
+            setCursor(Qt::SizeFDiagCursor);
+            break;
+        case TopRight:
+        case BottomLeft:
+            setCursor(Qt::SizeBDiagCursor);
+            break;
+        default:
+            setCursor(Qt::ArrowCursor);
+            break;
+    }
+}
+
+void MainWindow::performResize(const QPoint &globalPos) {
+    if (!isResizing || resizeDirection == None) return;
+    
+    QRect newGeometry = originalGeometry;
+    QPoint delta = globalPos - dragPosition;
+    
+    if (resizeDirection & Left) {
+        newGeometry.setLeft(originalGeometry.left() + delta.x());
+    }
+    if (resizeDirection & Right) {
+        newGeometry.setRight(originalGeometry.right() + delta.x());
+    }
+    if (resizeDirection & Top) {
+        newGeometry.setTop(originalGeometry.top() + delta.y());
+    }
+    if (resizeDirection & Bottom) {
+        newGeometry.setBottom(originalGeometry.bottom() + delta.y());
+    }
+    
+    
+    if (newGeometry.width() < 300) {
+        if (resizeDirection & Left) {
+            newGeometry.setLeft(newGeometry.right() - 300);
+        } else {
+            newGeometry.setRight(newGeometry.left() + 300);
+        }
+    }
+    
+    if (newGeometry.height() < 200) {
+        if (resizeDirection & Top) {
+            newGeometry.setTop(newGeometry.bottom() - 200);
+        } else {
+            newGeometry.setBottom(newGeometry.top() + 200);
+        }
+    }
+    
+    setGeometry(newGeometry);
+}
+
+bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
+    if (event->type() == QEvent::MouseMove) {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+        QPoint globalPos = mouseEvent->globalPos();
+        QRect windowRect = geometry();
+        
+        if (windowRect.contains(globalPos) && !isResizing && !isDragging) {
+            QPoint localPos = mapFromGlobal(globalPos);
+            ResizeDirection direction = getResizeDirection(localPos);
+            updateCursor(direction);
+        } else if (!windowRect.contains(globalPos)) {
+            setCursor(Qt::ArrowCursor);
+        }
+    }
+    return QWidget::eventFilter(obj, event);
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *event) {
+    if (event->button() == Qt::LeftButton) {
+        isDragging = false;
+        isResizing = false;
+        resizeDirection = None;
+        setCursor(Qt::ArrowCursor);
+    }
+    QWidget::mouseReleaseEvent(event);
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event) {
-    if (isDragging && (event->buttons() & Qt::LeftButton)) {
+    if (isResizing && (event->buttons() & Qt::LeftButton)) {
+        performResize(event->globalPos());
+        event->accept();
+    } else if (isDragging && (event->buttons() & Qt::LeftButton)) {
         move(event->globalPos() - dragPosition);
         event->accept();
     }
-    QMainWindow::mouseMoveEvent(event);
+    QWidget::mouseMoveEvent(event);
 }
 
 void MainWindow::closeWindow() {

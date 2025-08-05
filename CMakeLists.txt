@@ -13,6 +13,8 @@ set(PROJECT_SOURCES
     main.cpp
     MainWindow.h
     MainWindow.cpp
+    ContentWidget.h
+    ContentWidget.cpp
 )
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}
