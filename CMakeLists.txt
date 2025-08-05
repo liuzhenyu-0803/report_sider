@@ -11,10 +11,12 @@ include_directories(${Qt5Core_INCLUDE_DIRS})
 include_directories(${Qt5Gui_INCLUDE_DIRS})
 set(PROJECT_SOURCES
     main.cpp
-    MainWindow.h
-    MainWindow.cpp
-    ContentWidget.h
-    ContentWidget.cpp
+    views/MainWindow.h
+    views/MainWindow.cpp
+    views/ContentWidget.h
+    views/ContentWidget.cpp
+    views/elements/Element.h
+    views/elements/Element.cpp
 )
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}
