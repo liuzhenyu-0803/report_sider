@@ -1,8 +1,8 @@
 #include "ContentWidget.h"
 #include "FlowLayout.h"
-#include "views/elements/Element.h"
-#include "views/elements/ImageElement.h"
-#include "view_models/ImageElementViewModel.h"
+#include "elements/Element.h"
+#include "elements/ImageElement.h"
+#include "../view_models/ImageElementViewModel.h"
 
 ContentWidget::ContentWidget(QWidget *parent)
     : QWidget(parent), m_layout(nullptr) {

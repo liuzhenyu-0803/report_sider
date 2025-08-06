@@ -9,27 +9,27 @@ find_package(Qt5 REQUIRED COMPONENTS Widgets Core Gui)
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
 include_directories(${Qt5Core_INCLUDE_DIRS})
 include_directories(${Qt5Gui_INCLUDE_DIRS})
-include_directories(.)
+include_directories(src)
 set(PROJECT_SOURCES
-    main.cpp
-    views/MainWindow.h
-    views/MainWindow.cpp
-    views/ContentWidget.h
-    views/ContentWidget.cpp
-    views/FlowLayout.h
-    views/FlowLayout.cpp
-    views/elements/Element.h
-    views/elements/Element.cpp
-    views/elements/ImageElement.h
-    views/elements/ImageElement.cpp
-    models/ElementModel.h
-    models/ElementModel.cpp
-    models/ImageElementModel.h
-    models/ImageElementModel.cpp
-    view_models/ElementViewModel.h
-    view_models/ElementViewModel.cpp
-    view_models/ImageElementViewModel.h
-    view_models/ImageElementViewModel.cpp
+    src/main.cpp
+    src/views/MainWindow.h
+    src/views/MainWindow.cpp
+    src/views/ContentWidget.h
+    src/views/ContentWidget.cpp
+    src/views/FlowLayout.h
+    src/views/FlowLayout.cpp
+    src/views/elements/Element.h
+    src/views/elements/Element.cpp
+    src/views/elements/ImageElement.h
+    src/views/elements/ImageElement.cpp
+    src/models/ElementModel.h
+    src/models/ElementModel.cpp
+    src/models/ImageElementModel.h
+    src/models/ImageElementModel.cpp
+    src/view_models/ElementViewModel.h
+    src/view_models/ElementViewModel.cpp
+    src/view_models/ImageElementViewModel.h
+    src/view_models/ImageElementViewModel.cpp
 )
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}
