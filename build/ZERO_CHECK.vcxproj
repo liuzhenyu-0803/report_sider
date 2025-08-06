@@ -68,7 +68,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtWidgets;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtGui;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtCore;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\.\mkspecs\win32-msvc;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtWidgets;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtGui;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtCore;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\.\mkspecs\win32-msvc;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtANGLE;E:\projects\qt\report_sider\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -78,7 +78,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtWidgets;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtGui;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtCore;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\.\mkspecs\win32-msvc;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtWidgets;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtGui;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtCore;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\.\mkspecs\win32-msvc;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtANGLE;E:\projects\qt\report_sider\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -88,7 +88,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtWidgets;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtGui;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtCore;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\.\mkspecs\win32-msvc;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtWidgets;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtGui;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtCore;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\.\mkspecs\win32-msvc;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtANGLE;E:\projects\qt\report_sider\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -98,7 +98,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtWidgets;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtGui;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtCore;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\.\mkspecs\win32-msvc;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtWidgets;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtGui;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtCore;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\.\mkspecs\win32-msvc;D:\Qt\Qt5.15.17\5.15.17\msvc2019_64\include\QtANGLE;E:\projects\qt\report_sider\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>

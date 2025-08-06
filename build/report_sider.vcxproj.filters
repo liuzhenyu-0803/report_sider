@@ -7,10 +7,22 @@
     <ClCompile Include="E:\projects\qt\report_sider\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\projects\qt\report_sider\MainWindow.cpp">
+    <ClCompile Include="E:\projects\qt\report_sider\views\MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\projects\qt\report_sider\ContentWidget.cpp">
+    <ClCompile Include="E:\projects\qt\report_sider\views\ContentWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\projects\qt\report_sider\views\FlowLayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\projects\qt\report_sider\views\elements\Element.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\projects\qt\report_sider\models\ImageElementModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\projects\qt\report_sider\view_models\ImageElementViewModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="E:\projects\qt\report_sider\build\report_sider_autogen\mocs_compilation_Release.cpp">
@@ -24,10 +36,22 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\projects\qt\report_sider\MainWindow.h">
+    <ClInclude Include="E:\projects\qt\report_sider\views\MainWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\projects\qt\report_sider\ContentWidget.h">
+    <ClInclude Include="E:\projects\qt\report_sider\views\ContentWidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\qt\report_sider\views\FlowLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\qt\report_sider\views\elements\Element.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\qt\report_sider\models\ImageElementModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\qt\report_sider\view_models\ImageElementViewModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

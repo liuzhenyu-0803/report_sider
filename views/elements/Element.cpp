@@ -2,9 +2,11 @@
 #include <QPainter>
 #include <QStyleOption>
 
-Element::Element(QWidget *parent)
-    : QWidget(parent) {
+Element::Element(ImageElementViewModel *viewModel, QWidget *parent)
+    : QWidget(parent), m_viewModel(viewModel) {
     setAttribute(Qt::WA_StyledBackground, true);
+    // 设置固定大小为100x100
+    setFixedSize(100, 100);
 }
 
 Element::~Element() = default;
@@ -25,8 +27,7 @@ void Element::setText(const QString &text) {
 }
 
 void Element::paintEvent(QPaintEvent *event) {
-    QStyleOption opt;
-    opt.initFrom(this);
     QPainter p(this);
-    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+    p.setBrush(Qt::red); // 设置背景颜色为红色
+    p.drawRect(rect()); // 绘制边框
 }

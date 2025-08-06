@@ -9,14 +9,21 @@ find_package(Qt5 REQUIRED COMPONENTS Widgets Core Gui)
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
 include_directories(${Qt5Core_INCLUDE_DIRS})
 include_directories(${Qt5Gui_INCLUDE_DIRS})
+include_directories(.)
 set(PROJECT_SOURCES
     main.cpp
     views/MainWindow.h
     views/MainWindow.cpp
     views/ContentWidget.h
     views/ContentWidget.cpp
+    views/FlowLayout.h
+    views/FlowLayout.cpp
     views/elements/Element.h
     views/elements/Element.cpp
+    models/ImageElementModel.h
+    models/ImageElementModel.cpp
+    view_models/ImageElementViewModel.h
+    view_models/ImageElementViewModel.cpp
 )
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}

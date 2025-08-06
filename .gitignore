@@ -1,1 +1,17 @@
 build/
+*.exe
+*.pdb
+*.ilk
+*.obj
+*.vcxproj
+*.vcxproj.filters
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+ALL_BUILD.*
+ZERO_CHECK.*
+*.sln
+*.vcxproj.user
+*.vcxproj.filters
+report_sider_autogen/
