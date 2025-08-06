@@ -6,6 +6,7 @@
 class FlowLayout;
 class ImageElementViewModel;
 class Element;
+class ImageElement;
 
 class ContentWidget : public QWidget {
     Q_OBJECT

@@ -1,6 +1,7 @@
 #include "ContentWidget.h"
 #include "FlowLayout.h"
 #include "views/elements/Element.h"
+#include "views/elements/ImageElement.h"
 #include "view_models/ImageElementViewModel.h"
 
 ContentWidget::ContentWidget(QWidget *parent)
@@ -29,8 +30,8 @@ void ContentWidget::setupUI() {
         ImageElementViewModel *viewModel = new ImageElementViewModel(this);
         m_viewModels.append(viewModel);
         
-        // 创建Element并传入ViewModel
-        Element *element = new Element(viewModel);
+        // 创建ImageElement并传入ViewModel
+        ImageElement *element = new ImageElement(viewModel);
         m_elements.append(element);
         
         // 添加到布局中

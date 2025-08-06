@@ -4,25 +4,28 @@
 #include <QVariant>
 
 // 前置声明ViewModel类
-class ImageElementViewModel;
+class ElementViewModel;
 
 class Element : public QWidget {
     Q_OBJECT
 
 public:
-    explicit Element(ImageElementViewModel *viewModel, QWidget *parent = nullptr);
+    explicit Element(ElementViewModel *viewModel, QWidget *parent = nullptr);
     ~Element() override;
     
-    void setHtml(const QString &html);
-    void setImageData(const QVariant &image);
-    void setText(const QString &text);
-
 protected:
     void paintEvent(QPaintEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void enterEvent(QEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
-    ImageElementViewModel *m_viewModel;
-    QString m_html;
-    QVariant m_imageData;
-    QString m_text;
+    void startDrag();
+
+protected:
+    ElementViewModel *m_viewModel;
+    
+private:
+    QPoint m_dragStartPos;
 };

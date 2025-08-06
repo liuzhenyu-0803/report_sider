@@ -1,10 +1,10 @@
 #pragma once
 
-#include <QObject>
+#include "ElementModel.h"
 #include <QImage>
 #include <QString>
 
-class ImageElementModel : public QObject
+class ImageElementModel : public ElementModel
 {
     Q_OBJECT
 
@@ -12,19 +12,14 @@ public:
     explicit ImageElementModel(QObject *parent = nullptr);
     virtual ~ImageElementModel();
 
-    // 获取图像
-    virtual QImage getImage() const;
-    
-    // 加载图像
-    virtual void loadImagePath(const QString &path);
-    
+    // 实现基类的纯虚函数
+    virtual void loadData() override;
+    virtual Data getData() const override;
+
 signals:
-    // 图像变化信号
-    void imageChanged();
+    // 加载完成信号
+    void signalLoadFinished();
 
 protected:
     void loadImage(const QString &path);
-
-protected:
-    QImage m_image;
 };

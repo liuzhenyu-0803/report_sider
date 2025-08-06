@@ -1,20 +1,21 @@
 #include "ImageElementModel.h"
 
 ImageElementModel::ImageElementModel(QObject *parent)
-    : QObject(parent) {
+    : ElementModel(parent) {
 }
 
 ImageElementModel::~ImageElementModel() = default;
 
-QImage ImageElementModel::getImage() const {
-    return m_image;
+Data ImageElementModel::getData() const {
+    return data;
 }
 
 void ImageElementModel::loadImage(const QString &path) {
-    m_image.load(path);
-    emit imageChanged();
+    data.image.load(path);
+    emit signalLoadFinished();
 }
 
-void ImageElementModel::loadImagePath(const QString &path) {
-    loadImage(path);
+void ImageElementModel::loadData() {
+    // 直接加载图片
+    loadImage("E:/projects/qt/report_sider/images/test.png");
 }

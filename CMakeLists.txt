@@ -20,8 +20,14 @@ set(PROJECT_SOURCES
     views/FlowLayout.cpp
     views/elements/Element.h
     views/elements/Element.cpp
+    views/elements/ImageElement.h
+    views/elements/ImageElement.cpp
+    models/ElementModel.h
+    models/ElementModel.cpp
     models/ImageElementModel.h
     models/ImageElementModel.cpp
+    view_models/ElementViewModel.h
+    view_models/ElementViewModel.cpp
     view_models/ImageElementViewModel.h
     view_models/ImageElementViewModel.cpp
 )
