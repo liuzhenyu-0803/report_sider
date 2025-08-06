@@ -2,7 +2,9 @@
 #include "FlowLayout.h"
 #include "elements/Element.h"
 #include "elements/ImageElement.h"
+#include "elements/HtmlElement.h"
 #include "../view_models/ImageElementViewModel.h"
+#include "../view_models/HtmlElementViewModel.h"
 
 ContentWidget::ContentWidget(QWidget *parent)
     : QWidget(parent), m_layout(nullptr) {
@@ -11,8 +13,11 @@ ContentWidget::ContentWidget(QWidget *parent)
 
 ContentWidget::~ContentWidget() {
     // 清理ViewModels
-    qDeleteAll(m_viewModels);
-    m_viewModels.clear();
+    qDeleteAll(m_imageViewModels);
+    m_imageViewModels.clear();
+    
+    qDeleteAll(m_htmlViewModels);
+    m_htmlViewModels.clear();
     
     // Elements会由布局管理器自动清理
     m_elements.clear();
@@ -28,10 +33,23 @@ void ContentWidget::setupUI() {
     // 创建5个ImageElementViewModel实例
     for (int i = 0; i < 5; ++i) {
         ImageElementViewModel *viewModel = new ImageElementViewModel(this);
-        m_viewModels.append(viewModel);
+        m_imageViewModels.append(viewModel);
         
         // 创建ImageElement并传入ViewModel
         ImageElement *element = new ImageElement(viewModel);
+        m_elements.append(element);
+        
+        // 添加到布局中
+        m_layout->addWidget(element);
+    }
+    
+    // 创建2个HtmlElementViewModel实例
+    for (int i = 0; i < 2; ++i) {
+        HtmlElementViewModel *viewModel = new HtmlElementViewModel(this);
+        m_htmlViewModels.append(viewModel);
+        
+        // 创建HtmlElement并传入ViewModel
+        HtmlElement *element = new HtmlElement(viewModel);
         m_elements.append(element);
         
         // 添加到布局中

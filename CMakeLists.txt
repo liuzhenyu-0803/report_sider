@@ -22,14 +22,20 @@ set(PROJECT_SOURCES
     src/views/elements/Element.cpp
     src/views/elements/ImageElement.h
     src/views/elements/ImageElement.cpp
+    src/views/elements/HtmlElement.h
+    src/views/elements/HtmlElement.cpp
     src/models/ElementModel.h
     src/models/ElementModel.cpp
     src/models/ImageElementModel.h
     src/models/ImageElementModel.cpp
+    src/models/HtmlElementModel.h
+    src/models/HtmlElementModel.cpp
     src/view_models/ElementViewModel.h
     src/view_models/ElementViewModel.cpp
     src/view_models/ImageElementViewModel.h
     src/view_models/ImageElementViewModel.cpp
+    src/view_models/HtmlElementViewModel.h
+    src/view_models/HtmlElementViewModel.cpp
 )
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}

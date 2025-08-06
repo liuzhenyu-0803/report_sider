@@ -5,8 +5,10 @@
 // 前置声明
 class FlowLayout;
 class ImageElementViewModel;
+class HtmlElementViewModel;
 class Element;
 class ImageElement;
+class HtmlElement;
 
 class ContentWidget : public QWidget {
     Q_OBJECT
@@ -18,6 +20,7 @@ private:
     void setupUI();
     
     FlowLayout *m_layout;
-    QList<ImageElementViewModel*> m_viewModels;
+    QList<ImageElementViewModel*> m_imageViewModels;
+    QList<HtmlElementViewModel*> m_htmlViewModels;
     QList<Element*> m_elements;
 };
