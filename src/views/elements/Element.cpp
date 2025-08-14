@@ -8,6 +8,7 @@
 #include <QBitmap>
 #include <QBuffer>
 #include <QUrl>
+#include <QClipboard>
 #include "../../view_models/ElementViewModel.h"
 
 Element::Element(ElementViewModel *viewModel, QWidget *parent)
@@ -30,6 +31,17 @@ void Element::paintEvent(QPaintEvent *event) {
 void Element::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
         m_dragStartPos = event->pos();
+        
+        // 将MimeData设置到剪切板中
+        QMimeData *mimeData = m_viewModel->getMimeData();
+        QMimeData *clipboardMimeData = new QMimeData();
+        
+        // 复制所有格式的数据到剪切板
+        foreach(const QString &format, mimeData->formats()) {
+            clipboardMimeData->setData(format, mimeData->data(format));
+        }
+        
+        QApplication::clipboard()->setMimeData(clipboardMimeData);
     }
     QWidget::mousePressEvent(event);
 }

@@ -6,9 +6,11 @@
 class FlowLayout;
 class ImageElementViewModel;
 class HtmlElementViewModel;
+class UrlsElementViewModel;
 class Element;
 class ImageElement;
 class HtmlElement;
+class UrlsElement;
 
 class ContentWidget : public QWidget {
     Q_OBJECT
@@ -22,5 +24,6 @@ private:
     FlowLayout *m_layout;
     QList<ImageElementViewModel*> m_imageViewModels;
     QList<HtmlElementViewModel*> m_htmlViewModels;
+    QList<UrlsElementViewModel*> m_urlsViewModels;
     QList<Element*> m_elements;
 };

@@ -3,8 +3,10 @@
 #include "elements/Element.h"
 #include "elements/ImageElement.h"
 #include "elements/HtmlElement.h"
+#include "elements/UrlsElement.h"
 #include "../view_models/ImageElementViewModel.h"
 #include "../view_models/HtmlElementViewModel.h"
+#include "../view_models/UrlsElementViewModel.h"
 
 ContentWidget::ContentWidget(QWidget *parent)
     : QWidget(parent), m_layout(nullptr) {
@@ -18,6 +20,9 @@ ContentWidget::~ContentWidget() {
     
     qDeleteAll(m_htmlViewModels);
     m_htmlViewModels.clear();
+    
+    qDeleteAll(m_urlsViewModels);
+    m_urlsViewModels.clear();
     
     // Elements会由布局管理器自动清理
     m_elements.clear();
@@ -50,6 +55,19 @@ void ContentWidget::setupUI() {
         
         // 创建HtmlElement并传入ViewModel
         HtmlElement *element = new HtmlElement(viewModel);
+        m_elements.append(element);
+        
+        // 添加到布局中
+        m_layout->addWidget(element);
+    }
+    
+    // 创建3个UrlsElementViewModel实例
+    for (int i = 0; i < 3; ++i) {
+        UrlsElementViewModel *viewModel = new UrlsElementViewModel(this);
+        m_urlsViewModels.append(viewModel);
+        
+        // 创建UrlsElement并传入ViewModel
+        UrlsElement *element = new UrlsElement(viewModel);
         m_elements.append(element);
         
         // 添加到布局中

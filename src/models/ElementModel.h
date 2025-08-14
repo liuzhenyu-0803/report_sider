@@ -3,11 +3,14 @@
 #include <QObject>
 #include <QImage>
 #include <QString>
+#include <QList>
+#include <QUrl>
 
 struct Data {
     QString html;
     QImage image;
     QString text;
+    QList<QUrl> urls;
 };
 
 class ElementModel : public QObject
