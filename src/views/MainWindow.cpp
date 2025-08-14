@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "SystemTrayIcon.h"
 #include <QApplication>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -22,6 +23,9 @@ MainWindow::MainWindow(QWidget *parent)
     
     contentWidget = new ContentWidget();
     mainLayout->addWidget(contentWidget, 1);
+    
+    // 创建系统托盘图标
+    m_systemTrayIcon = new SystemTrayIcon(this);
 }
 
 MainWindow::~MainWindow() = default;
@@ -42,19 +46,19 @@ void MainWindow::setupCustomTitleBar() {
     titleLayout->addStretch();
     
     minimizeBtn = new QPushButton("-");
-    maximizeBtn = new QPushButton("O");
+    pinBtn = new QPushButton("P");
     closeBtn = new QPushButton("X");
     
     minimizeBtn->setFixedSize(30, 30);
-    maximizeBtn->setFixedSize(30, 30);
+    pinBtn->setFixedSize(30, 30);
     closeBtn->setFixedSize(30, 30);
     
+    titleLayout->addWidget(pinBtn);
     titleLayout->addWidget(minimizeBtn);
-    titleLayout->addWidget(maximizeBtn);
     titleLayout->addWidget(closeBtn);
     
     connect(minimizeBtn, &QPushButton::clicked, this, &MainWindow::minimizeWindow);
-    connect(maximizeBtn, &QPushButton::clicked, this, &MainWindow::maximizeWindow);
+    connect(pinBtn, &QPushButton::clicked, this, &MainWindow::togglePinWindow);
     connect(closeBtn, &QPushButton::clicked, this, &MainWindow::closeWindow);
 }
 
@@ -201,19 +205,21 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event) {
 }
 
 void MainWindow::closeWindow() {
-    close();
+    // 隐藏窗口而不是关闭
+    hide();
 }
 
 void MainWindow::minimizeWindow() {
     showMinimized();
 }
 
-void MainWindow::maximizeWindow() {
-    if (isMaximized()) {
-        showNormal();
-        maximizeBtn->setText("O");
+void MainWindow::togglePinWindow() {
+    if (windowFlags() & Qt::WindowStaysOnTopHint) {
+        setWindowFlag(Qt::WindowStaysOnTopHint, false);
+        pinBtn->setText("P");
     } else {
-        showMaximized();
-        maximizeBtn->setText("R");
+        setWindowFlag(Qt::WindowStaysOnTopHint, true);
+        pinBtn->setText("PIN");
     }
+    show(); // 重新显示窗口以应用更改
 }

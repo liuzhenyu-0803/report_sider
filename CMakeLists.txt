@@ -26,6 +26,8 @@ set(PROJECT_SOURCES
     src/views/elements/HtmlElement.cpp
     src/views/elements/UrlsElement.h
     src/views/elements/UrlsElement.cpp
+    src/views/SystemTrayIcon.h
+    src/views/SystemTrayIcon.cpp
     src/models/ElementModel.h
     src/models/ElementModel.cpp
     src/models/ImageElementModel.h

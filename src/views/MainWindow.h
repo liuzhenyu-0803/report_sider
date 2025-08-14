@@ -5,7 +5,11 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QMouseEvent>
+#include <QSystemTrayIcon>
 #include "ContentWidget.h"
+
+// 前置声明
+class SystemTrayIcon;
 
 class MainWindow : public QWidget {
     Q_OBJECT
@@ -22,7 +26,7 @@ protected:
 private slots:
     void closeWindow();
     void minimizeWindow();
-    void maximizeWindow();
+    void togglePinWindow();
 
 private:
     void setupCustomTitleBar();
@@ -46,9 +50,10 @@ private:
     QWidget *titleBar;
     QLabel *titleLabel;
     QPushButton *minimizeBtn;
-    QPushButton *maximizeBtn;
+    QPushButton *pinBtn;
     QPushButton *closeBtn;
     ContentWidget *contentWidget;
+    SystemTrayIcon *m_systemTrayIcon;
     
     QPoint dragPosition;
     bool isDragging;
