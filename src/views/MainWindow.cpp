@@ -1,11 +1,16 @@
 #include "MainWindow.h"
 #include "SystemTrayIcon.h"
 #include <QApplication>
+#include <QPainter>
+#include <QPainterPath>
 
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent), isDragging(false), isResizing(false), resizeDirection(None) {
     
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
+
+    setAttribute(Qt::WA_TranslucentBackground);
+
     resize(800, 600);
     setMouseTracking(true);
 
@@ -33,14 +38,12 @@ MainWindow::~MainWindow() = default;
 void MainWindow::setupCustomTitleBar() {
     titleBar = new QWidget();
     titleBar->setFixedHeight(40);
-    titleBar->setStyleSheet("background-color: #2c3e50;");
     
     QHBoxLayout *titleLayout = new QHBoxLayout(titleBar);
     titleLayout->setContentsMargins(10, 0, 5, 0);
     titleLayout->setSpacing(5);
     
     titleLabel = new QLabel("report_sider");
-    titleLabel->setStyleSheet("color: white;");
     titleLayout->addWidget(titleLabel);
     
     titleLayout->addStretch();
@@ -179,6 +182,19 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
         } else if (!windowRect.contains(globalPos)) {
             setCursor(Qt::ArrowCursor);
         }
+    } else if (event->type() == QEvent::Paint && obj == titleBar) {
+        // 处理标题栏的绘制事件
+        QWidget *titleBarWidget = qobject_cast<QWidget*>(obj);
+        if (titleBarWidget) {
+            // 在标题栏底部绘制边框
+            QPainter painter(titleBarWidget);
+            QPen pen(QColor("#e0e1e5"));
+            pen.setWidth(1);
+            painter.setPen(pen);
+            painter.drawLine(0, titleBarWidget->height() - 1, titleBarWidget->width(), titleBarWidget->height() - 1);
+            
+            return true;
+        }
     }
     return QWidget::eventFilter(obj, event);
 }
@@ -222,4 +238,23 @@ void MainWindow::togglePinWindow() {
         pinBtn->setText("PIN");
     }
     show(); // 重新显示窗口以应用更改
+}
+void MainWindow::paintEvent(QPaintEvent *event) {
+    Q_UNUSED(event);
+    
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
+    
+    // 创建圆角矩形路径
+    QPainterPath path;
+    path.addRoundedRect(rect(), 10, 10); // 10像素的圆角半径
+    
+    // 设置背景色
+    painter.fillPath(path, QColor("#fafbff"));
+    
+    // 设置边框
+    QPen pen(QColor("#e0e1e5"));
+    pen.setWidth(1);
+    painter.setPen(pen);
+    painter.drawPath(path);
 }
