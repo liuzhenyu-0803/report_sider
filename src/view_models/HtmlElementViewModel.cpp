@@ -6,6 +6,8 @@
 HtmlElementViewModel::HtmlElementViewModel(QObject *parent)
     : ElementViewModel(parent), m_htmlContent("<p>这是一个HTML元素示例</p>") {
     m_htmlElementModel = new HtmlElementModel(this);
+    // 设置基类的m_elementModel指针
+    m_elementModel = m_htmlElementModel;
 
     connect(m_htmlElementModel, &HtmlElementModel::signalLoadFinished, this, [this]() {
         Data data = m_htmlElementModel->getData();

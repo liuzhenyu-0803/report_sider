@@ -6,6 +6,8 @@ ElementModel::ElementModel(QObject *parent)
     data.html = "";
     data.image = QImage();
     data.text = "";
+    data.icon = QImage();  // 初始化新字段
+    data.name = "";        // 初始化新字段
 }
 
 ElementModel::~ElementModel() = default;

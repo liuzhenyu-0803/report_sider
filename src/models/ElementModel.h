@@ -11,6 +11,8 @@ struct Data {
     QImage image;
     QString text;
     QList<QUrl> urls;
+    QImage icon;     // 新增字段
+    QString name;    // 新增字段
 };
 
 class ElementModel : public QObject

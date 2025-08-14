@@ -6,6 +6,8 @@
 ImageElementViewModel::ImageElementViewModel(QObject *parent)
     : ElementViewModel(parent), m_imagePath("path/to/image.png") {
     m_imageElementModel = new ImageElementModel(this);
+    // 设置基类的m_elementModel指针
+    m_elementModel = m_imageElementModel;
 
     connect(m_imageElementModel, &ImageElementModel::signalLoadFinished, this, [this]() {
         Data data = m_imageElementModel->getData();

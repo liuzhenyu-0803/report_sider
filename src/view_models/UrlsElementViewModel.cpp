@@ -5,6 +5,8 @@
 UrlsElementViewModel::UrlsElementViewModel(QObject *parent)
     : ElementViewModel(parent) {
     m_urlsElementModel = new UrlsElementModel(this);
+    // 设置基类的m_elementModel指针
+    m_elementModel = m_urlsElementModel;
 
     connect(m_urlsElementModel, &UrlsElementModel::signalLoadFinished, this, [this]() {
         Data data = m_urlsElementModel->getData();
