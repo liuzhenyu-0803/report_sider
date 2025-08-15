@@ -1,0 +1,60 @@
+{
+  "unit_group": [
+    {
+      "id": "group1",
+      "title": "常用工具",
+      "unit_element": [
+        {
+          "icon": "./images/html_icon.png",
+          "title": "欢迎页面",
+          "type": "html",
+          "content": "<div style=\"text-align: center;\"><h1>欢迎使用本系统</h1><p>这是一个HTML元素示例</p></div>"
+        },
+        {
+          "icon": "./images/text_icon.png",
+          "title": "说明文档",
+          "type": "text",
+          "content": "这是一个文本元素示例，用于显示纯文本内容。"
+        },
+        {
+          "icon": "./images/urls_icon.png",
+          "title": "相关链接",
+          "type": "urls",
+          "content": [
+            "https://www.example.com",
+            "https://www.github.com",
+            "https://www.stackoverflow.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "group2",
+      "title": "系统设置",
+      "unit_element": [
+        {
+          "icon": "./images/settings_icon.png",
+          "title": "配置说明",
+          "type": "html",
+          "content": "<ul><li>系统配置项1</li><li>系统配置项2</li><li>系统配置项3</li></ul>"
+        },
+        {
+          "icon": "./images/info_icon.png",
+          "title": "版本信息",
+          "type": "text",
+          "content": "当前系统版本：v1.0.0\n更新日期：2025-08-14\n开发者：System Admin"
+        },
+        {
+          "icon": "./images/files_icon.png",
+          "title": "配置文件",
+          "type": "urls",
+          "content": [
+            "./config/app.config",
+            "./config/user.config",
+            "./logs/system.log"
+          ]
+        }
+      ]
+    }
+  ]
+}
