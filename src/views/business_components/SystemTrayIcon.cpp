@@ -10,7 +10,7 @@ SystemTrayIcon::SystemTrayIcon(QWidget *parent)
     createTrayIcon();
     
     // Set icon
-    setIcon(QIcon("E:/projects/qt/report_sider/images/test.png"));
+    setIcon(QIcon(":/images/test.png"));
     
     // Connect activation signal
     connect(this, &QSystemTrayIcon::activated, this, &SystemTrayIcon::onActivated);

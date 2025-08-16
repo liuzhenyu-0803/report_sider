@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qss/SpinBox.qss</file>
+        <file>qss/Main.qss</file>
+    </qresource>
+</RCC>

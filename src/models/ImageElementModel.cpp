@@ -17,5 +17,5 @@ void ImageElementModel::loadImage(const QString &path) {
 
 void ImageElementModel::loadData() {
     // 直接加载图片
-    loadImage("E:/projects/qt/report_sider/images/test.png");
+    loadImage(":/images/test.png");
 }

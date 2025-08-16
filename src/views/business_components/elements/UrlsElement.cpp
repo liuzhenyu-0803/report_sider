@@ -3,7 +3,7 @@
 #include <QStyleOption>
 #include <QTextDocument>
 #include <QUrl>
-#include "../../view_models/UrlsElementViewModel.h"
+#include "../../../view_models/UrlsElementViewModel.h"
 
 UrlsElement::UrlsElement(UrlsElementViewModel *viewModel, QWidget *parent)
     : Element(viewModel, parent) {

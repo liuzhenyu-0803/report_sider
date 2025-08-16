@@ -1,0 +1,65 @@
+QSpinBox {
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 2px;
+    background-color: white;
+}
+
+QSpinBox:hover {
+    border: 1px solid blue;
+}
+
+QSpinBox:focus {
+    border: 1px solid blue;
+    outline: none;
+}
+
+QSpinBox::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+    width: 16px;
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    background-color: lightgray;
+}
+
+QSpinBox::up-button:hover {
+    background-color: gray;
+}
+
+QSpinBox::up-button:pressed {
+    background-color: darkgray;
+}
+
+QSpinBox::up-arrow {
+    image: url(:/images/up_arrow.png);
+    width: 7px;
+    height: 7px;
+}
+
+QSpinBox::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: bottom right;
+    width: 16px;
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-bottom-right-radius: 3px;
+    background-color: lightgray;
+}
+
+QSpinBox::down-button:hover {
+    background-color: gray;
+}
+
+QSpinBox::down-button:pressed {
+    background-color: darkgray;
+}
+
+QSpinBox::down-arrow {
+    image: url(:/images/down_arrow.png);
+    width: 7px;
+    height: 7px;
+}

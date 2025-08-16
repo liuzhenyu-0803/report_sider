@@ -9,7 +9,7 @@
 #include <QBuffer>
 #include <QUrl>
 #include <QClipboard>
-#include "../../view_models/ElementViewModel.h"
+#include "../../../view_models/ElementViewModel.h"
 
 Element::Element(ElementViewModel *viewModel, QWidget *parent)
     : QWidget(parent), m_viewModel(viewModel) {

@@ -12,22 +12,22 @@ include_directories(${Qt5Gui_INCLUDE_DIRS})
 include_directories(src)
 set(PROJECT_SOURCES
     src/main.cpp
-    src/views/MainWindow.h
-    src/views/MainWindow.cpp
-    src/views/ContentWidget.h
-    src/views/ContentWidget.cpp
-    src/views/FlowLayout.h
-    src/views/FlowLayout.cpp
-    src/views/elements/Element.h
-    src/views/elements/Element.cpp
-    src/views/elements/ImageElement.h
-    src/views/elements/ImageElement.cpp
-    src/views/elements/HtmlElement.h
-    src/views/elements/HtmlElement.cpp
-    src/views/elements/UrlsElement.h
-    src/views/elements/UrlsElement.cpp
-    src/views/SystemTrayIcon.h
-    src/views/SystemTrayIcon.cpp
+    src/views/business_components/MainWindow.h
+    src/views/business_components/MainWindow.cpp
+    src/views/business_components/ContentWidget.h
+    src/views/business_components/ContentWidget.cpp
+    src/views/common_components/FlowLayout.h
+    src/views/common_components/FlowLayout.cpp
+    src/views/business_components/elements/Element.h
+    src/views/business_components/elements/Element.cpp
+    src/views/business_components/elements/ImageElement.h
+    src/views/business_components/elements/ImageElement.cpp
+    src/views/business_components/elements/HtmlElement.h
+    src/views/business_components/elements/HtmlElement.cpp
+    src/views/business_components/elements/UrlsElement.h
+    src/views/business_components/elements/UrlsElement.cpp
+    src/views/business_components/SystemTrayIcon.h
+    src/views/business_components/SystemTrayIcon.cpp
     src/models/ElementModel.h
     src/models/ElementModel.cpp
     src/models/ImageElementModel.h
@@ -44,6 +44,14 @@ set(PROJECT_SOURCES
     src/view_models/HtmlElementViewModel.cpp
     src/view_models/UrlsElementViewModel.h
     src/view_models/UrlsElementViewModel.cpp
+    res/images.qrc
+    res/qss.qrc
+    src/views/common_components/SpinBox.h
+    src/views/common_components/SpinBox.cpp
+    src/views/business_components/ThermalImageIndex.h
+    src/views/business_components/ThermalImageIndex.cpp
+    src/views/business_components/TabFrame.h
+    src/views/business_components/TabFrame.cpp
 )
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}

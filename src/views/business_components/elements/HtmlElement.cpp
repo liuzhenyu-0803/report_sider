@@ -2,7 +2,7 @@
 #include <QPainter>
 #include <QStyleOption>
 #include <QTextDocument>
-#include "../../view_models/HtmlElementViewModel.h"
+#include "../../../view_models/HtmlElementViewModel.h"
 
 HtmlElement::HtmlElement(HtmlElementViewModel *viewModel, QWidget *parent)
     : Element(viewModel, parent) {

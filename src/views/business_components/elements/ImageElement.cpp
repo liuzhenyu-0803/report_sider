@@ -1,7 +1,7 @@
 #include "ImageElement.h"
 #include <QPainter>
 #include <QStyleOption>
-#include "../../view_models/ImageElementViewModel.h"
+#include "../../../view_models/ImageElementViewModel.h"
 
 ImageElement::ImageElement(ImageElementViewModel *viewModel, QWidget *parent)
     : Element(viewModel, parent) {

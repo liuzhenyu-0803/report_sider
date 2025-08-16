@@ -1,4 +1,4 @@
-#include "views/MainWindow.h"
+#include "views/business_components/MainWindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[]) {
