@@ -1,4 +1,6 @@
 #include "TabFrame.h"
+#include "UnitFrame.h"
+#include "FieldFrame.h"
 
 TabFrame::TabFrame(QWidget *parent)
     : QWidget(parent)
@@ -27,6 +29,11 @@ TabFrame::TabFrame(QWidget *parent)
     
     // 创建堆栈窗口
     stackedWidget = new QStackedWidget(this);
+    // 创建UnitFrame和FieldFrame实例并添加到stackedWidget
+    UnitFrame *unitFrame = new UnitFrame(this);
+    FieldFrame *fieldFrame = new FieldFrame(this);
+    stackedWidget->addWidget(unitFrame);
+    stackedWidget->addWidget(fieldFrame);
     
     // 创建主布局
     mainLayout = new QVBoxLayout(this);

@@ -10,6 +10,10 @@
 #include <QHBoxLayout>
 #include "../common_components/SpinBox.h"
 
+// 前置声明新组件
+class UnitFrame;
+class FieldFrame;
+
 class TabFrame : public QWidget
 {
     Q_OBJECT

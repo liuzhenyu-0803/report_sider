@@ -52,6 +52,10 @@ set(PROJECT_SOURCES
     src/views/business_components/ThermalImageIndex.cpp
     src/views/business_components/TabFrame.h
     src/views/business_components/TabFrame.cpp
+    src/views/business_components/UnitFrame.h
+    src/views/business_components/UnitFrame.cpp
+    src/views/business_components/FieldFrame.h
+    src/views/business_components/FieldFrame.cpp
 )
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}
