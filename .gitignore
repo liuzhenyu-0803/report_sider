@@ -15,3 +15,6 @@ ZERO_CHECK.*
 *.vcxproj.user
 *.vcxproj.filters
 report_sider_autogen/
+report_sider.dir/
+*.recipe
+*.tlog
