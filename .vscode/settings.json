@@ -1,6 +1,14 @@
 {
     "files.associations": {
         "qpushbutton": "cpp",
-        "qimage": "cpp"
+        "qimage": "cpp",
+        "sstream": "cpp",
+        "fstream": "cpp",
+        "xlocmes": "cpp",
+        "qtextbrowser": "cpp",
+        "qwidget": "cpp",
+        "qhboxlayout": "cpp",
+        "qtextlayout": "cpp",
+        "qtextdocument": "cpp"
     }
 }

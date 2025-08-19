@@ -6,6 +6,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include "../common_components/SpinBox.h"
+#include "../common_components/InnerTip.h"
 
 class ThermalImageIndex : public QWidget
 {
@@ -18,9 +19,9 @@ public:
     int getIndex() const;
 
 private:
-    QLabel *label;
-    SpinBox *spinBox;
-    QVBoxLayout *mainLayout;
+    QLabel *label = nullptr;
+    SpinBox *spinBox = nullptr;
+    QVBoxLayout *mainLayout = nullptr;
 };
 
 #endif // THERMALIMAGEINDEX_H

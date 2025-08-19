@@ -1,0 +1,44 @@
+InnerTip
+{
+    border: none;
+    background: transparent;
+}
+
+/* 品牌样式 (默认样式) */
+InnerTip[styleType="Brand"] #innerTipFrame,
+InnerTip #innerTipFrame  /* 兼容未设置属性的情况 */
+{
+    background: #DDEEFF;
+    border-radius: 4px;
+}
+
+/* 灰色样式 */
+InnerTip[styleType="Gray"] #innerTipFrame
+{
+    background: #F3F3F4;
+    border-radius: 2px;
+}
+
+InnerTip QLabel
+{
+    border-image: url(:/images/info.svg);
+}
+
+/* 品牌样式文本 */
+InnerTip[styleType="Brand"] QTextBrowser,
+InnerTip QTextBrowser  /* 兼容未设置属性的情况 */
+{
+    border: none;
+    background: transparent;
+    color: #336FFF;
+    font-size: 12px;
+}
+
+/* 灰色样式文本 */
+InnerTip[styleType="Gray"] QTextBrowser
+{
+    border: none;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}

@@ -1,13 +1,15 @@
 #pragma once
+
 #include <QWidget>
 #include <QVBoxLayout>
 
-// 前置声明
 class ThermalImageIndex;
 class TabFrame;
 
-class ContentWidget : public QWidget {
+class ContentWidget : public QWidget 
+{
     Q_OBJECT
+
 public:
     ContentWidget(QWidget *parent = nullptr);
     ~ContentWidget();
@@ -15,7 +17,7 @@ public:
 private:
     void setupUI();
     
-    QVBoxLayout *m_layout;
-    ThermalImageIndex *m_thermalImageIndex;
-    TabFrame *m_tabFrame;
+    QVBoxLayout *m_layout = nullptr;
+    ThermalImageIndex *m_thermalImageIndex = nullptr;
+    TabFrame *m_tabFrame = nullptr;
 };

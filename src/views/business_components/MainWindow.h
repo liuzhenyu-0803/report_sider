@@ -8,11 +8,12 @@
 #include <QSystemTrayIcon>
 #include "ContentWidget.h"
 
-// 前置声明
 class SystemTrayIcon;
 
-class MainWindow : public QWidget {
+class MainWindow : public QWidget 
+{
     Q_OBJECT
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -30,7 +31,7 @@ private slots:
     void togglePinWindow();
 
 private:
-    void setupCustomTitleBar();
+    void createTitleBar();
     
     enum ResizeDirection {
         None = 0,
@@ -48,18 +49,19 @@ private:
     void updateCursor(ResizeDirection direction);
     void performResize(const QPoint &globalPos);
     
-    QWidget *titleBar;
-    QLabel *titleLabel;
-    QPushButton *minimizeBtn;
-    QPushButton *pinBtn;
-    QPushButton *closeBtn;
-    ContentWidget *contentWidget;
-    SystemTrayIcon *m_systemTrayIcon;
+    QWidget *m_titleBar = nullptr;
+    QLabel *m_iconLabel = nullptr;
+    QLabel *m_titleLabel = nullptr;
+    QPushButton *m_minimizeBtn = nullptr;
+    QPushButton *m_pinBtn = nullptr;
+    QPushButton *m_closeBtn = nullptr;
+    ContentWidget *m_contentWidget = nullptr;
+    SystemTrayIcon *m_systemTrayIcon = nullptr;
     
-    QPoint dragPosition;
-    bool isDragging;
-    bool isResizing;
-    ResizeDirection resizeDirection;
-    QRect originalGeometry;
+    QPoint m_dragPosition;
+    bool m_isDragging = false;
+    bool m_isResizing = false;
+    ResizeDirection m_resizeDirection = ResizeDirection::None;
+    QRect m_originalGeometry;
     static const int RESIZE_BORDER_WIDTH = 5;
 };

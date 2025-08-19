@@ -18,44 +18,45 @@ set(PROJECT_SOURCES
     src/views/business_components/ContentWidget.cpp
     src/views/common_components/FlowLayout.h
     src/views/common_components/FlowLayout.cpp
-    src/views/business_components/elements/Element.h
-    src/views/business_components/elements/Element.cpp
-    src/views/business_components/elements/ImageElement.h
-    src/views/business_components/elements/ImageElement.cpp
-    src/views/business_components/elements/HtmlElement.h
-    src/views/business_components/elements/HtmlElement.cpp
-    src/views/business_components/elements/UrlsElement.h
-    src/views/business_components/elements/UrlsElement.cpp
+    src/views/business_components/Element.h
+    src/views/business_components/Element.cpp
+    src/views/business_components/ElementFrame.h
+    src/views/business_components/ElementFrame.cpp
+    src/views/business_components/UnitElement.h
+    src/views/business_components/UnitElement.cpp
+    src/views/business_components/FieldElement.h
+    src/views/business_components/FieldElement.cpp
     src/views/business_components/SystemTrayIcon.h
     src/views/business_components/SystemTrayIcon.cpp
     src/models/ElementModel.h
     src/models/ElementModel.cpp
-    src/models/ImageElementModel.h
-    src/models/ImageElementModel.cpp
-    src/models/HtmlElementModel.h
-    src/models/HtmlElementModel.cpp
-    src/models/UrlsElementModel.h
-    src/models/UrlsElementModel.cpp
-    src/view_models/ElementViewModel.h
-    src/view_models/ElementViewModel.cpp
-    src/view_models/ImageElementViewModel.h
-    src/view_models/ImageElementViewModel.cpp
-    src/view_models/HtmlElementViewModel.h
-    src/view_models/HtmlElementViewModel.cpp
-    src/view_models/UrlsElementViewModel.h
-    src/view_models/UrlsElementViewModel.cpp
+    src/models/UnitElementModel.h
+    src/models/UnitElementModel.cpp
+    src/models/FieldElementModel.h
+    src/models/FieldElementModel.cpp
+    src/models/GroupModel.h
+    src/models/GroupModel.cpp
+    src/models/Model.h
+    src/models/Model.cpp
+    src/models/ConfigModel.h
+    src/models/ConfigModel.cpp
     res/images.qrc
     res/qss.qrc
     src/views/common_components/SpinBox.h
     src/views/common_components/SpinBox.cpp
+    src/views/common_components/InnerTip.h
+    src/views/common_components/InnerTip.cpp
     src/views/business_components/ThermalImageIndex.h
     src/views/business_components/ThermalImageIndex.cpp
     src/views/business_components/TabFrame.h
     src/views/business_components/TabFrame.cpp
-    src/views/business_components/UnitFrame.h
-    src/views/business_components/UnitFrame.cpp
-    src/views/business_components/FieldFrame.h
-    src/views/business_components/FieldFrame.cpp
+    src/views/business_components/TabPageFrame.h
+    src/views/business_components/TabPageFrame.cpp
+    src/views/business_components/GroupFrame.h
+    src/views/business_components/GroupFrame.cpp
+    src/utility/utility.h
+    src/utility/utility.cpp
+    src/global/global.h
 )
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}

@@ -1,86 +1,101 @@
 #include "MainWindow.h"
+
 #include "SystemTrayIcon.h"
+#include "utility/utility.h"
+
 #include <QApplication>
 #include <QPainter>
 #include <QPainterPath>
 
+
 MainWindow::MainWindow(QWidget *parent)
-    : QWidget(parent), isDragging(false), isResizing(false), resizeDirection(None) {
-    
+    : QWidget(parent)
+{ 
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
 
     setAttribute(Qt::WA_TranslucentBackground);
 
     resize(800, 600);
-    setMouseTracking(true);
+    setMouseTracking(true);   
 
-    QApplication::instance()->installEventFilter(this);
-    
-    // centralWidget = new QWidget(this);
-    // QWidget基类无需 setCentralWidget
-    
-    setupCustomTitleBar();
-    
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(0);
-    mainLayout->addWidget(titleBar);
     
-    contentWidget = new ContentWidget();
-    mainLayout->addWidget(contentWidget, 1);
+    createTitleBar();
+    mainLayout->addWidget(m_titleBar);
     
-    // 创建系统托盘图标
+    m_contentWidget = new ContentWidget();
+    mainLayout->addWidget(m_contentWidget, 1);
+    
     m_systemTrayIcon = new SystemTrayIcon(this);
+    m_systemTrayIcon->setMainWindow(this);
+
+    qApp->installEventFilter(this);
 }
 
 MainWindow::~MainWindow() = default;
 
-void MainWindow::setupCustomTitleBar() {
-    titleBar = new QWidget();
-    titleBar->setFixedHeight(40);
+void MainWindow::createTitleBar() 
+{
+    m_titleBar = new QWidget();
+    m_titleBar->setFixedHeight(40);
     
-    QHBoxLayout *titleLayout = new QHBoxLayout(titleBar);
-    titleLayout->setContentsMargins(10, 0, 5, 0);
-    titleLayout->setSpacing(5);
+    QHBoxLayout *titleLayout = new QHBoxLayout(m_titleBar);
+    titleLayout->setContentsMargins(15, 0, 8, 0);
+    titleLayout->setSpacing(12);
+
+    m_iconLabel = new QLabel(this);
+    m_iconLabel->setFixedSize(24, 24);
+    m_iconLabel->setObjectName("windowLogoLabel");
+    titleLayout->addWidget(m_iconLabel);
     
-    titleLabel = new QLabel("report_sider");
-    titleLayout->addWidget(titleLabel);
+    m_titleLabel = new QLabel("report_sider");
+    m_titleLabel->setObjectName("windowTitleLabel");
+    titleLayout->addWidget(m_titleLabel);
     
     titleLayout->addStretch();
     
-    minimizeBtn = new QPushButton("-");
-    pinBtn = new QPushButton("P");
-    closeBtn = new QPushButton("X");
+    m_minimizeBtn = new QPushButton();
+    m_minimizeBtn->setFixedSize(24, 24);
+    m_minimizeBtn->setObjectName("windowMinimizeButton");
+    m_pinBtn = new QPushButton();
+    m_pinBtn->setFixedSize(24, 24);
+    m_pinBtn->setObjectName("windowPinButton");
+    m_closeBtn = new QPushButton();
+    m_closeBtn->setFixedSize(24, 24);
+    m_closeBtn->setObjectName("windowCloseButton");
+
+    titleLayout->addWidget(m_pinBtn);
+    titleLayout->addWidget(m_minimizeBtn);
+    titleLayout->addWidget(m_closeBtn);
     
-    minimizeBtn->setFixedSize(30, 30);
-    pinBtn->setFixedSize(30, 30);
-    closeBtn->setFixedSize(30, 30);
-    
-    titleLayout->addWidget(pinBtn);
-    titleLayout->addWidget(minimizeBtn);
-    titleLayout->addWidget(closeBtn);
-    
-    connect(minimizeBtn, &QPushButton::clicked, this, &MainWindow::minimizeWindow);
-    connect(pinBtn, &QPushButton::clicked, this, &MainWindow::togglePinWindow);
-    connect(closeBtn, &QPushButton::clicked, this, &MainWindow::closeWindow);
+    connect(m_minimizeBtn, &QPushButton::clicked, this, &MainWindow::minimizeWindow);
+    connect(m_pinBtn, &QPushButton::clicked, this, &MainWindow::togglePinWindow);
+    connect(m_closeBtn, &QPushButton::clicked, this, &MainWindow::closeWindow);
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *event) {
-    if (event->button() == Qt::LeftButton) {
+void MainWindow::mousePressEvent(QMouseEvent *event) 
+{
+    if (event->button() == Qt::LeftButton) 
+    {
         ResizeDirection direction = getResizeDirection(event->pos());
         
         if (direction != None) {
             
-            isResizing = true;
-            resizeDirection = direction;
-            dragPosition = event->globalPos();
-            originalGeometry = geometry();
+            m_isResizing = true;
+            m_resizeDirection = direction;
+            m_dragPosition = event->globalPos();
+            m_originalGeometry = geometry();
             event->accept();
-        } else {
-            QRect titleBarRect = titleBar->geometry();
-            if (titleBarRect.contains(event->pos())) {
-                isDragging = true;
-                dragPosition = event->globalPos() - frameGeometry().topLeft();
+        } 
+        else 
+        {
+            QRect titleBarRect = m_titleBar->geometry();
+            if (titleBarRect.contains(event->pos())) 
+            {
+                m_isDragging = true;
+                m_dragPosition = event->globalPos() - frameGeometry().topLeft();
                 event->accept();
             }
         }
@@ -88,26 +103,35 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
     QWidget::mousePressEvent(event);
 }
 
-MainWindow::ResizeDirection MainWindow::getResizeDirection(const QPoint &pos) {
+MainWindow::ResizeDirection MainWindow::getResizeDirection(const QPoint &pos) 
+{
     ResizeDirection direction = None;
     
-    if (pos.x() <= RESIZE_BORDER_WIDTH) {
+    if (pos.x() <= RESIZE_BORDER_WIDTH) 
+    {
         direction = static_cast<ResizeDirection>(direction | Left);
-    } else if (pos.x() >= width() - RESIZE_BORDER_WIDTH) {
+    } 
+    else if (pos.x() >= width() - RESIZE_BORDER_WIDTH) 
+    {
         direction = static_cast<ResizeDirection>(direction | Right);
     }
     
-    if (pos.y() <= RESIZE_BORDER_WIDTH) {
+    if (pos.y() <= RESIZE_BORDER_WIDTH) 
+    {
         direction = static_cast<ResizeDirection>(direction | Top);
-    } else if (pos.y() >= height() - RESIZE_BORDER_WIDTH) {
+    } 
+    else if (pos.y() >= height() - RESIZE_BORDER_WIDTH) 
+    {
         direction = static_cast<ResizeDirection>(direction | Bottom);
     }
     
     return direction;
 }
 
-void MainWindow::updateCursor(ResizeDirection direction) {
-    switch (direction) {
+void MainWindow::updateCursor(ResizeDirection direction) 
+{
+    switch (direction) 
+    {
         case Left:
         case Right:
             setCursor(Qt::SizeHorCursor);
@@ -130,38 +154,49 @@ void MainWindow::updateCursor(ResizeDirection direction) {
     }
 }
 
-void MainWindow::performResize(const QPoint &globalPos) {
-    if (!isResizing || resizeDirection == None) return;
+void MainWindow::performResize(const QPoint &globalPos) 
+{
+    if (!m_isResizing || m_resizeDirection == None) return;
     
-    QRect newGeometry = originalGeometry;
-    QPoint delta = globalPos - dragPosition;
+    QRect newGeometry = m_originalGeometry;
+    QPoint delta = globalPos - m_dragPosition;
     
-    if (resizeDirection & Left) {
-        newGeometry.setLeft(originalGeometry.left() + delta.x());
+    if (m_resizeDirection & Left) 
+    {
+        newGeometry.setLeft(m_originalGeometry.left() + delta.x());
     }
-    if (resizeDirection & Right) {
-        newGeometry.setRight(originalGeometry.right() + delta.x());
+    if (m_resizeDirection & Right) 
+    {
+        newGeometry.setRight(m_originalGeometry.right() + delta.x());
     }
-    if (resizeDirection & Top) {
-        newGeometry.setTop(originalGeometry.top() + delta.y());
+    if (m_resizeDirection & Top) 
+    {
+        newGeometry.setTop(m_originalGeometry.top() + delta.y());
     }
-    if (resizeDirection & Bottom) {
-        newGeometry.setBottom(originalGeometry.bottom() + delta.y());
+    if (m_resizeDirection & Bottom) 
+    {
+        newGeometry.setBottom(m_originalGeometry.bottom() + delta.y());
     }
-    
-    
-    if (newGeometry.width() < 300) {
-        if (resizeDirection & Left) {
+     
+    if (newGeometry.width() < 300) 
+    {
+        if (m_resizeDirection & Left) 
+        {
             newGeometry.setLeft(newGeometry.right() - 300);
-        } else {
+        } 
+        else 
+        {
             newGeometry.setRight(newGeometry.left() + 300);
         }
     }
     
-    if (newGeometry.height() < 200) {
-        if (resizeDirection & Top) {
+    if (newGeometry.height() < 200) 
+    {
+        if (m_resizeDirection & Top) 
+        {
             newGeometry.setTop(newGeometry.bottom() - 200);
-        } else {
+        } else 
+        {
             newGeometry.setBottom(newGeometry.top() + 200);
         }
     }
@@ -169,24 +204,30 @@ void MainWindow::performResize(const QPoint &globalPos) {
     setGeometry(newGeometry);
 }
 
-bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
-    if (event->type() == QEvent::MouseMove) {
+bool MainWindow::eventFilter(QObject *obj, QEvent *event) 
+{
+    if (event->type() == QEvent::MouseMove) 
+    {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
         QPoint globalPos = mouseEvent->globalPos();
         QRect windowRect = geometry();
         
-        if (windowRect.contains(globalPos) && !isResizing && !isDragging) {
+        if (windowRect.contains(globalPos) && !m_isResizing && !m_isDragging) 
+        {
             QPoint localPos = mapFromGlobal(globalPos);
             ResizeDirection direction = getResizeDirection(localPos);
             updateCursor(direction);
-        } else if (!windowRect.contains(globalPos)) {
+        } 
+        else if (!windowRect.contains(globalPos)) 
+        {
             setCursor(Qt::ArrowCursor);
         }
-    } else if (event->type() == QEvent::Paint && obj == titleBar) {
-        // 处理标题栏的绘制事件
+    } 
+    else if (obj == m_titleBar && event->type() == QEvent::Paint) 
+    {
         QWidget *titleBarWidget = qobject_cast<QWidget*>(obj);
-        if (titleBarWidget) {
-            // 在标题栏底部绘制边框
+        if (titleBarWidget) 
+        {
             QPainter painter(titleBarWidget);
             QPen pen(QColor("#e0e1e5"));
             pen.setWidth(1);
@@ -199,60 +240,69 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
     return QWidget::eventFilter(obj, event);
 }
 
-void MainWindow::mouseReleaseEvent(QMouseEvent *event) {
-    if (event->button() == Qt::LeftButton) {
-        isDragging = false;
-        isResizing = false;
-        resizeDirection = None;
+void MainWindow::mouseReleaseEvent(QMouseEvent *event) 
+{
+    if (event->button() == Qt::LeftButton) 
+    {
+        m_isDragging = false;
+        m_isResizing = false;
+        m_resizeDirection = None;
         setCursor(Qt::ArrowCursor);
     }
     QWidget::mouseReleaseEvent(event);
 }
 
-void MainWindow::mouseMoveEvent(QMouseEvent *event) {
-    if (isResizing && (event->buttons() & Qt::LeftButton)) {
+void MainWindow::mouseMoveEvent(QMouseEvent *event) 
+{
+    if (m_isResizing && (event->buttons() & Qt::LeftButton)) 
+    {
         performResize(event->globalPos());
         event->accept();
-    } else if (isDragging && (event->buttons() & Qt::LeftButton)) {
-        move(event->globalPos() - dragPosition);
+    } 
+    else if (m_isDragging && (event->buttons() & Qt::LeftButton)) 
+    {
+        move(event->globalPos() - m_dragPosition);
         event->accept();
     }
     QWidget::mouseMoveEvent(event);
 }
 
-void MainWindow::closeWindow() {
-    // 隐藏窗口而不是关闭
+void MainWindow::closeWindow() 
+{
     hide();
 }
 
-void MainWindow::minimizeWindow() {
+void MainWindow::minimizeWindow() 
+{
     showMinimized();
 }
 
-void MainWindow::togglePinWindow() {
-    if (windowFlags() & Qt::WindowStaysOnTopHint) {
+void MainWindow::togglePinWindow() 
+{
+    if (windowFlags() & Qt::WindowStaysOnTopHint) 
+    {
         setWindowFlag(Qt::WindowStaysOnTopHint, false);
-        pinBtn->setText("P");
-    } else {
+        m_pinBtn->setText("P");
+    } else 
+    {
         setWindowFlag(Qt::WindowStaysOnTopHint, true);
-        pinBtn->setText("PIN");
+        m_pinBtn->setText("PIN");
     }
-    show(); // 重新显示窗口以应用更改
+    show();
 }
-void MainWindow::paintEvent(QPaintEvent *event) {
+
+void MainWindow::paintEvent(QPaintEvent *event) 
+{
     Q_UNUSED(event);
     
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     
-    // 创建圆角矩形路径
     QPainterPath path;
-    path.addRoundedRect(rect(), 10, 10); // 10像素的圆角半径
+    path.addRoundedRect(rect(), 10, 10); 
     
-    // 设置背景色
     painter.fillPath(path, QColor("#fafbff"));
     
-    // 设置边框
     QPen pen(QColor("#e0e1e5"));
     pen.setWidth(1);
     painter.setPen(pen);

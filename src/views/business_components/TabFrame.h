@@ -8,11 +8,12 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QButtonGroup>
 #include "../common_components/SpinBox.h"
+#include "../common_components/InnerTip.h"
 
 // 前置声明新组件
-class UnitFrame;
-class FieldFrame;
+class TabPage;
 
 class TabFrame : public QWidget
 {
@@ -26,18 +27,17 @@ public:
     void addPage(QWidget *page, const QString &title);
 
 private slots:
-    void switchToUnit();
-    void switchToField();
+    void switchTab(int index);
 
 private:
-    QFrame *buttonContainer;
-    QPushButton *unitButton;
-    QPushButton *fieldButton;
-    QTextBrowser *infoBrowser;
-    QStackedWidget *stackedWidget;
-    
-    QVBoxLayout *mainLayout;
-    QHBoxLayout *buttonLayout;
-};
+    QFrame *buttonContainer = nullptr;
+    QPushButton *unitButton = nullptr;
+    QPushButton *fieldButton = nullptr;
+    QButtonGroup *tabButtonGroup = nullptr;
+    InnerTip *infoTip = nullptr;
+    QStackedWidget *stackedWidget = nullptr;
 
+    QVBoxLayout *mainLayout = nullptr;
+    QHBoxLayout *buttonLayout = nullptr;
+};
 #endif // TABFRAME_H

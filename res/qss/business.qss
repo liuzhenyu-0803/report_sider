@@ -1,0 +1,74 @@
+#windowLogoLabel
+{
+    background-image: url(:/images/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#windowTitleLabel
+{
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#windowMinimizeButton
+{
+    background-image: url(:/images/min.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+#windowPinButton
+{
+    background-image: url(:/images/pin.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+#windowCloseButton
+{
+    background-image: url(:/images/close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+#thermalImageIndexLabel
+{
+    color: #4B4B4B;
+    font-size: 12px; 
+}
+
+#thermalImageIndexTipLabel
+{
+    border: none;
+    border-radius: 2px;
+    background: #F3F3F4;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px; 
+}
+
+#buttonContainer
+{
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 1px;
+    background: #F3F4F6;
+}
+
+#unitButton, #fieldButton
+{
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 14px; 
+}
+
+#unitButton:checked, #fieldButton:checked
+{
+    background: #FFFFFF;
+}
