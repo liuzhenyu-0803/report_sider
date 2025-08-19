@@ -1,8 +1,8 @@
 {
-  "unit_groups": [
+  "groups": [
     {
       "label": "常用工具",
-      "type": "group1",
+      "type": "1",
       "unit_element": [
         {
           "icon": "./images/html_icon.png",
@@ -30,7 +30,7 @@
     },
     {
       "label": "系统设置",
-      "type": "group2",
+      "type": "2",
       "unit_element": [
         {
           "icon": "./images/settings_icon.png",

@@ -8,5 +8,7 @@
         <file>images/spin_down.svg</file>
         <file>images/spin_up.svg</file>
         <file>images/info.svg</file>
+        <file>images/arrow_up.svg</file>
+        <file>images/arrow_down.svg</file>
     </qresource>
 </RCC>

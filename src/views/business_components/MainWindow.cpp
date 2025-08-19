@@ -1,6 +1,6 @@
 #include "MainWindow.h"
 
-#include "SystemTrayIcon.h"
+#include "system_tray_icon/SystemTrayIcon.h"
 #include "utility/utility.h"
 
 #include <QApplication>

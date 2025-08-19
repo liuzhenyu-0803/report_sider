@@ -10,6 +10,7 @@ include_directories(${Qt5Widgets_INCLUDE_DIRS})
 include_directories(${Qt5Core_INCLUDE_DIRS})
 include_directories(${Qt5Gui_INCLUDE_DIRS})
 include_directories(src)
+
 set(PROJECT_SOURCES
     src/main.cpp
     src/views/business_components/MainWindow.h
@@ -18,50 +19,43 @@ set(PROJECT_SOURCES
     src/views/business_components/ContentWidget.cpp
     src/views/common_components/FlowLayout.h
     src/views/common_components/FlowLayout.cpp
-    src/views/business_components/Element.h
-    src/views/business_components/Element.cpp
-    src/views/business_components/ElementFrame.h
-    src/views/business_components/ElementFrame.cpp
-    src/views/business_components/UnitElement.h
-    src/views/business_components/UnitElement.cpp
-    src/views/business_components/FieldElement.h
-    src/views/business_components/FieldElement.cpp
-    src/views/business_components/SystemTrayIcon.h
-    src/views/business_components/SystemTrayIcon.cpp
-    src/models/ElementModel.h
-    src/models/ElementModel.cpp
-    src/models/UnitElementModel.h
-    src/models/UnitElementModel.cpp
-    src/models/FieldElementModel.h
-    src/models/FieldElementModel.cpp
-    src/models/GroupModel.h
-    src/models/GroupModel.cpp
-    src/models/Model.h
-    src/models/Model.cpp
-    src/models/ConfigModel.h
-    src/models/ConfigModel.cpp
+    src/views/business_components/element/ElementFrame.h
+    src/views/business_components/element/ElementFrame.cpp
+    src/views/business_components/element/UnitElement.h
+    src/views/business_components/element/UnitElement.cpp
+    src/views/business_components/element/FieldElement.h
+    src/views/business_components/element/FieldElement.cpp
+    src/views/business_components/system_tray_icon/SystemTrayIcon.h
+    src/views/business_components/system_tray_icon/SystemTrayIcon.cpp
     res/images.qrc
     res/qss.qrc
     src/views/common_components/SpinBox.h
     src/views/common_components/SpinBox.cpp
     src/views/common_components/InnerTip.h
     src/views/common_components/InnerTip.cpp
-    src/views/business_components/ThermalImageIndex.h
-    src/views/business_components/ThermalImageIndex.cpp
-    src/views/business_components/TabFrame.h
-    src/views/business_components/TabFrame.cpp
-    src/views/business_components/TabPageFrame.h
-    src/views/business_components/TabPageFrame.cpp
-    src/views/business_components/GroupFrame.h
-    src/views/business_components/GroupFrame.cpp
+    src/views/business_components/thermal_image_index/ThermalImageIndex.h
+    src/views/business_components/thermal_image_index/ThermalImageIndex.cpp
+    src/views/business_components/tab/TabFrame.h
+    src/views/business_components/tab/TabFrame.cpp
+    src/views/business_components/tab/TabPageFrame.h
+    src/views/business_components/tab/TabPageFrame.cpp
+    src/views/business_components/group/GroupFrame.h
+    src/views/business_components/group/GroupFrame.cpp
     src/utility/utility.h
     src/utility/utility.cpp
     src/global/global.h
+    src/views/business_components/tab/UnitTabPageFrame.h
+    src/views/business_components/tab/UnitTabPageFrame.cpp
+    src/views/business_components/tab/FieldTabPageFrame.h
+    src/views/business_components/tab/FieldTabPageFrame.cpp
 )
+
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}
 )
+
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Widgets Qt5::Core Qt5::Gui)
+
 set_target_properties(${PROJECT_NAME} PROPERTIES
     WIN32_EXECUTABLE TRUE
     RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Debug"

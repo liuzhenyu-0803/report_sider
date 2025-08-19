@@ -1,6 +1,6 @@
 #include "ContentWidget.h"
-#include "ThermalImageIndex.h"
-#include "TabFrame.h"
+#include "thermal_image_index/ThermalImageIndex.h"
+#include "tab/TabFrame.h"
 
 ContentWidget::ContentWidget(QWidget *parent)
     : QWidget(parent)
