@@ -19,10 +19,11 @@ public:
     explicit GroupFrame(QWidget *parent = nullptr);
     virtual ~GroupFrame();
 
-    void setGroupTitle(const QString &title);
-    void setElementFrameList(const QList<ElementFrame *> &elementFrames);
+    // 虚接口函数
+    virtual void loadData() = 0;
 
 protected:
+    void setGroupTitle(const QString &title);
     bool eventFilter(QObject *obj, QEvent *event) override;
 
 private slots:
@@ -30,10 +31,8 @@ private slots:
 
 private:
     void setupUI();
-    void createElementFrames();
     
     QVBoxLayout *m_mainLayout;
-    QVBoxLayout *m_contentLayout;
     QHBoxLayout *m_titleLayout;
     QLabel *m_groupLabel;
     QPushButton *m_toggleButton;

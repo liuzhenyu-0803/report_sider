@@ -7,6 +7,7 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QMouseEvent>
+#include <QTimer>
 #include <QWidget>
 
 GroupFrame::GroupFrame(QWidget *parent)
@@ -14,6 +15,11 @@ GroupFrame::GroupFrame(QWidget *parent)
     , m_isExpanded(true)
 {
     setupUI();
+    
+    QTimer::singleShot(0, this, [=]{
+        // 调用虚接口函数加载数据
+        loadData();
+    });
 }
 
 GroupFrame::~GroupFrame()
@@ -60,22 +66,13 @@ void GroupFrame::setupUI() {
     titleBar->installEventFilter(this);
     m_groupLabel->installEventFilter(this);
     
-    // 创建内容布局
-    m_contentLayout = new QVBoxLayout();
-    m_contentLayout->setAlignment(Qt::AlignTop);
-    
-    // 将标题栏和内容布局添加到主布局
+    // 将标题栏添加到主布局
     m_mainLayout->addWidget(titleBar);
-    m_mainLayout->addLayout(m_contentLayout);
     
     setLayout(m_mainLayout);
     
     // 启用鼠标跟踪
     setMouseTracking(true);
-}
-
-void GroupFrame::createElementFrames() {
-    // 此处已移除模型相关逻辑
 }
 
 void GroupFrame::setGroupTitle(const QString &title) {
@@ -84,33 +81,21 @@ void GroupFrame::setGroupTitle(const QString &title) {
     }
 }
 
-void GroupFrame::setElementFrameList(const QList<ElementFrame *> &elementFrames) {
-    // 清空现有的元素框架
-    if (m_contentLayout) {
-        QLayoutItem *item;
-        while ((item = m_contentLayout->takeAt(0))) {
-            delete item->widget();
-            delete item;
-        }
-    }
-
-    // 添加新的元素框架
-    for (ElementFrame *frame : elementFrames) {
-        if (m_contentLayout) {
-            m_contentLayout->addWidget(frame);
-        }
-    }
-}
-
 void GroupFrame::toggleContent() {
     m_isExpanded = !m_isExpanded;
     
     // 切换内容区域的可见性
-    for (int i = 0; i < m_contentLayout->count(); ++i) {
-        QLayoutItem *item = m_contentLayout->itemAt(i);
-        if (item->widget()) {
-            item->widget()->setVisible(m_isExpanded);
+    // 注意：这里不再直接操作m_contentLayout，而是由子类负责管理自己的内容布局
+    QWidget *contentWidget = nullptr;
+    if (m_mainLayout && m_mainLayout->count() > 1) {
+        QLayoutItem *item = m_mainLayout->itemAt(1);
+        if (item && item->widget()) {
+            contentWidget = item->widget();
         }
+    }
+    
+    if (contentWidget) {
+        contentWidget->setVisible(m_isExpanded);
     }
     
     // 更新按钮图标

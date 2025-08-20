@@ -6,7 +6,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QDebug>
-#include "views/business_components/group/GroupFrame.h"
+#include "views/business_components/group/UnitGroupFrame.h"
 
 UnitTabPageFrame::UnitTabPageFrame(QWidget *parent)
     : TabPageFrame(parent)
@@ -25,10 +25,10 @@ void UnitTabPageFrame::loadContent()
     auto layout = new QVBoxLayout(m_contentWidget);
     m_contentWidget->setLayout(layout);
 
-    auto groupFrame = new GroupFrame(m_contentWidget);
+    auto groupFrame = new UnitGroupFrame(m_contentWidget);
     layout->addWidget(groupFrame);
 
-    groupFrame = new GroupFrame(m_contentWidget);
+    groupFrame = new UnitGroupFrame(m_contentWidget);
     layout->addWidget(groupFrame);
 
     layout->addStretch();

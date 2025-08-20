@@ -41,6 +41,10 @@ set(PROJECT_SOURCES
     src/views/business_components/tab/TabPageFrame.cpp
     src/views/business_components/group/GroupFrame.h
     src/views/business_components/group/GroupFrame.cpp
+    src/views/business_components/group/UnitGroupFrame.h
+    src/views/business_components/group/UnitGroupFrame.cpp
+    src/views/business_components/group/FieldGroupFrame.h
+    src/views/business_components/group/FieldGroupFrame.cpp
     src/utility/utility.h
     src/utility/utility.cpp
     src/global/global.h
