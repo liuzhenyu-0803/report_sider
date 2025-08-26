@@ -6,7 +6,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QDebug>
-#include "views/business_components/group/UnitGroupFrame.h"
+#include "views/business_components/group/unit_group/UnitImageGroupFrame.h"
 
 UnitTabPageFrame::UnitTabPageFrame(QWidget *parent)
     : TabPageFrame(parent)
@@ -20,15 +20,15 @@ UnitTabPageFrame::~UnitTabPageFrame()
 
 void UnitTabPageFrame::loadContent()
 {
-    m_contentWidget->setStyleSheet("background-color: green;");
-
     auto layout = new QVBoxLayout(m_contentWidget);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(20);
     m_contentWidget->setLayout(layout);
 
-    auto groupFrame = new UnitGroupFrame(m_contentWidget);
+    auto groupFrame = new UnitImageGroupFrame(m_contentWidget);
     layout->addWidget(groupFrame);
 
-    groupFrame = new UnitGroupFrame(m_contentWidget);
+    groupFrame = new UnitImageGroupFrame(m_contentWidget);
     layout->addWidget(groupFrame);
 
     layout->addStretch();

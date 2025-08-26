@@ -15,7 +15,7 @@ public:
     ~ContentWidget();
 
 private:
-    void setupUI();
+    void initUI();
     
     QVBoxLayout *m_layout = nullptr;
     ThermalImageIndex *m_thermalImageIndex = nullptr;

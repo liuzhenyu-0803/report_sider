@@ -2,12 +2,16 @@
 
 #include "utility/utility.h"
 
-#include <QApplication>
+#include "QcApplication.h"
 
 int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
-    app.setStyleSheet(getFileContent(":/qss/business.qss"));
+    MicroUI::QcApplication app(argc, argv);
+    app.Initialize();
+    app.setDebugTipEnabled(true);
+    STYLE_MANAGER->SetColorFilePath(":/colors/blue_light.ini");
     MainWindow w;
     w.show();
-    return app.exec();
+    int result = app.exec();
+    app.UnInitialize();
+    return result;
 }

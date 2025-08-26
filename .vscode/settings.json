@@ -9,6 +9,10 @@
         "qwidget": "cpp",
         "qhboxlayout": "cpp",
         "qtextlayout": "cpp",
-        "qtextdocument": "cpp"
+        "qtextdocument": "cpp",
+        "qmouseevent": "cpp",
+        "qsystemtrayicon": "cpp",
+        "qvboxlayout": "cpp",
+        "qpointer": "cpp"
     }
 }

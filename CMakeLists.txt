@@ -1,67 +1,99 @@
 cmake_minimum_required(VERSION 3.16)
+
+# Set the project name and version
 project(report_sider VERSION 0.1 LANGUAGES CXX)
-set(CMAKE_AUTOUIC ON)
+
+# Enable automatic moc, uic and rcc
 set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
+
+# Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-find_package(Qt5 REQUIRED COMPONENTS Widgets Core Gui)
-include_directories(${Qt5Widgets_INCLUDE_DIRS})
-include_directories(${Qt5Core_INCLUDE_DIRS})
-include_directories(${Qt5Gui_INCLUDE_DIRS})
-include_directories(src)
 
-set(PROJECT_SOURCES
-    src/main.cpp
-    src/views/business_components/MainWindow.h
-    src/views/business_components/MainWindow.cpp
-    src/views/business_components/ContentWidget.h
-    src/views/business_components/ContentWidget.cpp
-    src/views/common_components/FlowLayout.h
-    src/views/common_components/FlowLayout.cpp
-    src/views/business_components/element/ElementFrame.h
-    src/views/business_components/element/ElementFrame.cpp
-    src/views/business_components/element/UnitElement.h
-    src/views/business_components/element/UnitElement.cpp
-    src/views/business_components/element/FieldElement.h
-    src/views/business_components/element/FieldElement.cpp
-    src/views/business_components/system_tray_icon/SystemTrayIcon.h
-    src/views/business_components/system_tray_icon/SystemTrayIcon.cpp
-    res/images.qrc
-    res/qss.qrc
-    src/views/common_components/SpinBox.h
-    src/views/common_components/SpinBox.cpp
-    src/views/common_components/InnerTip.h
-    src/views/common_components/InnerTip.cpp
-    src/views/business_components/thermal_image_index/ThermalImageIndex.h
-    src/views/business_components/thermal_image_index/ThermalImageIndex.cpp
-    src/views/business_components/tab/TabFrame.h
-    src/views/business_components/tab/TabFrame.cpp
-    src/views/business_components/tab/TabPageFrame.h
-    src/views/business_components/tab/TabPageFrame.cpp
-    src/views/business_components/group/GroupFrame.h
-    src/views/business_components/group/GroupFrame.cpp
-    src/views/business_components/group/UnitGroupFrame.h
-    src/views/business_components/group/UnitGroupFrame.cpp
-    src/views/business_components/group/FieldGroupFrame.h
-    src/views/business_components/group/FieldGroupFrame.cpp
-    src/utility/utility.h
-    src/utility/utility.cpp
-    src/global/global.h
-    src/views/business_components/tab/UnitTabPageFrame.h
-    src/views/business_components/tab/UnitTabPageFrame.cpp
-    src/views/business_components/tab/FieldTabPageFrame.h
-    src/views/business_components/tab/FieldTabPageFrame.cpp
+# Find required Qt packages
+find_package(Qt5 REQUIRED COMPONENTS
+    Core
+    Gui
+    Widgets
+    Concurrent
+    Multimedia
+    MultimediaWidgets
+    Qml
+    Quick
+    QuickWidgets
+    QuickControls2
+    Svg
+    WebChannel
+    WebSockets
+    Xml
+    XmlPatterns
 )
 
+# Source files
+file(GLOB_RECURSE SOURCES
+    src/*.h
+    src/*.cpp
+)
+
+# Resource files
+file(GLOB_RECURSE RESOURCES
+    res/*.qrc
+)
+
+# Add executable target
 add_executable(${PROJECT_NAME}
-    ${PROJECT_SOURCES}
+    ${SOURCES}
+    ${RESOURCES}
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Widgets Qt5::Core Qt5::Gui)
+# Include directories
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${CMAKE_SOURCE_DIR}/../include
+    ${CMAKE_SOURCE_DIR}/../include/MicroUI
+    src
+    src/views/business_components/element/unit_element
+)
 
+# Compile definitions
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    _UNICODE
+)
+
+# Link libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    Qt5::Core
+    Qt5::Gui
+    Qt5::Widgets
+    Qt5::Concurrent
+    Qt5::Multimedia
+    Qt5::MultimediaWidgets
+    Qt5::Qml
+    Qt5::Quick
+    Qt5::QuickWidgets
+    Qt5::QuickControls2
+    Qt5::Svg
+    Qt5::WebChannel
+    Qt5::WebSockets
+    Qt5::Xml
+    Qt5::XmlPatterns
+
+    $<$<CONFIG:Debug>:${CMAKE_SOURCE_DIR}/../lib/debug/x64/MicroUI_Debug_x64.lib>
+    $<$<CONFIG:Release>:${CMAKE_SOURCE_DIR}/../lib/release/x64/MicroUI_Release_x64.lib>
+)
+
+# Set properties for the target
 set_target_properties(${PROJECT_NAME} PROPERTIES
     WIN32_EXECUTABLE TRUE
-    RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Debug"
-    RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Release"
+    OUTPUT_NAME "${PROJECT_NAME}"
+    RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_SOURCE_DIR}/../bin/Debug/x64"
+    RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/../bin/Release/x64"
 )
+
+# 让Release模式下也生成PDB文件（仅MSVC）
+if(MSVC)
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Zi")
+    set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /DEBUG")
+    set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /DEBUG")
+endif()

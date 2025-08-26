@@ -2,10 +2,16 @@
 
 #include "system_tray_icon/SystemTrayIcon.h"
 #include "utility/utility.h"
+#include "QcStyleManager.h"
+#include "QcLabel.h"
+#include "QcIconButton.h"
+#include "QcFrame.h"
 
 #include <QApplication>
 #include <QPainter>
 #include <QPainterPath>
+#include <QKeyEvent>
+#include <QToolTip>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -22,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(0);
     
-    createTitleBar();
+    m_titleBar = createTitleBar();
     mainLayout->addWidget(m_titleBar);
     
     m_contentWidget = new ContentWidget();
@@ -32,47 +38,54 @@ MainWindow::MainWindow(QWidget *parent)
     m_systemTrayIcon->setMainWindow(this);
 
     qApp->installEventFilter(this);
+
+    REGISTER_QSS(this, ":/qss/business.qss");
 }
 
 MainWindow::~MainWindow() = default;
 
-void MainWindow::createTitleBar() 
+QWidget* MainWindow::createTitleBar()
 {
-    m_titleBar = new QWidget();
-    m_titleBar->setFixedHeight(40);
-    
-    QHBoxLayout *titleLayout = new QHBoxLayout(m_titleBar);
+    auto titleBar = new MicroUI::QcFrame();
+    titleBar->setFixedHeight(40);
+    titleBar->setBorderSides(MicroUI::QcFrame::BorderSide::BorderBottom);
+    titleBar->setBorderColorParams("border/border_secondary");
+
+    auto titleLayout = new QHBoxLayout(titleBar);
     titleLayout->setContentsMargins(15, 0, 8, 0);
     titleLayout->setSpacing(12);
 
-    m_iconLabel = new QLabel(this);
-    m_iconLabel->setFixedSize(24, 24);
-    m_iconLabel->setObjectName("windowLogoLabel");
-    titleLayout->addWidget(m_iconLabel);
-    
-    m_titleLabel = new QLabel("report_sider");
-    m_titleLabel->setObjectName("windowTitleLabel");
-    titleLayout->addWidget(m_titleLabel);
+    auto iconLabel = new MicroUI::QcLabel();
+    iconLabel->setFixedSize(24, 24);
+    iconLabel->SetIconPath(":/images/logo.png");
+    titleLayout->addWidget(iconLabel);
+
+    auto titleLabel = new MicroUI::QcLabel();
+    titleLabel->setText("report_sider");
+    titleLabel->setType(MicroUI::QcLabel::LabelType::H2Title);
+    titleLayout->addWidget(titleLabel);
     
     titleLayout->addStretch();
-    
-    m_minimizeBtn = new QPushButton();
-    m_minimizeBtn->setFixedSize(24, 24);
-    m_minimizeBtn->setObjectName("windowMinimizeButton");
-    m_pinBtn = new QPushButton();
+
+    m_pinBtn = new MicroUI::QcIconButton();
     m_pinBtn->setFixedSize(24, 24);
-    m_pinBtn->setObjectName("windowPinButton");
-    m_closeBtn = new QPushButton();
-    m_closeBtn->setFixedSize(24, 24);
-    m_closeBtn->setObjectName("windowCloseButton");
+    m_pinBtn->SetIconPath(":/images/pin.svg");
+    auto minimizeBtn = new MicroUI::QcIconButton();
+    minimizeBtn->setFixedSize(24, 24);
+    minimizeBtn->SetIconPath(":/images/min.svg");
+    auto closeBtn = new MicroUI::QcIconButton();
+    closeBtn->setFixedSize(24, 24);
+    closeBtn->SetIconPath(":/images/close.svg");
 
     titleLayout->addWidget(m_pinBtn);
-    titleLayout->addWidget(m_minimizeBtn);
-    titleLayout->addWidget(m_closeBtn);
+    titleLayout->addWidget(minimizeBtn);
+    titleLayout->addWidget(closeBtn);
     
-    connect(m_minimizeBtn, &QPushButton::clicked, this, &MainWindow::minimizeWindow);
-    connect(m_pinBtn, &QPushButton::clicked, this, &MainWindow::togglePinWindow);
-    connect(m_closeBtn, &QPushButton::clicked, this, &MainWindow::closeWindow);
+    connect(minimizeBtn, &QPushButton::clicked, this, &MainWindow::onMinimizeWindow);
+    connect(m_pinBtn, &QPushButton::clicked, this, &MainWindow::onTogglePinWindow);
+    connect(closeBtn, &QPushButton::clicked, this, &MainWindow::onCloseWindow);
+    
+    return titleBar;
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event) 
@@ -222,20 +235,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         {
             setCursor(Qt::ArrowCursor);
         }
-    } 
-    else if (obj == m_titleBar && event->type() == QEvent::Paint) 
-    {
-        QWidget *titleBarWidget = qobject_cast<QWidget*>(obj);
-        if (titleBarWidget) 
-        {
-            QPainter painter(titleBarWidget);
-            QPen pen(QColor("#e0e1e5"));
-            pen.setWidth(1);
-            painter.setPen(pen);
-            painter.drawLine(0, titleBarWidget->height() - 1, titleBarWidget->width(), titleBarWidget->height() - 1);
-            
-            return true;
-        }
     }
     return QWidget::eventFilter(obj, event);
 }
@@ -267,26 +266,26 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     QWidget::mouseMoveEvent(event);
 }
 
-void MainWindow::closeWindow() 
+void MainWindow::onCloseWindow() 
 {
     hide();
 }
 
-void MainWindow::minimizeWindow() 
+void MainWindow::onMinimizeWindow() 
 {
     showMinimized();
 }
 
-void MainWindow::togglePinWindow() 
+void MainWindow::onTogglePinWindow()
 {
-    if (windowFlags() & Qt::WindowStaysOnTopHint) 
+    if (windowFlags() & Qt::WindowStaysOnTopHint)
     {
         setWindowFlag(Qt::WindowStaysOnTopHint, false);
-        m_pinBtn->setText("P");
-    } else 
+        if (m_pinBtn) m_pinBtn->setText("P");
+    } else
     {
         setWindowFlag(Qt::WindowStaysOnTopHint, true);
-        m_pinBtn->setText("PIN");
+        if (m_pinBtn) m_pinBtn->setText("PIN");
     }
     show();
 }

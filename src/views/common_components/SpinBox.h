@@ -12,9 +12,6 @@ public:
     explicit SpinBox(QWidget *parent = nullptr);
     virtual ~SpinBox();
 
-private:
-    void loadStyleSheet();
-
 };
 
 #endif // SPINBOX_H

@@ -8,6 +8,8 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QEvent>
+
+#include "QcLabel.h"
 #include "views/business_components/element/ElementFrame.h"
 
 // 前置声明
@@ -20,11 +22,15 @@ public:
     virtual ~GroupFrame();
 
     // 虚接口函数
-    virtual void loadData() = 0;
+    virtual void loadElements() = 0;
+    virtual QList<ElementFrame*> getElements() = 0;
 
 protected:
     void setGroupTitle(const QString &title);
     bool eventFilter(QObject *obj, QEvent *event) override;
+    
+    // 提供给子类访问的contentWidget
+    QWidget* getContentWidget() const { return m_contentWidget; }
 
 private slots:
     void toggleContent();
@@ -32,11 +38,12 @@ private slots:
 private:
     void setupUI();
     
-    QVBoxLayout *m_mainLayout;
-    QHBoxLayout *m_titleLayout;
-    QLabel *m_groupLabel;
-    QPushButton *m_toggleButton;
-    bool m_isExpanded;
+    QVBoxLayout *m_mainLayout = nullptr;
+    QHBoxLayout *m_titleLayout = nullptr;
+    QLabel *m_groupLabel = nullptr;
+    MicroUI::QcLabel *m_iconLabel = nullptr;
+    QWidget *m_contentWidget = nullptr;  // 内容容器
+    bool m_isExpanded = false;
 };
 
 #endif // GROUPFRAME_H

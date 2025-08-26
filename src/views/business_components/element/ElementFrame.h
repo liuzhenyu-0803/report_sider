@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <QVariant>
 #include <QTextDocument>
+#include <QMimeData>
 
 class ElementFrame : public QWidget
 {
@@ -13,17 +14,18 @@ public:
     virtual ~ElementFrame();
     
 protected:
-    void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void enterEvent(QEvent *event) override;
     void leaveEvent(QEvent *event) override;
 
+    // 子类实现：返回拖拽时的 MimeData
+    virtual QMimeData* getMimeData() const = 0;
+
+    virtual void loadData() = 0;
+
 private:
     void startDrag();
-    void paintHtmlElement(QPainter &p);
-    void paintImageElement(QPainter &p);
-    void paintUrlsElement(QPainter &p);
     
 private:
     QPoint m_dragStartPos;

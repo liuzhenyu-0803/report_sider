@@ -5,7 +5,7 @@
 ContentWidget::ContentWidget(QWidget *parent)
     : QWidget(parent)
 {
-    setupUI();
+    initUI();
 }
 
 ContentWidget::~ContentWidget()
@@ -13,10 +13,10 @@ ContentWidget::~ContentWidget()
     
 }
 
-void ContentWidget::setupUI() 
+void ContentWidget::initUI() 
 {    
     m_layout = new QVBoxLayout(this);
-    m_layout->setContentsMargins(0, 15, 0, 15); 
+    m_layout->setContentsMargins(0, 15, 0, 5); 
     m_layout->setSpacing(12);
     setLayout(m_layout);
     

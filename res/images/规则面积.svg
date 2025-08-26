@@ -1,0 +1,24 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" fill="none" customFrame="#000000">
+	<g id="组合 6484">
+		<rect id="矩形 1351" width="24" height="24" x="0" y="0" fill="rgb(196,196,196)" fill-opacity="0" />
+		<g id="组合 6483">
+			<line id="直线 86" x1="0" x2="10" y1="0" y2="0" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1.20000005" transform="matrix(0,-1,1,0,6,16)" />
+			<g id="组合 6482">
+				<rect id="矩形 1347" width="4" height="4" x="4" y="3" rx="0.5" fill="rgb(196,196,196)" fill-opacity="0" />
+				<rect id="矩形 1347" width="3" height="3" x="4.5" y="3.5" rx="0.5" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1" />
+				<rect id="矩形 1349" width="4" height="4" x="4" y="16" rx="0.5" fill="rgb(196,196,196)" fill-opacity="0" />
+				<rect id="矩形 1349" width="3" height="3" x="4.5" y="16.5" rx="0.5" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1" />
+				<rect id="矩形 1348" width="4" height="4" x="17" y="3" rx="0.5" fill="rgb(196,196,196)" fill-opacity="0" />
+				<rect id="矩形 1348" width="3" height="3" x="17.5" y="3.5" rx="0.5" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1" />
+				<rect id="矩形 1350" width="4" height="4" x="17" y="16" rx="0.5" fill="rgb(196,196,196)" fill-opacity="0" />
+				<rect id="矩形 1350" width="3" height="3" x="17.5" y="16.5" rx="0.5" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1" />
+				<line id="直线 84" x1="7" x2="17" y1="5" y2="5" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1.20000005" />
+				<line id="直线 87" x1="0" x2="10" y1="0" y2="0" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1.20000005" transform="matrix(0,-1,1,0,19,16)" />
+				<line id="直线 85" x1="7" x2="17" y1="18" y2="18" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1.20000005" />
+				<line id="直线 88" x1="0" x2="11.3135357" y1="0" y2="0" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1.20000005" transform="matrix(0.707096,-0.707118,0.707118,0.707096,6,13)" />
+				<line id="直线 90" x1="0" x2="9.89949512" y1="0" y2="0" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1.20000005" transform="matrix(0.707107,-0.707107,0.707107,0.707107,12,18)" />
+				<line id="直线 89" x1="0" x2="14.9997787" y1="0" y2="0" stroke="rgb(0,0,0)" stroke-opacity="0.899999976" stroke-width="1.20000005" transform="matrix(0.707107,-0.707107,0.707107,0.707107,7,17)" />
+			</g>
+		</g>
+	</g>
+</svg>

@@ -18,7 +18,7 @@ GroupFrame::GroupFrame(QWidget *parent)
     
     QTimer::singleShot(0, this, [=]{
         // 调用虚接口函数加载数据
-        loadData();
+        loadElements();
     });
 }
 
@@ -27,13 +27,10 @@ GroupFrame::~GroupFrame()
 }
 
 void GroupFrame::setupUI() {
-    // 设置样式
-    setStyleSheet("GroupFrame { border: 1px solid #E0E0E0; border-radius: 5px; margin: 5px; }");
-    
     // 创建主布局
     m_mainLayout = new QVBoxLayout(this);
-    m_mainLayout->setContentsMargins(10, 10, 10, 10);
-    m_mainLayout->setSpacing(10);
+    m_mainLayout->setContentsMargins(0, 0, 0, 0);
+    m_mainLayout->setSpacing(6);
     
     // 创建标题栏容器
     QWidget *titleBar = new QWidget(this);
@@ -49,18 +46,15 @@ void GroupFrame::setupUI() {
     m_groupLabel->setStyleSheet("font-weight: bold; font-size: 14px; margin-top: 5px;");
     
     // 创建切换按钮
-    m_toggleButton = new QPushButton(this);
-    m_toggleButton->setFixedSize(20, 20);
-    m_toggleButton->setStyleSheet("border: none; background-color: transparent;");
-    m_toggleButton->setIcon(QIcon(":/images/arrow_up.svg"));
-    
-    // 连接按钮点击信号到槽函数
-    connect(m_toggleButton, &QPushButton::clicked, this, &GroupFrame::toggleContent);
-    
+    m_iconLabel = new MicroUI::QcLabel(this);
+    m_iconLabel->setFixedSize(20, 20);
+    m_iconLabel->SetIconPath(":/images/arrow_up.svg");
+    m_iconLabel->SetIconColorParams("#000000, 0.9");
+
     // 将标签和按钮添加到标题栏布局
     m_titleLayout->addWidget(m_groupLabel);
     m_titleLayout->addStretch();
-    m_titleLayout->addWidget(m_toggleButton);
+    m_titleLayout->addWidget(m_iconLabel);
     
     // 为标题栏容器安装事件过滤器
     titleBar->installEventFilter(this);
@@ -69,40 +63,41 @@ void GroupFrame::setupUI() {
     // 将标题栏添加到主布局
     m_mainLayout->addWidget(titleBar);
     
+    // 创建内容容器widget
+    m_contentWidget = new QWidget(this);
+    m_mainLayout->addWidget(m_contentWidget);
+    
     setLayout(m_mainLayout);
     
     // 启用鼠标跟踪
     setMouseTracking(true);
 }
 
-void GroupFrame::setGroupTitle(const QString &title) {
+void GroupFrame::setGroupTitle(const QString &title) 
+{
     if (m_groupLabel) {
         m_groupLabel->setText(title);
     }
 }
 
-void GroupFrame::toggleContent() {
+void GroupFrame::toggleContent() 
+{
     m_isExpanded = !m_isExpanded;
     
     // 切换内容区域的可见性
-    // 注意：这里不再直接操作m_contentLayout，而是由子类负责管理自己的内容布局
-    QWidget *contentWidget = nullptr;
-    if (m_mainLayout && m_mainLayout->count() > 1) {
-        QLayoutItem *item = m_mainLayout->itemAt(1);
-        if (item && item->widget()) {
-            contentWidget = item->widget();
-        }
-    }
-    
-    if (contentWidget) {
-        contentWidget->setVisible(m_isExpanded);
+    if (m_contentWidget) 
+    {
+        m_contentWidget->setVisible(m_isExpanded);
     }
     
     // 更新按钮图标
-    if (m_isExpanded) {
-        m_toggleButton->setIcon(QIcon(":/images/arrow_up.svg"));
-    } else {
-        m_toggleButton->setIcon(QIcon(":/images/arrow_down.svg"));
+    if (m_isExpanded) 
+    {
+        m_iconLabel->SetIconPath(":/images/arrow_up.svg");
+    } 
+    else 
+    {
+        m_iconLabel->SetIconPath(":/images/arrow_down.svg");
     }
 }
 
@@ -111,7 +106,7 @@ bool GroupFrame::eventFilter(QObject *obj, QEvent *event) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
         if (mouseEvent->button() == Qt::LeftButton) {
             // 检查是否点击了标题栏相关的组件
-            if (obj != m_toggleButton) {
+            if (obj != m_iconLabel) {
                 toggleContent();
                 return true;
             }

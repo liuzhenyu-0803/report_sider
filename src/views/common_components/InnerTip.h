@@ -5,6 +5,8 @@
 #include <QLabel>
 #include <QTextBrowser>
 #include <QHBoxLayout>
+#include <QPainter>
+
 #include "utility/utility.h"
 
 class InnerTip : public QFrame
@@ -34,11 +36,12 @@ public:
 private:
     void setupUI();
     void updateStyle();  // 更新样式
-    
+
+    void paintEvent(QPaintEvent *event) override;
+
     StyleType m_styleType;  // 当前样式类型
     bool m_showIcon;           // 是否显示图标
      
-    QFrame *m_innerFrame;      // 新增的内部容器
     QLabel *m_iconLabel;
     QTextBrowser *m_textBrowser;
     QHBoxLayout *m_mainLayout;

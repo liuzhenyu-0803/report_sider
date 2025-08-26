@@ -2,7 +2,7 @@
 #define FIELDGROUPFRAME_H
 
 #include "GroupFrame.h"
-#include "views/business_components/element/FieldElement.h"
+#include "views/business_components/element/FieldElementFrame.h"
 #include <QVBoxLayout>
 #include <QList>
 
@@ -14,11 +14,8 @@ public:
     explicit FieldGroupFrame(QWidget *parent = nullptr);
     virtual ~FieldGroupFrame();
 
-    // 实现虚接口函数
-    virtual void loadData() override;
-
-private:
-    QList<FieldElement *> m_fieldElements;
+    // 实现基类虚接口函数
+    virtual void loadElements() override;
 };
 
 #endif // FIELDGROUPFRAME_H

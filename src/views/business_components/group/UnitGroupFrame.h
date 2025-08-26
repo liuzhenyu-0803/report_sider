@@ -2,7 +2,8 @@
 #define UNITGROUPFRAME_H
 
 #include "GroupFrame.h"
-#include "views/business_components/element/UnitElement.h"
+#include "views/business_components/element/UnitElementFrame.h"
+#include "views/business_components/element/unit_element/UnitThermalImageElement.h"
 #include "views/common_components/FlowLayout.h"
 #include <QList>
 
@@ -14,11 +15,8 @@ public:
     explicit UnitGroupFrame(QWidget *parent = nullptr);
     virtual ~UnitGroupFrame();
 
-    // 实现虚接口函数
-    virtual void loadData() override;
-
-private:
-    QList<UnitElement *> m_unitElements;
+    // 实现基类虚接口函数
+    virtual void loadElements() override;
 };
 
 #endif // UNITGROUPFRAME_H

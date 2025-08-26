@@ -42,7 +42,7 @@ TabFrame::TabFrame(QWidget *parent)
     // 创建提示信息浏览器
     infoTip = new InnerTip(this);
     infoTip->setText("Drag/click to copy the content you want to the corresponding position in the report");
-    infoTip->setContentsMargins(MARGIN_HORIZONTAL_TIP, 0, MARGIN_HORIZONTAL_TIP, 0);
+    infoTip->setStyleSheet(infoTip->styleSheet() + QString("InnerTip { margin-left: %1px; margin-right: %2px; }").arg(MARGIN_HORIZONTAL_TAB).arg(MARGIN_HORIZONTAL_TAB));
 
     // 创建堆栈窗口
     stackedWidget = new QStackedWidget(this);

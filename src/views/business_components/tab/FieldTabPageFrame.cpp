@@ -6,7 +6,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QDebug>
-#include "views/business_components/group/FieldGroupFrame.h"
+#include "views/business_components/group/field_group/FieldInfoGroupFrame.h"
 
 FieldTabPageFrame::FieldTabPageFrame(QWidget *parent)
     : TabPageFrame(parent)
@@ -22,11 +22,13 @@ void FieldTabPageFrame::loadContent()
 {
     auto layout = new QVBoxLayout(m_contentWidget);
     m_contentWidget->setLayout(layout);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(20);
 
-    auto groupFrame = new FieldGroupFrame(m_contentWidget);
+    auto groupFrame = new FieldInfoGroupFrame(m_contentWidget);
     layout->addWidget(groupFrame);
 
-    groupFrame = new FieldGroupFrame(m_contentWidget);
+    groupFrame = new FieldInfoGroupFrame(m_contentWidget);
     layout->addWidget(groupFrame);
 
     layout->addStretch();

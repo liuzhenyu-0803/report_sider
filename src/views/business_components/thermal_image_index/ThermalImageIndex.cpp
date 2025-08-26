@@ -23,7 +23,6 @@ ThermalImageIndex::ThermalImageIndex(QWidget *parent)
     
     // 创建底部提示label，使用InnerTip替换原有的QLabel
     InnerTip *tipLabel = new InnerTip(this);
-    tipLabel->setObjectName("thermalImageIndexTipLabel");
     tipLabel->setFixedHeight(28);
     tipLabel->setContentsMargins(MARGIN_HORIZONTAL_TIP, 0, MARGIN_HORIZONTAL_TIP, 0);
     tipLabel->setText("tips：bind thermal image index");

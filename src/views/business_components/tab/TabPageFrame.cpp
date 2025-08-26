@@ -18,8 +18,8 @@ TabPageFrame::~TabPageFrame()
 void TabPageFrame::setupUI() {
     // 创建主布局
     m_mainLayout = new QVBoxLayout(this);
-    m_mainLayout->setContentsMargins(10, 10, 10, 10);
-    m_mainLayout->setSpacing(10);
+    m_mainLayout->setContentsMargins(16, 16, 16, 0);
+    m_mainLayout->setSpacing(0);
     
     // 创建滚动区域
     m_scrollArea = new QScrollArea(this);

@@ -1,4 +1,11 @@
-#pragma once
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
+
+#include "ContentWidget.h"
+#include "views/business_components/system_tray_icon/SystemTrayIcon.h"
+#include "MicroUI/QcIconButton.h"
+
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -6,9 +13,7 @@
 #include <QPushButton>
 #include <QMouseEvent>
 #include <QSystemTrayIcon>
-#include "ContentWidget.h"
 
-class SystemTrayIcon;
 
 class MainWindow : public QWidget 
 {
@@ -19,21 +24,23 @@ public:
     ~MainWindow();
 
 protected:
+    bool eventFilter(QObject *obj, QEvent *event) override;
+
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
-    bool eventFilter(QObject *obj, QEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
 
 private slots:
-    void closeWindow();
-    void minimizeWindow();
-    void togglePinWindow();
+    void onCloseWindow();
+    void onMinimizeWindow();
+    void onTogglePinWindow();
 
 private:
-    void createTitleBar();
+    QWidget* createTitleBar();
     
-    enum ResizeDirection {
+    enum ResizeDirection
+    {
         None = 0,
         Left = 1,
         Right = 2,
@@ -50,11 +57,7 @@ private:
     void performResize(const QPoint &globalPos);
     
     QWidget *m_titleBar = nullptr;
-    QLabel *m_iconLabel = nullptr;
-    QLabel *m_titleLabel = nullptr;
-    QPushButton *m_minimizeBtn = nullptr;
-    QPushButton *m_pinBtn = nullptr;
-    QPushButton *m_closeBtn = nullptr;
+    MicroUI::QcIconButton *m_pinBtn = nullptr;
     ContentWidget *m_contentWidget = nullptr;
     SystemTrayIcon *m_systemTrayIcon = nullptr;
     
@@ -65,3 +68,5 @@ private:
     QRect m_originalGeometry;
     static const int RESIZE_BORDER_WIDTH = 5;
 };
+
+#endif // MAINWINDOW_H

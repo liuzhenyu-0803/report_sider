@@ -1,6 +1,6 @@
 QSpinBox 
 {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid ${border/border_secondary};
     border-radius: 3px;
     padding: 2px;
     background-color: #FFFFFF;
@@ -8,12 +8,12 @@ QSpinBox
 
 QSpinBox:hover 
 {
-    border: 1px solid blue;
+    border: 1px solid ${brand/brand};
 }
 
 QSpinBox:focus 
 {
-    border: 1px solid blue;
+    border: 1px solid ${brand/brand};
     outline: none;
 }
 
