@@ -2,7 +2,9 @@
 #define UNITIMAGEGROUPFRAME_H
 
 #include "../UnitGroupFrame.h"
-#include "views/business_components/element/unit_element/UnitThermalImageElement.h"
+#include "views/business_components/element/unit_element/ThermalImageElement.h"
+#include "views/business_components/element/unit_element/VisibleLightElement.h"
+#include "views/business_components/element/unit_element/NormalImageElement.h"
 #include <QList>
 
 class UnitImageGroupFrame : public UnitGroupFrame
@@ -17,7 +19,9 @@ public:
     virtual QList<ElementFrame*> getElements() override;
 
 private:
-    QList<UnitThermalImageElement *> m_thermalImageElements;
+    QList<ThermalImageElement *> m_thermalImageElements;
+    QList<VisibleLightElement *> m_visibleLightElements;
+    QList<NormalImageElement *> m_normalImageElements;
 };
 
 #endif // UNITIMAGEGROUPFRAME_H

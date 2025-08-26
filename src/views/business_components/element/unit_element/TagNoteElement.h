@@ -2,18 +2,18 @@
 
 #include "../UnitElementFrame.h"
 #include "views/business_components/more_menu/MoreMenu.h"
-#include "QcCheckBox.h"
+#include "QcRadioButton.h"
 #include <QIcon>
 #include <QMimeData>
 #include <QString>
 
-class UnitThermalImageElement : public UnitElementFrame
+class TagNoteElement : public UnitElementFrame
 {
     Q_OBJECT
 
 public:
-    explicit UnitThermalImageElement(QWidget *parent = nullptr);
-    virtual ~UnitThermalImageElement();
+    explicit TagNoteElement(QWidget *parent = nullptr);
+    virtual ~TagNoteElement();
 
 protected:
     QString getIcon() const override;
@@ -21,5 +21,6 @@ protected:
     QMimeData* getMimeData() const override;
 
 private:
-    MicroUI::QcCheckBox *m_checkBox = nullptr;
+    MicroUI::QcRadioButton *m_radio1Button = nullptr;
+    MicroUI::QcRadioButton *m_radio2Button = nullptr;
 };

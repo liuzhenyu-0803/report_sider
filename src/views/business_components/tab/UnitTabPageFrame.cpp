@@ -7,6 +7,10 @@
 #include <QLabel>
 #include <QDebug>
 #include "views/business_components/group/unit_group/UnitImageGroupFrame.h"
+#include "views/business_components/group/unit_group/ChartGroupFrame.h"
+#include "views/business_components/group/unit_group/TemperatureGroupFrame.h"
+#include "views/business_components/group/unit_group/NoteGroupFrame.h"
+#include "views/business_components/group/unit_group/ImagePropertyGroupFrame.h"
 
 UnitTabPageFrame::UnitTabPageFrame(QWidget *parent)
     : TabPageFrame(parent)
@@ -25,11 +29,20 @@ void UnitTabPageFrame::loadContent()
     layout->setSpacing(20);
     m_contentWidget->setLayout(layout);
 
-    auto groupFrame = new UnitImageGroupFrame(m_contentWidget);
-    layout->addWidget(groupFrame);
+    // 添加图像组
+    layout->addWidget(new UnitImageGroupFrame(m_contentWidget));
 
-    groupFrame = new UnitImageGroupFrame(m_contentWidget);
-    layout->addWidget(groupFrame);
+    // 添加图表组
+    layout->addWidget(new ChartGroupFrame(m_contentWidget));
+
+    // 添加测温组
+    layout->addWidget(new TemperatureGroupFrame(m_contentWidget));
+
+    // 添加备注组
+    layout->addWidget(new NoteGroupFrame(m_contentWidget));
+
+    // 添加图片属性组
+    layout->addWidget(new ImagePropertyGroupFrame(m_contentWidget));
 
     layout->addStretch();
 }

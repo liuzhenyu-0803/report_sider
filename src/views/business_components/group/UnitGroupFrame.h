@@ -3,7 +3,7 @@
 
 #include "GroupFrame.h"
 #include "views/business_components/element/UnitElementFrame.h"
-#include "views/business_components/element/unit_element/UnitThermalImageElement.h"
+#include "views/business_components/element/unit_element/ThermalImageElement.h"
 #include "views/common_components/FlowLayout.h"
 #include <QList>
 

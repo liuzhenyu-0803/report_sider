@@ -1,10 +1,12 @@
-#include "UnitThermalImageElement.h"
+#include "ThermalImageElement.h"
 #include <QMimeData>
 #include <QIcon>
 
-UnitThermalImageElement::UnitThermalImageElement(QWidget *parent)
+ThermalImageElement::ThermalImageElement(QWidget *parent)
     : UnitElementFrame(parent)
 {
+    setIconButtonVisible(true);
+
     auto contentLayout = getMoreMenuContentLayout();
 
     m_checkBox = new MicroUI::QcCheckBox();
@@ -12,22 +14,23 @@ UnitThermalImageElement::UnitThermalImageElement(QWidget *parent)
     contentLayout->addWidget(m_checkBox);
 }
 
-UnitThermalImageElement::~UnitThermalImageElement()
+ThermalImageElement::~ThermalImageElement()
 {
+
 }
 
-QString UnitThermalImageElement::getIcon() const
+QString ThermalImageElement::getIcon() const
 {
     // 返回一个简单的图标，实际项目中可能需要加载真实的图标资源
-    return ":/images/close.svg";
+    return ":/images/thermal_image.svg";
 }
 
-QString UnitThermalImageElement::getText() const
+QString ThermalImageElement::getText() const
 {
     return "Thermal Image";
 }
 
-QMimeData* UnitThermalImageElement::getMimeData() const
+QMimeData* ThermalImageElement::getMimeData() const
 {
     QMimeData *mimeData = new QMimeData();
     

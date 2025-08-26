@@ -6,28 +6,21 @@ UnitImageGroupFrame::UnitImageGroupFrame(QWidget *parent)
     : UnitGroupFrame(parent)
 {
     // 初始化UnitImageGroupFrame
-    // 添加一些示例元素
-    for (int i = 0; i < 3; ++i) {
-        UnitThermalImageElement *element = new UnitThermalImageElement(this);
-        m_thermalImageElements.append(element);
-    }
-    
     // 设置组标题
-    setGroupTitle("Thermal Image Group");
+    setGroupTitle("Image Group");
 }
 
 UnitImageGroupFrame::~UnitImageGroupFrame()
 {
-    // 清理资源
-    qDeleteAll(m_thermalImageElements);
+    // 析构函数
 }
 
 QList<ElementFrame*> UnitImageGroupFrame::getElements()
 {
-    // 将热成像元素转换为基类指针列表并返回
+    // 直接创建并返回元素列表
     QList<ElementFrame*> elements;
-    for (UnitThermalImageElement *element : m_thermalImageElements) {
-        elements.append(element);
-    }
+    elements.append(new ThermalImageElement(this));
+    elements.append(new VisibleLightElement(this));
+    elements.append(new NormalImageElement(this));
     return elements;
 }

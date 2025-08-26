@@ -68,9 +68,9 @@ void UnitElementFrame::setupUI()
     m_layout->addWidget(m_multiLineText);
 
     m_iconButton = new MicroUI::QcIconButton(this);
-    m_iconButton->setFixedSize(20, 20);
-    m_iconButton->SetIconPath(":/images/min.svg");
-    m_iconButton->move(width() - m_iconButton->width(), 0);
+    m_iconButton->setFixedSize(14, 14);
+    m_iconButton->SetIconPath(":/images/more.svg");
+    m_iconButton->move(width() - m_iconButton->width() - 5, 5);
 
     m_moreMenu = new MoreMenu(this);
     m_moreMenu->setVisible(false);
@@ -79,6 +79,8 @@ void UnitElementFrame::setupUI()
     setLayout(m_layout);
 
     connect(m_iconButton, &MicroUI::QcIconButton::clicked, this, &UnitElementFrame::onIconButtonClicked);
+
+    setIconButtonVisible(false);
 }
 
 void UnitElementFrame::paintEvent(QPaintEvent *event)

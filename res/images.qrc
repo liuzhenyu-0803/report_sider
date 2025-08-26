@@ -10,5 +10,21 @@
         <file>images/info.svg</file>
         <file>images/arrow_up.svg</file>
         <file>images/arrow_down.svg</file>
+        <file>images/tag_note.svg</file>
+        <file>images/temperature_parameters.svg</file>
+        <file>images/temperature_result.svg</file>
+        <file>images/qr_code_note.svg</file>
+        <file>images/rule_area.svg</file>
+        <file>images/visible_light.svg</file>
+        <file>images/normal_image.svg</file>
+        <file>images/image_note.svg</file>
+        <file>images/image_info.svg</file>
+        <file>images/temperature_difference_standard.svg</file>
+        <file>images/temperature_histogram.svg</file>
+        <file>images/text_note.svg</file>
+        <file>images/line_temperature_curve.svg</file>
+        <file>images/instrument_info.svg</file>
+        <file>images/thermal_image.svg</file>
+        <file>images/more.svg</file>   
     </qresource>
 </RCC>

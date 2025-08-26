@@ -48,7 +48,7 @@ void GroupFrame::setupUI() {
     // 创建切换按钮
     m_iconLabel = new MicroUI::QcLabel(this);
     m_iconLabel->setFixedSize(20, 20);
-    m_iconLabel->SetIconPath(":/images/arrow_up.svg");
+    m_iconLabel->SetIconPath(":/images/arrow_down.svg");
     m_iconLabel->SetIconColorParams("#000000, 0.9");
 
     // 将标签和按钮添加到标题栏布局
@@ -93,11 +93,11 @@ void GroupFrame::toggleContent()
     // 更新按钮图标
     if (m_isExpanded) 
     {
-        m_iconLabel->SetIconPath(":/images/arrow_up.svg");
+        m_iconLabel->SetIconPath(":/images/arrow_down.svg");
     } 
     else 
     {
-        m_iconLabel->SetIconPath(":/images/arrow_down.svg");
+        m_iconLabel->SetIconPath(":/images/arrow_up.svg");
     }
 }
 

@@ -1,5 +1,6 @@
 #include "TabPageFrame.h"
 #include "views/business_components/group/GroupFrame.h"
+#include "QcScrollBar.h"
 #include <QPainter>
 #include <QLabel>
 #include <QVBoxLayout>
@@ -25,7 +26,11 @@ void TabPageFrame::setupUI() {
     m_scrollArea = new QScrollArea(this);
     m_scrollArea->setWidgetResizable(true);
     m_scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    
+    m_scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    auto scrollBar = new MicroUI::QcScrollBar(Qt::Orientation::Vertical, this);
+    scrollBar->SetOriginalScrollBar(m_scrollArea->verticalScrollBar());
+
     // 创建内容部件和布局
     m_contentWidget = new QWidget();
     
