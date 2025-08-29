@@ -1,5 +1,5 @@
-#ifndef TEMPERATUREGROUPFRAME_H
-#define TEMPERATUREGROUPFRAME_H
+#ifndef UNIT_TEMPERATUREGROUPFRAME_H
+#define UNIT_TEMPERATUREGROUPFRAME_H
 
 #include "../UnitGroupFrame.h"
 #include "views/business_components/element/unit_element/TemperatureResultElement.h"
@@ -15,7 +15,7 @@ public:
     virtual ~TemperatureGroupFrame();
 
     // 实现基类虚接口函数
-    virtual QList<ElementFrame*> getElements() override;
+    virtual QList<QWidget*> getElements() override;
 
 private:
     QList<TemperatureResultElement *> m_temperatureResultElements;

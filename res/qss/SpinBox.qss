@@ -2,7 +2,7 @@ QSpinBox
 {
     border: 1px solid ${border/border_secondary};
     border-radius: 3px;
-    padding: 2px;
+    padding-left: 2px;
     background-color: #FFFFFF;
 }
 
@@ -24,11 +24,11 @@ QSpinBox::up-button
 
 QSpinBox::up-arrow 
 {
-    image: url(:/images/spin_up.svg);
+    image: url(:/images/placeholder.svg);
     position: relative;
-    top: 0px;
-    right: 2px;
-    width: 20px;
+    top: 4px;
+    right: 1px;
+    width: 22px;
     height: 10px;
 }
 
@@ -39,10 +39,10 @@ QSpinBox::down-button
 
 QSpinBox::down-arrow 
 {
-    image: url(:/images/spin_down.svg);
+    image: url(:/images/placeholder.svg);
     position: relative;
-    right: 2px;
-    bottom: 0px;
-    width: 20px;
+    right: 1px;
+    bottom: 4px;
+    width: 22px;
     height: 10px;
 }

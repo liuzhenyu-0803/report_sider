@@ -1,5 +1,5 @@
-#ifndef GROUPFRAME_H
-#define GROUPFRAME_H
+#ifndef SUBGROUPFRAME_H
+#define SUBGROUPFRAME_H
 
 #include <QFrame>
 #include <QVBoxLayout>
@@ -13,13 +13,13 @@
 #include "views/business_components/element/ElementFrame.h"
 
 // 前置声明
-class GroupFrame : public QFrame
+class SubGroupFrame : public QFrame
 {
     Q_OBJECT
 
 public:
-    explicit GroupFrame(QWidget *parent = nullptr);
-    virtual ~GroupFrame();
+    explicit SubGroupFrame(QWidget *parent = nullptr);
+    virtual ~SubGroupFrame();
 
     // 虚接口函数
     virtual void loadElements() = 0;
@@ -46,4 +46,4 @@ private:
     bool m_isExpanded = false;
 };
 
-#endif // GROUPFRAME_H
+#endif // SUBGROUPFRAME_H

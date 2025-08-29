@@ -13,6 +13,10 @@
         "qmouseevent": "cpp",
         "qsystemtrayicon": "cpp",
         "qvboxlayout": "cpp",
-        "qpointer": "cpp"
+        "qpointer": "cpp",
+        "qtimer": "cpp",
+        "xstring": "cpp",
+        "qpainter": "cpp",
+        "qstyleoptionspinbox": "cpp"
     }
 }

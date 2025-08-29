@@ -15,10 +15,10 @@ TemperatureGroupFrame::~TemperatureGroupFrame()
     // 析构函数
 }
 
-QList<ElementFrame*> TemperatureGroupFrame::getElements()
+QList<QWidget*> TemperatureGroupFrame::getElements()
 {
     // 直接创建并返回元素列表
-    QList<ElementFrame*> elements;
+    QList<QWidget*> elements;
     elements.append(new TemperatureResultElement(this));
     elements.append(new TemperatureParametersElement(this));
     return elements;

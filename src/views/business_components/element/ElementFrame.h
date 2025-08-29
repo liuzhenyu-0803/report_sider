@@ -12,21 +12,27 @@ class ElementFrame : public QWidget
 public:
     explicit ElementFrame(QWidget *parent = nullptr);
     virtual ~ElementFrame();
-    
+
+    void setMimeData(QMimeData* mimeData);
+    void setCustomData(const QVariant& data);
+
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void enterEvent(QEvent *event) override;
     void leaveEvent(QEvent *event) override;
 
-    // 子类实现：返回拖拽时的 MimeData
-    virtual QMimeData* getMimeData() const = 0;
+    virtual QMimeData* getMimeData() const { return nullptr; };
 
-    virtual void loadData() = 0;
+    virtual void loadData() {};
+
+    QVariant getCustomData() const;
 
 private:
     void startDrag();
     
 private:
     QPoint m_dragStartPos;
+    QMimeData* m_customMimeData = nullptr;
+    QVariant m_customData;
 };

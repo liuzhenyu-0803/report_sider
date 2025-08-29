@@ -1,18 +1,18 @@
-#include "FieldGroupFrame.h"
+#include "FieldSubGroupFrame.h"
 #include <QVBoxLayout>
 
-FieldGroupFrame::FieldGroupFrame(QWidget *parent)
-    : GroupFrame(parent)
+FieldSubGroupFrame::FieldSubGroupFrame(QWidget *parent)
+    : SubGroupFrame(parent)
 {
     // 设置组标题
-    setGroupTitle("Field Group");
+    setGroupTitle("Field SubGroup");
 }
 
-FieldGroupFrame::~FieldGroupFrame()
+FieldSubGroupFrame::~FieldSubGroupFrame()
 {
 }
 
-void FieldGroupFrame::loadElements()
+void FieldSubGroupFrame::loadElements()
 {
     // 获取基类的contentWidget
     QWidget *contentWidget = getContentWidget();
@@ -30,9 +30,6 @@ void FieldGroupFrame::loadElements()
     for (QWidget *element : elements) {
         layout->addWidget(element);
     }
-    
-    // 添加伸展因子以使元素靠上对齐
-    layout->addStretch();
     
     // 将布局设置到基类的contentWidget
     contentWidget->setLayout(layout);

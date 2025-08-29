@@ -15,10 +15,10 @@ ImagePropertyGroupFrame::~ImagePropertyGroupFrame()
     // 析构函数
 }
 
-QList<ElementFrame*> ImagePropertyGroupFrame::getElements()
+QList<QWidget*> ImagePropertyGroupFrame::getElements()
 {
     // 直接创建并返回元素列表
-    QList<ElementFrame*> elements;
+    QList<QWidget*> elements;
     elements.append(new ImageInfoElement(this));
     elements.append(new InstrumentInfoElement(this));
     return elements;

@@ -20,7 +20,7 @@ void UnitGroupFrame::loadElements()
     if (!contentWidget) return;
     
     // 获取子类提供的元素列表
-    QList<ElementFrame*> elements = getElements();
+    QList<QWidget*> elements = getElements();
     
     // 创建流布局用于放置元素
     FlowLayout *layout = new FlowLayout();
@@ -28,7 +28,7 @@ void UnitGroupFrame::loadElements()
     layout->setSpacing(8);
     
     // 将元素添加到流布局中
-    for (ElementFrame *element : elements) {
+    for (QWidget *element : elements) {
         layout->addWidget(element);
     }
     

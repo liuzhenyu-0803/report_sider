@@ -1,5 +1,5 @@
-#ifndef IMAGEPROPERTYGROUPFRAME_H
-#define IMAGEPROPERTYGROUPFRAME_H
+#ifndef UNIT_IMAGEPROPERTYGROUPFRAME_H
+#define UNIT_IMAGEPROPERTYGROUPFRAME_H
 
 #include "../UnitGroupFrame.h"
 #include "views/business_components/element/unit_element/ImageInfoElement.h"
@@ -15,7 +15,7 @@ public:
     virtual ~ImagePropertyGroupFrame();
 
     // 实现基类虚接口函数
-    virtual QList<ElementFrame*> getElements() override;
+    virtual QList<QWidget*> getElements() override;
 
 private:
     QList<ImageInfoElement *> m_imageInfoElements;

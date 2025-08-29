@@ -15,10 +15,10 @@ NoteGroupFrame::~NoteGroupFrame()
     // 析构函数
 }
 
-QList<ElementFrame*> NoteGroupFrame::getElements()
+QList<QWidget*> NoteGroupFrame::getElements()
 {
     // 直接创建并返回元素列表
-    QList<ElementFrame*> elements;
+    QList<QWidget*> elements;
     elements.append(new TextNoteElement(this));
     elements.append(new TagNoteElement(this));
     elements.append(new ImageNoteElement(this));

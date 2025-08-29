@@ -16,7 +16,7 @@ public:
     virtual ~UnitImageGroupFrame();
 
     // 实现基类虚接口函数
-    virtual QList<ElementFrame*> getElements() override;
+    virtual QList<QWidget*> getElements() override;
 
 private:
     QList<ThermalImageElement *> m_thermalImageElements;

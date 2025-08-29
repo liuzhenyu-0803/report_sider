@@ -1,5 +1,5 @@
-#ifndef NOTEGROUPFRAME_H
-#define NOTEGROUPFRAME_H
+#ifndef UNIT_NOTEGROUPFRAME_H
+#define UNIT_NOTEGROUPFRAME_H
 
 #include "../UnitGroupFrame.h"
 #include "views/business_components/element/unit_element/TextNoteElement.h"
@@ -17,7 +17,7 @@ public:
     virtual ~NoteGroupFrame();
 
     // 实现基类虚接口函数
-    virtual QList<ElementFrame*> getElements() override;
+    virtual QList<QWidget*> getElements() override;
 
 private:
     QList<TextNoteElement *> m_textNoteElements;

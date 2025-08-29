@@ -15,14 +15,20 @@ ElementFrame::ElementFrame(QWidget *parent)
     : QWidget(parent) {
     // setAttribute(Qt::WA_StyledBackground, true);
     // 设置固定大小为100x100
-    setFixedSize(104, 64);
+    
     // 启用鼠标跟踪
     setMouseTracking(true);
 
     QTimer::singleShot(0, this, &ElementFrame::loadData);
 }
 
-ElementFrame::~ElementFrame() = default;
+ElementFrame::~ElementFrame() {
+    // 清理自定义的 MimeData
+    if (m_customMimeData) {
+        delete m_customMimeData;
+        m_customMimeData = nullptr;
+    }
+}
 
 void ElementFrame::enterEvent(QEvent *event) {
     setCursor(Qt::PointingHandCursor);
@@ -62,8 +68,16 @@ void ElementFrame::startDrag() {
     // 创建拖拽对象
     QDrag *drag = new QDrag(this);
     
-    // 获取子类提供的 MimeData
-    QMimeData *mimeData = getMimeData();
+    // 优先使用设置的自定义 MimeData，否则调用 getMimeData 获取
+    QMimeData *mimeData = nullptr;
+    if (m_customMimeData) {
+        mimeData = m_customMimeData;
+        // 将所有权转移给 drag，避免重复删除
+        m_customMimeData = nullptr;
+    } else {
+        mimeData = getMimeData();
+    }
+    
     if (!mimeData) {
         delete drag;
         return;
@@ -87,4 +101,22 @@ void ElementFrame::startDrag() {
     // 执行拖拽操作
     Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction);
     Q_UNUSED(dropAction)
+}
+
+void ElementFrame::setMimeData(QMimeData* mimeData) {
+    // 清理之前的自定义 MimeData
+    if (m_customMimeData) {
+        delete m_customMimeData;
+    }
+    m_customMimeData = mimeData;
+}
+
+void ElementFrame::setCustomData(const QVariant &data)
+{
+    m_customData = data;
+}
+
+QVariant ElementFrame::getCustomData() const
+{
+    return m_customData;
 }

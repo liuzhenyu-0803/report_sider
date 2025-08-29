@@ -32,10 +32,8 @@ find_package(Qt5 REQUIRED COMPONENTS
 )
 
 # Source files
-file(GLOB_RECURSE SOURCES
-    src/*.h
-    src/*.cpp
-)
+# Use glob to automatically include all .cpp files in src directory
+file(GLOB_RECURSE SOURCES "src/*")
 
 # Resource files
 file(GLOB_RECURSE RESOURCES

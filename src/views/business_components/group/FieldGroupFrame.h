@@ -2,7 +2,7 @@
 #define FIELDGROUPFRAME_H
 
 #include "GroupFrame.h"
-#include "views/business_components/element/FieldElementFrame.h"
+#include "views/business_components/element/FieldDraggableElement.h"
 #include <QVBoxLayout>
 #include <QList>
 

@@ -15,10 +15,10 @@ UnitImageGroupFrame::~UnitImageGroupFrame()
     // 析构函数
 }
 
-QList<ElementFrame*> UnitImageGroupFrame::getElements()
+QList<QWidget*> UnitImageGroupFrame::getElements()
 {
     // 直接创建并返回元素列表
-    QList<ElementFrame*> elements;
+    QList<QWidget*> elements;
     elements.append(new ThermalImageElement(this));
     elements.append(new VisibleLightElement(this));
     elements.append(new NormalImageElement(this));

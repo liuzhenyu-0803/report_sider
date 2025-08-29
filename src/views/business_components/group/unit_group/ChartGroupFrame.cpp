@@ -15,10 +15,10 @@ ChartGroupFrame::~ChartGroupFrame()
     // 析构函数
 }
 
-QList<ElementFrame*> ChartGroupFrame::getElements()
+QList<QWidget*> ChartGroupFrame::getElements()
 {
     // 直接创建并返回元素列表
-    QList<ElementFrame*> elements;
+    QList<QWidget*> elements;
     elements.append(new TemperatureHistogramElement(this));
     elements.append(new LineTemperatureCurveElement(this));
     return elements;

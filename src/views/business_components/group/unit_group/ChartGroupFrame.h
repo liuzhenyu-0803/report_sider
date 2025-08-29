@@ -15,7 +15,7 @@ public:
     virtual ~ChartGroupFrame();
 
     // 实现基类虚接口函数
-    virtual QList<ElementFrame*> getElements() override;
+    virtual QList<QWidget*> getElements() override;
 
 private:
     QList<TemperatureHistogramElement *> m_temperatureHistogramElements;
