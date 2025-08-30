@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 
 #include <QWidget>
 #include <QVBoxLayout>
 
 class ThermalImageIndex;
-class TabFrame;
+class Tab;
 
 class ContentWidget : public QWidget 
 {
@@ -19,5 +19,5 @@ private:
     
     QVBoxLayout *m_layout = nullptr;
     ThermalImageIndex *m_thermalImageIndex = nullptr;
-    TabFrame *m_tabFrame = nullptr;
+    Tab *m_tab = nullptr;
 };

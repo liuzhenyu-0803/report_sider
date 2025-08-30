@@ -1,9 +1,9 @@
-#ifndef FIELD_ImagePropertyFieldGroup_H
+﻿#ifndef FIELD_ImagePropertyFieldGroup_H
 #define FIELD_ImagePropertyFieldGroup_H
 
-#include "../FieldGroupFrame.h"
+#include "FieldGroup.h"
 
-class ImagePropertyFieldGroup : public FieldGroupFrame
+class ImagePropertyFieldGroup : public FieldGroup
 {
     Q_OBJECT
 
@@ -20,4 +20,4 @@ private:
     QList<QWidget*> m_subGroups;
 };
 
-#endif // IMAGEPROPERTYGROUPFRAME_H
+#endif // IMAGEPROPERTYGROUP_H

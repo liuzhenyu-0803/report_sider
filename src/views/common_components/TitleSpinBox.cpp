@@ -5,13 +5,13 @@ TitleSpinBox::TitleSpinBox(QWidget *parent)
 {
 
     m_titleLabel = new QLabel(this);
-    m_spinBox = new QSpinBox(this);
+    m_spinBox = new SpinBox(this);
 
     auto layout = new QVBoxLayout(this);
     layout->addWidget(m_titleLabel);
     layout->addWidget(m_spinBox);
 
-    connect(m_spinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &TitleSpinBox::valueChanged);
+    connect(m_spinBox, QOverload<int>::of(&SpinBox::valueChanged), this, &TitleSpinBox::valueChanged);
 }
 
 int TitleSpinBox::value() const

@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include "views/common_components/SpinBox.h"
 #include "views/common_components/InnerTip.h"
+#include "QcLabel.h"
 
 class ThermalImageIndex : public QWidget
 {
@@ -19,7 +20,7 @@ public:
     int getIndex() const;
 
 private:
-    QLabel *label = nullptr;
+    MicroUI::QcLabel *label = nullptr;
     SpinBox *spinBox = nullptr;
     QVBoxLayout *mainLayout = nullptr;
 };

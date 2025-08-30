@@ -61,7 +61,7 @@ QWidget* MainWindow::createTitleBar()
     titleLayout->addWidget(iconLabel);
 
     auto titleLabel = new MicroUI::QcLabel();
-    titleLabel->setText("report_sider");
+    titleLabel->setText("报告文档助手");
     titleLabel->setType(MicroUI::QcLabel::LabelType::H2Title);
     titleLayout->addWidget(titleLabel);
     

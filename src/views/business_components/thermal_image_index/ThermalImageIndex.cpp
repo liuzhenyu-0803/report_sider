@@ -7,8 +7,13 @@ ThermalImageIndex::ThermalImageIndex(QWidget *parent)
     : QWidget(parent)
 {
     // 创建顶部布局，包含label和spinbox
-    label = new QLabel("thermal_image_index", this);
-    label->setObjectName("thermalImageIndexLabel");
+    label = new MicroUI::QcLabel(this);
+    label->setTextColorParams("#4B4B4B");
+    QFont font = label->font();
+    font.setPixelSize(12);
+    font.setBold(true);
+    label->setFont(font);
+    label->setText("热图序号");
 
     // 设置SpinBox的范围为1以上的整数
     spinBox = new SpinBox(this);
@@ -23,9 +28,8 @@ ThermalImageIndex::ThermalImageIndex(QWidget *parent)
     
     // 创建底部提示label，使用InnerTip替换原有的QLabel
     InnerTip *tipLabel = new InnerTip(this);
-    tipLabel->setFixedHeight(28);
     tipLabel->setContentsMargins(MARGIN_HORIZONTAL_TIP, 0, MARGIN_HORIZONTAL_TIP, 0);
-    tipLabel->setText("tips：bind thermal image index");
+    tipLabel->setText("Tips: The following data is linked to heatmap sequence numbers.");
     tipLabel->setStyleType(InnerTip::Gray);  // 使用灰色样式，匹配原有样式
     tipLabel->setShowIcon(false);  // 不显示图标
 

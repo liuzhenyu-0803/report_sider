@@ -1,10 +1,10 @@
-#include "NoteFieldGroup.h"
+﻿#include "NoteFieldGroup.h"
 
-#include "views/business_components/sub_group/field_sub_group/TextNoteSubGroupFrame.h"
-#include "views/business_components/sub_group/field_sub_group/TagNoteSubGroupFrame.h"
+#include "views/business_components/sub_group/field_sub_group/TextNoteSubGroup.h"
+#include "views/business_components/sub_group/field_sub_group/TagNoteSubGroup.h"
 
 NoteFieldGroup::NoteFieldGroup(QWidget *parent)
-    : FieldGroupFrame(parent)
+    : FieldGroup(parent)
 {
     setGroupTitle("备注");
 }
@@ -17,11 +17,11 @@ QList<QWidget*> NoteFieldGroup::getElements()
 {
     QList<QWidget*> subGroups;
     // 创建文本备注子组
-    TextNoteSubGroupFrame *resultSubGroup = new TextNoteSubGroupFrame(this);
+    TextNoteSubGroup *resultSubGroup = new TextNoteSubGroup(this);
     subGroups.append(resultSubGroup);
 
     // 创建标签备注子组
-    TagNoteSubGroupFrame *parametersSubGroup = new TagNoteSubGroupFrame(this);
+    TagNoteSubGroup *parametersSubGroup = new TagNoteSubGroup(this);
     subGroups.append(parametersSubGroup);
 
     return subGroups;

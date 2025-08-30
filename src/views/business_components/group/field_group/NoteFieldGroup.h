@@ -1,9 +1,9 @@
-#ifndef FIELD_NoteFieldGroup_H
+﻿#ifndef FIELD_NoteFieldGroup_H
 #define FIELD_NoteFieldGroup_H
 
-#include "../FieldGroupFrame.h"
+#include "FieldGroup.h"
 
-class NoteFieldGroup : public FieldGroupFrame
+class NoteFieldGroup : public FieldGroup
 {
     Q_OBJECT
 

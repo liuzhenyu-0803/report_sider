@@ -1,11 +1,11 @@
-#include "TemperatureUnitFieldGroup.h"
+﻿#include "TemperatureUnitFieldGroup.h"
 
-#include "views/business_components/sub_group/field_sub_group/TemperatureResultSubGroupFrame.h"
-#include "views/business_components/sub_group/field_sub_group/TemperatureParametersSubGroupFrame.h"
-#include "views/business_components/sub_group/field_sub_group/TemperatureAreaSubGroupFrame.h"
+#include "views/business_components/sub_group/field_sub_group/TemperatureResultSubGroup.h"
+#include "views/business_components/sub_group/field_sub_group/TemperatureParametersSubGroup.h"
+#include "views/business_components/sub_group/field_sub_group/TemperatureAreaSubGroup.h"
 
 TemperatureUnitFieldGroup::TemperatureUnitFieldGroup(QWidget *parent)
-    : FieldGroupFrame(parent)
+    : FieldGroup(parent)
 {
     setGroupTitle("测温单元");
 
@@ -19,15 +19,15 @@ TemperatureUnitFieldGroup::~TemperatureUnitFieldGroup()
 void TemperatureUnitFieldGroup::createSubGroups()
 {
     // 创建测温结果子组
-    TemperatureResultSubGroupFrame *resultSubGroup = new TemperatureResultSubGroupFrame(this);
+    TemperatureResultSubGroup *resultSubGroup = new TemperatureResultSubGroup(this);
     m_subGroups.append(resultSubGroup);
     
     // 创建测温参数子组
-    TemperatureParametersSubGroupFrame *parametersSubGroup = new TemperatureParametersSubGroupFrame(this);
+    TemperatureParametersSubGroup *parametersSubGroup = new TemperatureParametersSubGroup(this);
     m_subGroups.append(parametersSubGroup);
     
     // 创建测温面积子组
-    TemperatureAreaSubGroupFrame *areaSubGroup = new TemperatureAreaSubGroupFrame(this);
+    TemperatureAreaSubGroup *areaSubGroup = new TemperatureAreaSubGroup(this);
     m_subGroups.append(areaSubGroup);
 }
 

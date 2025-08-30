@@ -1,9 +1,9 @@
-#ifndef FIELD_TEMPERATUREUNITGROUPFRAME_H
+﻿#ifndef FIELD_TEMPERATUREUNITGROUPFRAME_H
 #define FIELD_TEMPERATUREUNITGROUPFRAME_H
 
-#include "../FieldGroupFrame.h"
+#include "FieldGroup.h"
 
-class TemperatureUnitFieldGroup : public FieldGroupFrame
+class TemperatureUnitFieldGroup : public FieldGroup
 {
     Q_OBJECT
 
