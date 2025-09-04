@@ -1,23 +1,32 @@
-#include "FieldDraggable.h"
+﻿#include "FieldDraggable.h"
+#include "QcStyleManager.h"
 #include <QMimeData>
 #include <QPainter>
+#include <QLabel>
+#include <QJsonObject>
 
 FieldDraggable::FieldDraggable(QWidget *parent)
-    : Draggable(parent) {
-    setAttribute(Qt::WA_StyledBackground, true);
+    : Draggable(parent)
+{
     setFixedHeight(32);
-    setMouseTracking(true);
 }
 
 FieldDraggable::~FieldDraggable() = default;
 
+void FieldDraggable::setText(const QString& text)
+{
+    // FieldDraggable通常用于显示文本字段，这里可以添加文本显示逻辑
+    // 更新自定义数据中的文本内容
+    QJsonObject customData = getCustomData();
+    customData["text"] = text;
+    setCustomData(customData);
+}
+
 void FieldDraggable::paintEvent(QPaintEvent *event)
 {
-    // 绘制一个圆角矩形
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setPen(QPen(QColor("#BBD0FF")));
-    // brush设置为渐变色 从左到右的颜色分别是#3976FF透明度0到#3976FF透明度0.6
     QLinearGradient gradient(0, 0, width(), 0);
     QColor color("#3976FF");
     QColor colorStart = color;
@@ -28,15 +37,7 @@ void FieldDraggable::paintEvent(QPaintEvent *event)
     gradient.setColorAt(1, colorEnd);
     painter.setBrush(gradient);
     painter.drawRoundedRect(rect(), 4, 4);
-}
 
-QMimeData* FieldDraggable::getMimeData() const
-{
-    QMimeData *mimeData = new QMimeData();
-    
-    // 设置字段元素的 MIME 数据
-    mimeData->setText("FieldDraggable");
-    mimeData->setData("application/x-fieldelement-frame", QByteArray());
-    
-    return mimeData;
+    painter.setPen(QPen(GET_COLOR("text/text_primary")));
+    painter.drawText(rect().adjusted(4, 0, -4, 0), Qt::AlignCenter, getCustomData()["text"].toString());
 }

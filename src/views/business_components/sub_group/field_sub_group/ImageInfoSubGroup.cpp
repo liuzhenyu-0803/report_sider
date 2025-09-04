@@ -1,12 +1,17 @@
 ﻿#include "ImageInfoSubGroup.h"
 #include "views/business_components/draggable/unit_draggable/ImageInfoDraggable.h"
 #include "views/business_components/title_combine_widget/ParameterTitleSelector.h"
+#include "models/model.h"
+#include <QJsonObject>
+#include <QVBoxLayout>
+#include <QEvent>
+#include <QMouseEvent>
+#include <QMimeData>
 
 ImageInfoSubGroup::ImageInfoSubGroup(QWidget *parent)
     : FieldSubGroup(parent)
 {
-    setGroupTitle("图片信息");
-    createElements();
+    setGroupTitle("image info");
 }
 
 ImageInfoSubGroup::~ImageInfoSubGroup()
@@ -14,52 +19,121 @@ ImageInfoSubGroup::~ImageInfoSubGroup()
     
 }
 
-void ImageInfoSubGroup::createElements()
-{
-    auto contentWidget = new QWidget(this);
-    auto contentWidgetLayout = new QVBoxLayout(contentWidget);
-    contentWidgetLayout->setContentsMargins(0, 5, 10, 10);
-    contentWidgetLayout->setSpacing(10);
-
-    auto dragElement1 = new FieldDraggable(this);
-    dragElement1->setCustomData("图片名称");
-    auto mimeData = new QMimeData();
-    mimeData->setText("图片名称");
-    dragElement1->setMimeData(mimeData);
-    contentWidgetLayout->addWidget(dragElement1);
-
-    auto dragElement2 = new FieldDraggable(this);
-    dragElement2->setCustomData("探测器分辨率");
-    auto mimeData2 = new QMimeData();
-    mimeData2->setText("探测器分辨率");
-    dragElement2->setMimeData(mimeData2);
-    contentWidgetLayout->addWidget(dragElement2);
-
-    auto dragElement3 = new FieldDraggable(this);
-    dragElement3->setCustomData("图片大小");
-    auto mimeData3 = new QMimeData();
-    mimeData3->setText("图片大小");
-    dragElement3->setMimeData(mimeData3);
-    contentWidgetLayout->addWidget(dragElement3);
-
-    auto dragElement4 = new FieldDraggable(this);
-    dragElement4->setCustomData("拍摄时间");
-    auto mimeData4 = new QMimeData();
-    mimeData4->setText("拍摄时间");
-    dragElement4->setMimeData(mimeData4);
-    contentWidgetLayout->addWidget(dragElement4);
-
-    auto dragElement5 = new FieldDraggable(this);
-    dragElement5->setCustomData("保存路径");
-    auto mimeData5 = new QMimeData();
-    mimeData5->setText("保存路径");
-    dragElement5->setMimeData(mimeData5);
-    contentWidgetLayout->addWidget(dragElement5);
-
-    m_elements.append(contentWidget);
-}
-
 QList<QWidget*> ImageInfoSubGroup::getElements()
 {
+    if (m_elements.isEmpty()) {
+        auto contentWidget = new QWidget(this);
+        auto contentWidgetLayout = new QVBoxLayout(contentWidget);
+        contentWidgetLayout->setContentsMargins(0, 0, 0, 0);
+        contentWidgetLayout->setSpacing(10);
+
+        dragElement1 = new FieldDraggable(this);
+        setDragElement1Text();
+        dragElement1->installEventFilter(this);
+        contentWidgetLayout->addWidget(dragElement1);
+
+        dragElement2 = new FieldDraggable(this);
+        setDragElement2Text();
+        dragElement2->installEventFilter(this);
+        contentWidgetLayout->addWidget(dragElement2);
+
+        dragElement3 = new FieldDraggable(this);
+        setDragElement3Text();
+        dragElement3->installEventFilter(this);
+        contentWidgetLayout->addWidget(dragElement3);
+
+        dragElement4 = new FieldDraggable(this);
+        setDragElement4Text();
+        dragElement4->installEventFilter(this);
+        contentWidgetLayout->addWidget(dragElement4);
+
+        dragElement5 = new FieldDraggable(this);
+        setDragElement5Text();
+        dragElement5->installEventFilter(this);
+        contentWidgetLayout->addWidget(dragElement5);
+
+        m_elements.append(contentWidget);
+    }
     return m_elements;
+}
+
+bool ImageInfoSubGroup::eventFilter(QObject *watched, QEvent *event)
+{
+    if (event->type() == QEvent::MouseButtonPress) {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+        if (mouseEvent->button() == Qt::LeftButton) {
+            if (watched == dragElement1) {
+                setDragElement1MimeData();
+            } else if (watched == dragElement2) {
+                setDragElement2MimeData();
+            } else if (watched == dragElement3) {
+                setDragElement3MimeData();
+            } else if (watched == dragElement4) {
+                setDragElement4MimeData();
+            } else if (watched == dragElement5) {
+                setDragElement5MimeData();
+            }
+        }
+    }
+    return FieldSubGroup::eventFilter(watched, event);
+}
+
+void ImageInfoSubGroup::setDragElement1Text()
+{
+    dragElement1->setText(tr("image name"));
+}
+
+void ImageInfoSubGroup::setDragElement2Text()
+{
+    dragElement2->setText(tr("detector resolution"));
+}
+
+void ImageInfoSubGroup::setDragElement3Text()
+{
+    dragElement3->setText(tr("image size"));
+}
+
+void ImageInfoSubGroup::setDragElement4Text()
+{
+    dragElement4->setText(tr("shooting time"));
+}
+
+void ImageInfoSubGroup::setDragElement5Text()
+{
+    dragElement5->setText(tr("save path"));
+}
+
+void ImageInfoSubGroup::setDragElement1MimeData()
+{
+    auto mimeData = new QMimeData();
+    mimeData->setText(QString("rm%1.imgn").arg(Model::getInstance()->getThermalImageIndex()));
+    dragElement1->setMimeData(mimeData);
+}
+
+void ImageInfoSubGroup::setDragElement2MimeData()
+{
+    auto mimeData = new QMimeData();
+    mimeData->setText(QString("rm%1.IRr").arg(Model::getInstance()->getThermalImageIndex()));
+    dragElement2->setMimeData(mimeData);
+}
+
+void ImageInfoSubGroup::setDragElement3MimeData()
+{
+    auto mimeData = new QMimeData();
+    mimeData->setText(QString("rm%1.psz").arg(Model::getInstance()->getThermalImageIndex()));
+    dragElement3->setMimeData(mimeData);
+}
+
+void ImageInfoSubGroup::setDragElement4MimeData()
+{
+    auto mimeData = new QMimeData();
+    mimeData->setText(QString("rm%1.cap").arg(Model::getInstance()->getThermalImageIndex()));
+    dragElement4->setMimeData(mimeData);
+}
+
+void ImageInfoSubGroup::setDragElement5MimeData()
+{
+    auto mimeData = new QMimeData();
+    mimeData->setText(QString("rm%1.fpt").arg(Model::getInstance()->getThermalImageIndex()));
+    dragElement5->setMimeData(mimeData);
 }

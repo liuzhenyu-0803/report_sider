@@ -1,6 +1,4 @@
-#include "views/business_components/MainWindow.h"
-
-#include "utility/utility.h"
+﻿#include "views/business_components/MainWindow.h"
 
 #include "QcApplication.h"
 

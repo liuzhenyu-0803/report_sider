@@ -1,33 +1,35 @@
-#include "NormalImageDraggable.h"
+﻿#include "NormalImageDraggable.h"
+#include "views/business_components/image_creator/image_creator.h"
+#include "models/model.h"
 #include <QMimeData>
 #include <QIcon>
 
 NormalImageDraggable::NormalImageDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
-    
+    setIcon(":/images/normal_image.svg");
+    setText("Normal Image");
 }
 
 NormalImageDraggable::~NormalImageDraggable()
 {
 }
 
-QString NormalImageDraggable::getIcon() const
+void NormalImageDraggable::mousePressEvent(QMouseEvent *event)
 {
-    return ":/images/normal_image.svg";
-}
+    ImageCreator imageCreator;
+    imageCreator.setBackgroundColorParams("#FFFAEA");
+    imageCreator.setIconPath(":/images/normal_image.svg");
+    imageCreator.setText(tr("1-normal image"));
+    imageCreator.setMetaData(QString("img:oim1"));
 
-QString NormalImageDraggable::getText() const
-{
-    return "Normal Image";
-}
+    auto imagePath = qApp->applicationDirPath() + "/normal_image.png";
+    imageCreator.createImage(imagePath);
 
-QMimeData* NormalImageDraggable::getMimeData() const
-{
     QMimeData *mimeData = new QMimeData();
-    
-    mimeData->setText("NormalImageDraggable");
-    mimeData->setData("application/x-normalimage", QByteArray());
-    
-    return mimeData;
+    auto url = QUrl::fromLocalFile(imagePath);
+    mimeData->setUrls({url});
+    setMimeData(mimeData);
+
+    UnitDraggable::mousePressEvent(event);
 }

@@ -1,10 +1,13 @@
-#include "TagNoteDraggable.h"
+﻿#include "TagNoteDraggable.h"
 #include <QMimeData>
 #include <QIcon>
 
 TagNoteDraggable::TagNoteDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
+    setIcon(":/images/tag_note.svg");
+    setText("Tag Note");
+    
     setIconButtonVisible(true);
 
     auto contentLayout = getMoreMenuContentLayout();
@@ -24,22 +27,9 @@ TagNoteDraggable::~TagNoteDraggable()
 {
 }
 
-QString TagNoteDraggable::getIcon() const
+void TagNoteDraggable::mousePressEvent(QMouseEvent *event)
 {
-    return ":/images/tag_note.svg";
-}
-
-QString TagNoteDraggable::getText() const
-{
-    return "Tag Note";
-}
-
-QMimeData* TagNoteDraggable::getMimeData() const
-{
-    QMimeData *mimeData = new QMimeData();
-    
-    mimeData->setText("TagNoteDraggable");
-    mimeData->setData("application/x-tagnote", QByteArray());
-    
-    return mimeData;
+    // QMimeData *mimeData = new QMimeData();
+    // mimeData->setHtml(MicroUI::GetFileContent("://html/tag_note.html").arg(Model::getInstance()->getThermalImageIndex()));
+    // setMimeData(mimeData);
 }

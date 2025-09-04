@@ -10,6 +10,9 @@ class TemperatureDifferenceTitleSelector : public TitleSelector
 public:
     explicit TemperatureDifferenceTitleSelector(QWidget *parent = nullptr);
     ~TemperatureDifferenceTitleSelector();
+
+    QString getCurrentTypeText() const;
+    QString getCurrentTypeProtocal() const;
 };
 
 #endif // TEMPERATUREDIFFERENCETITLESELECTOR_H

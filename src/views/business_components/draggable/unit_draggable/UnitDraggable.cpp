@@ -1,31 +1,49 @@
-#include "UnitDraggable.h"
+﻿#include "UnitDraggable.h"
 #include "QcLabel.h"
 #include "QcMultiLineText.h"
 #include "QcStyleManager.h"
 #include <QVBoxLayout>
 #include <QPainter>
+#include <QMimeData>
+#include <QJsonObject>
 
 UnitDraggable::UnitDraggable(QWidget *parent)
-    : Draggable(parent) {
+    : Draggable(parent) 
+{
     setFixedSize(104, 64);
-    setMouseTracking(true);
     setupUI();
 }
 
 UnitDraggable::~UnitDraggable() = default;
 
-void UnitDraggable::loadData()
+void UnitDraggable::setIcon(const QString& iconPath)
 {
-    m_iconLabel->SetIconPath(getIcon());
+    m_iconLabel->SetIconPath(iconPath);
     m_iconLabel->SetIconColorParams("#000000, 0.9");
-    m_multiLineText->setText(getText());
+    
+    // 更新自定义数据中的图标路径
+    QJsonObject customData = getCustomData();
+    customData["iconPath"] = iconPath;
+    setCustomData(customData);
+}
+
+void UnitDraggable::setText(const QString& text)
+{
+    m_multiLineText->setText(text);
+    
+    // 更新自定义数据中的文本内容
+    QJsonObject customData = getCustomData();
+    customData["text"] = text;
+    setCustomData(customData);
 }
 
 void UnitDraggable::onIconButtonClicked()
 {
-    if (m_moreMenu) {
+    if (m_moreMenu) 
+    {
         m_moreMenu->setVisible(!m_moreMenu->isVisible());
-        if (m_moreMenu->isVisible()) {
+        if (m_moreMenu->isVisible()) 
+        {
             // menu左上角与UnitDraggable右上角对齐
             m_moreMenu->move(mapToGlobal(QPoint(width(), 0)));
         }
@@ -34,8 +52,22 @@ void UnitDraggable::onIconButtonClicked()
 
 void UnitDraggable::setIconButtonVisible(bool visible)
 {
-    if (m_iconButton) {
+    if (m_iconButton) 
+    {
         m_iconButton->setVisible(visible);
+    }
+}
+
+QWidget *UnitDraggable::getMoreMenu() const
+{
+    return m_moreMenu;
+}
+
+void UnitDraggable::setMoreMenuTitle(const QString &title)
+{
+    if (m_moreMenu) 
+    {
+        m_moreMenu->setTitle(title);
     }
 }
 

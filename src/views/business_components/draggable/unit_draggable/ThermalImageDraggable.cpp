@@ -1,16 +1,23 @@
-#include "ThermalImageDraggable.h"
+﻿#include "ThermalImageDraggable.h"
+#include "views/business_components/image_creator/image_creator.h"
+#include "models/model.h"
 #include <QMimeData>
 #include <QIcon>
 
 ThermalImageDraggable::ThermalImageDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
+    setIcon(":/images/thermal_image.svg");
+    setText("Thermal Image");
+
     setIconButtonVisible(true);
+
+    setMoreMenuTitle(tr("Thermal Image Content"));
 
     auto contentLayout = getMoreMenuContentLayout();
 
     m_checkBox = new MicroUI::QcCheckBox();
-    m_checkBox->setText("pseudo_color");
+    m_checkBox->setText(tr("pseudocolor"));
     contentLayout->addWidget(m_checkBox);
 }
 
@@ -19,30 +26,28 @@ ThermalImageDraggable::~ThermalImageDraggable()
 
 }
 
-QString ThermalImageDraggable::getIcon() const
+void ThermalImageDraggable::mousePressEvent(QMouseEvent *event)
 {
-    // 返回一个简单的图标，实际项目中可能需要加载真实的图标资源
-    return ":/images/thermal_image.svg";
-}
+    ImageCreator imageCreator;
+    imageCreator.setBackgroundColorParams("#FFF1EE");
+    imageCreator.setIconPath(":/images/thermal_image.svg");
+    imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("thermal image")));
+    if (m_checkBox->isChecked()) 
+    {
+        imageCreator.setMetaData(QString("img:rm%1.pal").arg(Model::getInstance()->getThermalImageIndex()));
+    } 
+    else 
+    {
+        imageCreator.setMetaData(QString("img:rm%1").arg(Model::getInstance()->getThermalImageIndex()));
+    }
 
-QString ThermalImageDraggable::getText() const
-{
-    return "Thermal Image";
-}
-
-QMimeData* ThermalImageDraggable::getMimeData() const
-{
+    auto imagePath = qApp->applicationDirPath() + "/thermal_image.png";
+    imageCreator.createImage(imagePath);
+     
     QMimeData *mimeData = new QMimeData();
-    
-    // 设置热成像元素的 MIME 数据
-    mimeData->setText("UnitThermalImageElement");
-    mimeData->setData("application/x-unitthermalimage", QByteArray());
-    
-    // 可以添加图像数据
-    // QPixmap image = getImage();
-    // if (!image.isNull()) {
-    //     mimeData->setImageData(image);
-    // }
-    
-    return mimeData;
+    auto url = QUrl::fromLocalFile(imagePath);
+    mimeData->setUrls({url});
+    setMimeData(mimeData);
+
+    UnitDraggable::mousePressEvent(event);
 }

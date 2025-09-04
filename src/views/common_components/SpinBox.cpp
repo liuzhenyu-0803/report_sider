@@ -1,4 +1,4 @@
-#include "SpinBox.h"
+﻿#include "SpinBox.h"
 
 #include "QcStyleManager.h"
 
@@ -54,18 +54,24 @@ void SpinBox::paintEvent(QPaintEvent *event)
 
     // 绘制 image1 (上箭头)
     imageParams.file_path_ = ":/images/spin_up.svg";
-    if (isInImage1Area_) {
+    if (isInImage1Area_ && isEnabled()) 
+    {
         imageParams.color_replace_hash_ = {{"#00FF00", "#CFCFCF"}, {"#FF0000", "#000000, 0.6"}};
-    } else {
+    } 
+    else 
+    {
         imageParams.color_replace_hash_ = {{"#00FF00", "#CFCFCF, 0"}, {"#FF0000", "#000000, 0.6"}};
     }
     auto image1 = GET_IMAGE(imageParams);
 
     // 绘制 image2 (下箭头)
     imageParams.file_path_ = ":/images/spin_down.svg";
-    if (isInImage2Area_) {
+    if (isInImage2Area_ && isEnabled()) 
+    {
         imageParams.color_replace_hash_ = {{"#00FF00", "#CFCFCF"}, {"#FF0000", "#000000, 0.6"}};
-    } else {
+    } 
+    else 
+    {
         imageParams.color_replace_hash_ = {{"#00FF00", "#CFCFCF, 0"}, {"#FF0000", "#000000, 0.6"}};
     }
     auto image2 = GET_IMAGE(imageParams);

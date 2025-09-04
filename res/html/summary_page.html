@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>总结页</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #000;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>图片名称</th>
+                <th>拍摄时间</th>
+                <th>故障评级</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{@@v pag.table.seq}}</td>
+                <td>{{@@v pag.rm*.imgn}}</td>
+                <td>{{@@v pag.main.cap}}</td>
+                <td>{{@@v pag.main.tgt ​​|​​in1}}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

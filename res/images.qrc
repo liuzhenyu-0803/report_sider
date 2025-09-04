@@ -25,6 +25,7 @@
         <file>images/line_temperature_curve.svg</file>
         <file>images/instrument_info.svg</file>
         <file>images/thermal_image.svg</file>
-        <file>images/more.svg</file>   
+        <file>images/geographic_info.svg</file>
+        <file>images/more.svg</file>
     </qresource>
 </RCC>

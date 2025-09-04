@@ -1,32 +1,25 @@
-#include "TemperatureParametersDraggable.h"
+﻿#include "TemperatureParametersDraggable.h"
+#include "QcGlobalDefine.h"
+#include "models/model.h"
 #include <QMimeData>
 #include <QIcon>
+
+#include <QDebug>
 
 TemperatureParametersDraggable::TemperatureParametersDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
+    setIcon(":/images/temperature_parameters.svg");
+    setText("Temperature Parameters");  
 }
 
 TemperatureParametersDraggable::~TemperatureParametersDraggable()
 {
 }
 
-QString TemperatureParametersDraggable::getIcon() const
-{
-    return ":/images/temperature_parameters.svg";
-}
-
-QString TemperatureParametersDraggable::getText() const
-{
-    return "Temperature Parameters";
-}
-
-QMimeData* TemperatureParametersDraggable::getMimeData() const
+void TemperatureParametersDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    
-    mimeData->setText("TemperatureParametersDraggable");
-    mimeData->setData("application/x-temperatureparameters", QByteArray());
-    
-    return mimeData;
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/temperature_measurement_parameters.html").arg(Model::getInstance()->getThermalImageIndex()));
+    setMimeData(mimeData);
 }

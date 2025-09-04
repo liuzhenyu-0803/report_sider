@@ -12,6 +12,8 @@
 #include "views/business_components/group/unit_group/NoteGroup.h"
 #include "views/business_components/group/unit_group/ImagePropertyGroup.h"
 
+#include "views/business_components/group/unit_group/DocumentGroup.h"
+
 UnitTabPage::UnitTabPage(QWidget *parent)
     : TabPage(parent)
 {
@@ -44,6 +46,8 @@ void UnitTabPage::loadContent()
 
     // 添加图片属性组
     layout->addWidget(new ImagePropertyGroup(m_contentWidget));
+
+    layout->addWidget(new DocumentGroup(m_contentWidget));
 
     layout->addStretch();
 }

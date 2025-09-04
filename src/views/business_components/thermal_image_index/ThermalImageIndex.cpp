@@ -1,7 +1,8 @@
-#include "ThermalImageIndex.h"
+﻿#include "ThermalImageIndex.h"
 
 #include "global/global.h"
 #include "views/common_components/InnerTip.h"
+#include "models/model.h"
 
 ThermalImageIndex::ThermalImageIndex(QWidget *parent)
     : QWidget(parent)
@@ -13,7 +14,7 @@ ThermalImageIndex::ThermalImageIndex(QWidget *parent)
     font.setPixelSize(12);
     font.setBold(true);
     label->setFont(font);
-    label->setText("热图序号");
+    label->setText("thermal image index");
 
     // 设置SpinBox的范围为1以上的整数
     spinBox = new SpinBox(this);
@@ -40,6 +41,12 @@ ThermalImageIndex::ThermalImageIndex(QWidget *parent)
     mainLayout->addLayout(topLayout);
     mainLayout->addWidget(tipLabel);
     setLayout(mainLayout);
+
+    Model::getInstance()->setThermalImageIndex(spinBox->value());
+
+    connect(spinBox, QOverload<int>::of(&SpinBox::valueChanged), this, [=](int value) {
+        Model::getInstance()->setThermalImageIndex(value);
+    });
 }
 
 ThermalImageIndex::~ThermalImageIndex()

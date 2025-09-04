@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>html/temperature_measurement_results.html</file>
+        <file>html/temperature_measurement_parameters.html</file>
+        <file>html/rule_area.html</file>
+        <file>html/temperature_difference_standard.html</file>
+        <file>html/text_note.html</file>
+        <file>html/qr_code_note.html</file>
+        <file>html/image_property.html</file>
+        <file>html/instrument_info.html</file>
+        <file>html/geographic_info.html</file>
+        <file>html/summary_page.html</file>
+        <file>html/cover_page.html</file>
+    </qresource>
+</RCC>

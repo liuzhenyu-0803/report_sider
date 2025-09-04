@@ -1,4 +1,4 @@
-#ifndef INNERTIP_H
+﻿#ifndef INNERTIP_H
 #define INNERTIP_H
 
 #include <QFrame>
@@ -6,8 +6,6 @@
 #include <QTextBrowser>
 #include <QHBoxLayout>
 #include <QPainter>
-
-#include "utility/utility.h"
 
 class InnerTip : public QFrame
 {

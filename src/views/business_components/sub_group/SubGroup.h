@@ -40,7 +40,7 @@ private:
     
     QVBoxLayout *m_mainLayout = nullptr;
     QHBoxLayout *m_titleLayout = nullptr;
-    QLabel *m_groupLabel = nullptr;
+    MicroUI::QcLabel *m_groupLabel = nullptr;
     MicroUI::QcLabel *m_iconLabel = nullptr;
     QWidget *m_contentWidget = nullptr;  // 内容容器
     bool m_isExpanded = false;

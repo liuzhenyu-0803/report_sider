@@ -15,12 +15,10 @@ public:
     explicit MoreMenu(QWidget *parent = nullptr);
     ~MoreMenu();
 
+    void setTitle(const QString &title);
+
     QFrame *getContentFrame();
     QLayout *getContentLayout();
-
-protected:
-
-    void setTitle(const QString &title);
 
 private:
     void setupUI();

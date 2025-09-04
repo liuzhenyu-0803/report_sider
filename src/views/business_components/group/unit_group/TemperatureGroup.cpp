@@ -1,5 +1,11 @@
 ﻿#include "TemperatureGroup.h"
 #include "views/common_components/FlowLayout.h"
+#include "views/business_components/draggable/unit_draggable/TemperatureResultDraggable.h"
+#include "views/business_components/draggable/unit_draggable/TemperatureParametersDraggable.h"
+#include "views/business_components/draggable/unit_draggable/RuleAreaDraggable.h"
+#include "views/business_components/draggable/unit_draggable/TemperatureDifferenceStandardDraggable.h"
+#include "views/business_components/group/unit_group/DocumentGroup.h"
+
 #include <QVBoxLayout>
 
 TemperatureGroup::TemperatureGroup(QWidget *parent)
@@ -21,5 +27,7 @@ QList<QWidget*> TemperatureGroup::getElements()
     QList<QWidget*> elements;
     elements.append(new TemperatureResultDraggable(this));
     elements.append(new TemperatureParametersDraggable(this));
+    elements.append(new RuleAreaDraggable(this));
+    elements.append(new TemperatureDifferenceStandardDraggable(this));
     return elements;
 }

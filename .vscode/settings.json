@@ -17,6 +17,26 @@
         "qtimer": "cpp",
         "xstring": "cpp",
         "qpainter": "cpp",
-        "qstyleoptionspinbox": "cpp"
+        "qstyleoptionspinbox": "cpp",
+        "future": "cpp",
+        "istream": "cpp",
+        "memory": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "xlocnum": "cpp",
+        "xmemory": "cpp",
+        "system_error": "cpp",
+        "ios": "cpp",
+        "xutility": "cpp",
+        "qmimedata": "cpp",
+        "qintvalidator": "cpp",
+        "qjsonobject": "cpp",
+        "chrono": "cpp",
+        "ratio": "cpp",
+        "xfunctional": "cpp",
+        "xstddef": "cpp",
+        "xtr1common": "cpp",
+        "qstring": "cpp"
     }
 }

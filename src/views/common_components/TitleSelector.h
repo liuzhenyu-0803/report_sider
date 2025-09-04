@@ -22,10 +22,15 @@ public:
 
     void setTitle(const QString &title);
 
+    void addItem(const QString &text, const QVariant &userData = QVariant());
     void addItems(const QStringList &texts);
 
     int currentIndex() const;
     QString currentText() const;
+
+    QVariant currentData() const;
+
+    void setEnabled(bool enabled);
 
 private:
     MicroUI::QcLabel *m_titleLabel = nullptr;

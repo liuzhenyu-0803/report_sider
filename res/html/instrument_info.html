@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仪器信息</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #000;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">仪器信息</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>仪器型号</td>
+                <td>{{rm%1.dev}}</td>
+            </tr>
+            <tr>
+                <td>仪器序列号</td>
+                <td>{{rm%1.sno}}</td>
+            </tr>
+            <tr>
+                <td>镜头倍率</td>
+                <td>{{rm%1.len}}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

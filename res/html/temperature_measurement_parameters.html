@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+</style>
+</head>
+<body>
+
+<h2>测温参数表</h2>
+
+<table>
+  <tr>
+    <td>图像:发射率</td>
+    <td>{{rm%1.G.ems}}</td>
+  </tr>
+  <tr>
+    <td>图像:反射温度</td>
+    <td>{{rm%1.G.dstr}}</td>
+  </tr>
+  <tr>
+    <td>图像:距离</td>
+    <td>{{rm%1.G.rft}}</td>
+  </tr>
+  <tr>
+    <td>图像:环境温度</td>
+    <td>{{rm%1.G.atm}}</td>
+  </tr>
+  <tr>
+    <td>图像:湿度</td>
+    <td>{{rm%1.G.hum}}</td>
+  </tr>
+</table>
+
+</body>
+</html>

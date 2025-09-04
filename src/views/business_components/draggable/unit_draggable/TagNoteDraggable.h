@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "UnitDraggable.h"
 #include "views/business_components/more_menu/MoreMenu.h"
@@ -16,9 +16,7 @@ public:
     virtual ~TagNoteDraggable();
 
 protected:
-    QString getIcon() const override;
-    QString getText() const override;
-    QMimeData* getMimeData() const override;
+    void mousePressEvent(QMouseEvent *event) override;
 
 private:
     MicroUI::QcRadioButton *m_radio1Button = nullptr;

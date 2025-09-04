@@ -17,6 +17,11 @@ QSpinBox:focus
     outline: none;
 }
 
+QSpinBox:disabled
+{
+    background-color: #F7F7F7;
+}
+
 QSpinBox::up-button 
 {
     background-color: transparent;

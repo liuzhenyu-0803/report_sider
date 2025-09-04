@@ -1,6 +1,6 @@
-#include "InnerTip.h"
+﻿#include "InnerTip.h"
 
-#include "utility/utility.h"
+#include "QcGlobalDefine.h"
 
 #include <QLabel>
 #include <QTextBrowser>
@@ -54,7 +54,7 @@ void InnerTip::setupUI()
     
     setLayout(m_mainLayout);
 
-    setStyleSheet(getFileContent(":/qss/InnerTip.qss"));
+    setStyleSheet(MicroUI::GetFileContent(":/qss/InnerTip.qss"));
 }
 
 void InnerTip::setText(const QString &text)

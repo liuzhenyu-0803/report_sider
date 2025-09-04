@@ -1,9 +1,10 @@
-#pragma once
+﻿#pragma once
 
 #include <QWidget>
 #include <QVariant>
 #include <QTextDocument>
 #include <QMimeData>
+#include <QJsonObject>
 
 class Draggable : public QWidget
 {
@@ -14,7 +15,8 @@ public:
     virtual ~Draggable();
 
     void setMimeData(QMimeData* mimeData);
-    void setCustomData(const QVariant& data);
+    void setCustomData(const QJsonObject& data);
+    QJsonObject getCustomData() const;
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -22,11 +24,7 @@ protected:
     void enterEvent(QEvent *event) override;
     void leaveEvent(QEvent *event) override;
 
-    virtual QMimeData* getMimeData() const { return nullptr; };
-
-    virtual void loadData() {};
-
-    QVariant getCustomData() const;
+    // virtual void loadData() = 0;
 
 private:
     void startDrag();
@@ -34,5 +32,5 @@ private:
 private:
     QPoint m_dragStartPos;
     QMimeData* m_customMimeData = nullptr;
-    QVariant m_customData;
+    QJsonObject m_customData;
 };

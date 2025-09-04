@@ -4,10 +4,21 @@ TemperatureDifferenceTitleSelector::TemperatureDifferenceTitleSelector(QWidget *
     : TitleSelector(parent)
 {
     setTitle("Temperature Difference");
-    addItems(QStringList() << "None" << "Point Temp" << "Line Temp" << "Area Temp");
+    addItem(("Temperature Difference"), "");
+    setEnabled(false);
 }
 
 TemperatureDifferenceTitleSelector::~TemperatureDifferenceTitleSelector()
 {
 
+}
+
+QString TemperatureDifferenceTitleSelector::getCurrentTypeText() const
+{
+    return "Dt";
+}
+
+QString TemperatureDifferenceTitleSelector::getCurrentTypeProtocal() const
+{
+    return "dt";
 }

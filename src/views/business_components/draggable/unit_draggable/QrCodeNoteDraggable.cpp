@@ -1,32 +1,23 @@
-#include "QrCodeNoteDraggable.h"
+﻿#include "QrCodeNoteDraggable.h"
+#include "models/model.h"
 #include <QMimeData>
 #include <QIcon>
 
 QrCodeNoteDraggable::QrCodeNoteDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
+    setIcon(":/images/qr_code_note.svg");
+    setText("QR Code Note");
 }
 
 QrCodeNoteDraggable::~QrCodeNoteDraggable()
 {
+
 }
 
-QString QrCodeNoteDraggable::getIcon() const
-{
-    return ":/images/qr_code_note.svg";
-}
-
-QString QrCodeNoteDraggable::getText() const
-{
-    return "QR Code Note";
-}
-
-QMimeData* QrCodeNoteDraggable::getMimeData() const
+void QrCodeNoteDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    
-    mimeData->setText("QrCodeNoteDraggable");
-    mimeData->setData("application/x-qrcodenote", QByteArray());
-    
-    return mimeData;
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/qr_code_note.html").arg(Model::getInstance()->getThermalImageIndex()));
+    setMimeData(mimeData);
 }

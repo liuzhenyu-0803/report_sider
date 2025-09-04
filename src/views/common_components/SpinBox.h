@@ -1,4 +1,4 @@
-#ifndef SPINBOX_H
+﻿#ifndef SPINBOX_H
 #define SPINBOX_H
 
 #include <QSpinBox>

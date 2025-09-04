@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片信息</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #000;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">图片信息</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>图片名称</td>
+                <td>{{rm%1.imgn%2}}</td>
+            </tr>
+            <tr>
+                <td>探测器分辨率</td>
+                <td>{{rm%1.IRr}}</td>
+            </tr>
+            <tr>
+                <td>图片大小</td>
+                <td>{{rm%1.psz}}</td>
+            </tr>
+            <tr>
+                <td>拍摄时间</td>
+                <td>{{rm%1.cap}}</td>
+            </tr>
+            <tr>
+                <td>图片路径</td>
+                <td>{{rm%1.fpt}}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

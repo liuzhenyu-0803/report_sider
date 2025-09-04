@@ -1,4 +1,4 @@
-#include "SystemTrayIcon.h"
+﻿#include "SystemTrayIcon.h"
 #include <QIcon>
 #include <QApplication>
 #include <QMessageBox>

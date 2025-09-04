@@ -1,6 +1,7 @@
 ﻿#include "SubGroup.h"
 #include "views/common_components/FlowLayout.h"
 #include "views/business_components/draggable/Draggable.h"
+#include "QcFrame.h"
 #include <QPainter>
 #include <QLabel>
 #include <QVBoxLayout>
@@ -33,23 +34,28 @@ void SubGroup::setupUI() {
     m_mainLayout->setSpacing(6);
     
     // 创建标题栏容�?
-    QWidget *titleBar = new QWidget(this);
-    titleBar->setStyleSheet("background-color: transparent;");
+    auto titleBar = new MicroUI::QcFrame(this);
+    titleBar->setBackgroundColorParams("transparent");
     
     // 创建标题栏布局
     m_titleLayout = new QHBoxLayout(titleBar);
     m_titleLayout->setContentsMargins(0, 0, 0, 0);
     m_titleLayout->setSpacing(5);
-    
-    // 创建组标�?
-    m_groupLabel = new QLabel("SubGroup", this);
-    m_groupLabel->setStyleSheet("font-weight: bold; font-size: 14px; margin-top: 5px;");
+
+    // 创建组标题标签
+    m_groupLabel = new MicroUI::QcLabel(this);
+    QFont font;
+    font.setPixelSize(12);
+    font.setBold(true);
+    m_groupLabel->setFont(font);
+    m_groupLabel->setTextColorParams("#000000, 0.7");
     
     // 创建切换按钮
     m_iconLabel = new MicroUI::QcLabel(this);
     m_iconLabel->setFixedSize(20, 20);
     m_iconLabel->SetIconPath(":/images/arrow_down.svg");
-    m_iconLabel->SetIconColorParams("#000000, 0.9");
+    m_iconLabel->SetIconColorParams("#000000, 0.6");
+    m_iconLabel->hide();
 
     // 将标签和按钮添加到标题栏布局
     m_titleLayout->addWidget(m_groupLabel);
@@ -102,15 +108,15 @@ void SubGroup::toggleContent()
 }
 
 bool SubGroup::eventFilter(QObject *obj, QEvent *event) {
-    if (event->type() == QEvent::MouseButtonPress) {
-        QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
-        if (mouseEvent->button() == Qt::LeftButton) {
-            // 检查是否点击了标题栏相关的组件
-            if (obj != m_iconLabel) {
-                toggleContent();
-                return true;
-            }
-        }
-    }
+    // if (event->type() == QEvent::MouseButtonPress) {
+    //     QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+    //     if (mouseEvent->button() == Qt::LeftButton) {
+    //         // 检查是否点击了标题栏相关的组件
+    //         if (obj != m_iconLabel) {
+    //             toggleContent();
+    //             return true;
+    //         }
+    //     }
+    // }
     return QFrame::eventFilter(obj, event);
 }

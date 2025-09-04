@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "views/business_components/draggable/Draggable.h"
 
@@ -10,7 +10,9 @@ public:
     explicit FieldDraggable(QWidget *parent = nullptr);
     virtual ~FieldDraggable();
 
-protected:
+    // 设置文本内容
+    void setText(const QString& text);
+
+protected:    
     void paintEvent(QPaintEvent *event) override;
-    QMimeData* getMimeData() const override;
 };

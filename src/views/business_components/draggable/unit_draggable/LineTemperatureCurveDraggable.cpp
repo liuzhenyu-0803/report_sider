@@ -1,56 +1,66 @@
-#include "LineTemperatureCurveDraggable.h"
+﻿#include "LineTemperatureCurveDraggable.h"
+#include "views/business_components/image_creator/image_creator.h"
+#include "views/business_components/title_combine_widget/RuleTypeTitleSelector.h"
+#include "views/business_components/title_combine_widget/RuleSequenceTitleSpinBox.h"
+#include "models/model.h"
 #include <QMimeData>
 #include <QIcon>
 
 LineTemperatureCurveDraggable::LineTemperatureCurveDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
+    setIcon(":/images/line_temperature_curve.svg");
+    setText("Line Temperature Curve");
+
     setIconButtonVisible(true);
 
+    setMoreMenuTitle(tr("select rule"));
+
+    getMoreMenu()->setFixedWidth(232);
+
     auto contentLayout = getMoreMenuContentLayout();
+    contentLayout->setContentsMargins(8, 0, 8, 8);
+    contentLayout->setSpacing(8);
 
-    auto innerFrame = new QFrame();
-    innerFrame->setFixedWidth(216);
-    auto innerLayout = new QHBoxLayout();
-    innerLayout->setContentsMargins(0, 0, 0, 0);
-    innerLayout->setSpacing(8);
-    innerFrame->setLayout(innerLayout);
+    auto hlayout = new QHBoxLayout();
+    hlayout->setContentsMargins(0, 0, 0, 0);
+    hlayout->setSpacing(6);
 
-    m_selector = new MicroUI::QcSelector();
-    m_selector->setFixedHeight(28);
-    m_selector->addItem("Auto");
-    m_selector->addItem("Manual");
-    innerLayout->addWidget(m_selector);
+    m_selector = new RuleTypeTitleSelector();
+    hlayout->addWidget(m_selector);
 
-    m_spinBox = new MicroUI::QcSpinBox();
-    m_spinBox->setFixedHeight(28);
-    m_spinBox->setRange(0, 100);
-    m_spinBox->setValue(50);
-    innerLayout->addWidget(m_spinBox);
+    m_spinBox = new RuleSequenceTitleSpinBox();
+    hlayout->addWidget(m_spinBox);
 
-    contentLayout->addWidget(innerFrame);
+    qobject_cast<QBoxLayout *>(contentLayout)->addLayout(hlayout);
 }
 
 LineTemperatureCurveDraggable::~LineTemperatureCurveDraggable()
 {
 }
 
-QString LineTemperatureCurveDraggable::getIcon() const
+void LineTemperatureCurveDraggable::mousePressEvent(QMouseEvent *event)
 {
-    return ":/images/line_temperature_curve.svg";
-}
+    ImageCreator imageCreator;
+    imageCreator.setBackgroundColorParams("#D2B3FF");
+    imageCreator.setIconPath(":/images/line_temperature_curve.svg");
+    imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("line temperature")));
+    if (m_selector->getCurrentType() == RuleTypeTitleSelector::RuleType::G) 
+    {
+        imageCreator.setMetaData(QString("ct:rm%1.lcr.%2").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeText()));
+    }
+    else 
+    {
+         imageCreator.setMetaData(QString("ct:rm%1.lcr.%2%3").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeText()).arg(m_spinBox->value()));
+    }
 
-QString LineTemperatureCurveDraggable::getText() const
-{
-    return "Line Temperature Curve";
-}
-
-QMimeData* LineTemperatureCurveDraggable::getMimeData() const
-{
+    auto imagePath = qApp->applicationDirPath() + "/temperature_line_temperature_curve.png";
+    imageCreator.createImage(imagePath);
+     
     QMimeData *mimeData = new QMimeData();
-    
-    mimeData->setText("LineTemperatureCurveDraggable");
-    mimeData->setData("application/x-linetemperaturecurve", QByteArray());
-    
-    return mimeData;
+    auto url = QUrl::fromLocalFile(imagePath);
+    mimeData->setUrls({url});
+    setMimeData(mimeData);
+
+    UnitDraggable::mousePressEvent(event);
 }

@@ -19,15 +19,15 @@ void FieldGroup::loadContent()
     if (!contentWidget) return;
     
     // 获取子类提供的元素列表
-    QList<QWidget*> elements = getContentWidgets();
+    QList<QWidget*> contentWidgets = getContentWidgets();
     
     // 创建垂直布局用于放置元素
     QVBoxLayout *layout = new QVBoxLayout();
-    layout->setContentsMargins(0, 5, 10, 10);
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(10);
     
     // 将元素添加到垂直布局中
-    for (QWidget *element : elements) {
+    for (QWidget *element : contentWidgets) {
         layout->addWidget(element);
     }
     

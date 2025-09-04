@@ -23,7 +23,7 @@ void FieldSubGroup::loadElements()
     
     // 创建垂直布局用于放置元素
     QVBoxLayout *layout = new QVBoxLayout();
-    layout->setContentsMargins(0, 5, 10, 10);
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(10);
     
     // 将元素添加到垂直布局中

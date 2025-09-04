@@ -21,5 +21,6 @@ QList<QWidget*> ImagePropertyGroup::getElements()
     QList<QWidget*> elements;
     elements.append(new ImageInfoDraggable(this));
     elements.append(new InstrumentInfoDraggable(this));
+    elements.append(new GeographicInfoDraggable(this));
     return elements;
 }

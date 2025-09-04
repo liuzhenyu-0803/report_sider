@@ -25,27 +25,28 @@ Group::~Group()
 {
 }
 
-void Group::setupUI() {
+void Group::setupUI() 
+{
     // 创建主布局
     m_mainLayout = new QVBoxLayout(this);
     m_mainLayout->setContentsMargins(0, 0, 0, 0);
     m_mainLayout->setSpacing(6);
-    
-    // 创建标题栏容�?
-    QWidget *titleBar = new QWidget(this);
-    
+
+    // 创建标题栏容器
+    m_titleBar = new QWidget(this);
+
     // 创建标题栏布局
-    m_titleLayout = new QHBoxLayout(titleBar);
+    m_titleLayout = new QHBoxLayout(m_titleBar);
     m_titleLayout->setContentsMargins(0, 0, 0, 0);
     m_titleLayout->setSpacing(6);
-    
-    // 创建组标�?
+
+    // 创建组标题标签
     m_groupLabel = new MicroUI::QcLabel(this);
     QFont font;
-    font.setPixelSize(12);
+    font.setPixelSize(14);
     font.setBold(true);
     m_groupLabel->setFont(font);
-    m_groupLabel->setTextColorParams("#000000, 0.9");
+    m_groupLabel->setTextColorParams("#000000, 0.7");
     m_groupLabel->setText("Group");
     
     // 创建切换按钮
@@ -60,7 +61,7 @@ void Group::setupUI() {
     m_titleLayout->addWidget(m_iconLabel);
     
     // 将标题栏添加到主布局
-    m_mainLayout->addWidget(titleBar);
+    m_mainLayout->addWidget(m_titleBar);
     
     // 创建内容容器widget
     m_contentWidget = new QWidget(this);
@@ -71,7 +72,8 @@ void Group::setupUI() {
 
 void Group::setGroupTitle(const QString &title) 
 {
-    if (m_groupLabel) {
+    if (m_groupLabel) 
+    {
         m_groupLabel->setText(title);
     }
 }
@@ -91,14 +93,50 @@ void Group::toggleContent()
     }
 
     // 更新按钮图标
-    if (m_isExpanded) 
+    if (m_isExpanded)
     {
         m_iconLabel->SetIconPath(":/images/arrow_down.svg");
-    } 
-    else 
+        // 当group被展开时，发射信号
+        emit groupExpanded(this);
+    }
+    else
     {
         m_iconLabel->SetIconPath(":/images/arrow_up.svg");
     }
+}
+
+void Group::setExpanded(bool expanded)
+{
+    if (m_isExpanded == expanded) {
+        return;
+    }
+    
+    m_isExpanded = expanded;
+    
+    // 更新内容区域的可见性
+    if (m_contentWidget)
+    {
+        setUpdatesEnabled(false);
+        m_contentWidget->setVisible(m_isExpanded);
+        QTimer::singleShot(0, this, [this]() {
+            setUpdatesEnabled(true);
+        });
+    }
+
+    // 更新按钮图标
+    if (m_isExpanded)
+    {
+        m_iconLabel->SetIconPath(":/images/arrow_down.svg");
+    }
+    else
+    {
+        m_iconLabel->SetIconPath(":/images/arrow_up.svg");
+    }
+}
+
+bool Group::isExpanded() const
+{
+    return m_isExpanded;
 }
 
 QWidget* Group::getContentWidget() const
@@ -109,7 +147,8 @@ QWidget* Group::getContentWidget() const
 void Group::mousePressEvent(QMouseEvent *event)
 {
     QFrame::mousePressEvent(event);
-    if (event->button() == Qt::LeftButton) {
+    if (event->button() == Qt::LeftButton && m_titleBar->underMouse()) 
+    {
         toggleContent();
     }
 }   

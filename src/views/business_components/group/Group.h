@@ -21,14 +21,21 @@ public:
     explicit Group(QWidget *parent = nullptr);
     virtual ~Group();
 
+public:
+    void setExpanded(bool expanded);
+    bool isExpanded() const;
+
 protected:
-    void setGroupTitle(const QString &title);    
+    void setGroupTitle(const QString &title);
     QWidget* getContentWidget() const;
 
     virtual void loadContent() = 0;
     virtual QList<QWidget*> getContentWidgets() = 0;
     
     void mousePressEvent(QMouseEvent *event) override;
+
+signals:
+    void groupExpanded(Group* group);
 
 private slots:
     void toggleContent();
@@ -37,6 +44,7 @@ private:
     void setupUI();
     
     QVBoxLayout *m_mainLayout = nullptr;
+    QWidget *m_titleBar = nullptr;
     QHBoxLayout *m_titleLayout = nullptr;
     MicroUI::QcLabel *m_groupLabel = nullptr;
     MicroUI::QcLabel *m_iconLabel = nullptr;

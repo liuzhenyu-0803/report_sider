@@ -1,32 +1,32 @@
-#include "ImageInfoDraggable.h"
-#include <QMimeData>
+﻿#include "ImageInfoDraggable.h"
+#include "models/model.h"
 #include <QIcon>
+#include <QMimeData>
 
 ImageInfoDraggable::ImageInfoDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
+    setIcon(":/images/image_info.svg");
+    setText("Image Info");
+
+    setIconButtonVisible(true);
+
+    setMoreMenuTitle(tr("image name"));
+
+    auto contentLayout = getMoreMenuContentLayout();
+
+    m_checkBox = new MicroUI::QcCheckBox();
+    m_checkBox->setText(tr("show suffix"));
+    contentLayout->addWidget(m_checkBox);
 }
 
 ImageInfoDraggable::~ImageInfoDraggable()
 {
 }
 
-QString ImageInfoDraggable::getIcon() const
-{
-    return ":/images/image_info.svg";
-}
-
-QString ImageInfoDraggable::getText() const
-{
-    return "Image Info";
-}
-
-QMimeData* ImageInfoDraggable::getMimeData() const
+void ImageInfoDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    
-    mimeData->setText("ImageInfoDraggable");
-    mimeData->setData("application/x-imageinfo", QByteArray());
-    
-    return mimeData;
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/image_property.html").arg(Model::getInstance()->getThermalImageIndex()).arg(m_checkBox->isChecked() ? ".ext" : ""));
+    setMimeData(mimeData);
 }

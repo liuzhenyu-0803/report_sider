@@ -1,4 +1,4 @@
-#ifndef THERMALIMAGEINDEX_H
+﻿#ifndef THERMALIMAGEINDEX_H
 #define THERMALIMAGEINDEX_H
 
 #include <QWidget>

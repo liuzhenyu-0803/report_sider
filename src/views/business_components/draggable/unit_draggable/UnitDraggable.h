@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "views/business_components/draggable/Draggable.h"
 
@@ -20,18 +20,19 @@ public:
 protected:
     void paintEvent(QPaintEvent *event) override;
 
-    void loadData() override;
+    // void loadData() override { loadMimeData(); };
+    // virtual void loadMimeData() {};
 
-    // 子类实现：返回图标和标题
-    virtual QString getIcon() const = 0;
-    virtual QString getText() const = 0;
-    // 实现父类虚接口：返回拖拽时的 MimeData
-    virtual QMimeData* getMimeData() const override = 0;
+    // 提供给子类的设置接口
+    void setIcon(const QString& iconPath);
+    void setText(const QString& text);
 
     void onIconButtonClicked();
 
     void setIconButtonVisible(bool visible);
 
+    QWidget *getMoreMenu() const;
+    void setMoreMenuTitle(const QString &title);
     QLayout *getMoreMenuContentLayout() const;
 
 private:

@@ -7,7 +7,7 @@
 TemperatureUnitFieldGroup::TemperatureUnitFieldGroup(QWidget *parent)
     : FieldGroup(parent)
 {
-    setGroupTitle("测温单元");
+    setGroupTitle("temperature unit");
 
     createSubGroups();
 }

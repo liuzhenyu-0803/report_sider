@@ -1,7 +1,6 @@
-#include "MainWindow.h"
+﻿#include "MainWindow.h"
 
 #include "system_tray_icon/SystemTrayIcon.h"
-#include "utility/utility.h"
 #include "QcStyleManager.h"
 #include "QcLabel.h"
 #include "QcIconButton.h"
@@ -61,7 +60,7 @@ QWidget* MainWindow::createTitleBar()
     titleLayout->addWidget(iconLabel);
 
     auto titleLabel = new MicroUI::QcLabel();
-    titleLabel->setText("报告文档助手");
+    titleLabel->setText("report doc assistant");
     titleLabel->setType(MicroUI::QcLabel::LabelType::H2Title);
     titleLayout->addWidget(titleLabel);
     

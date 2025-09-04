@@ -1,32 +1,22 @@
-#include "InstrumentInfoDraggable.h"
+﻿#include "InstrumentInfoDraggable.h"
+#include "models/model.h"
 #include <QMimeData>
 #include <QIcon>
 
 InstrumentInfoDraggable::InstrumentInfoDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
+    setIcon(":/images/instrument_info.svg");
+    setText("Instrument Info");
 }
 
 InstrumentInfoDraggable::~InstrumentInfoDraggable()
 {
 }
 
-QString InstrumentInfoDraggable::getIcon() const
-{
-    return ":/images/instrument_info.svg";
-}
-
-QString InstrumentInfoDraggable::getText() const
-{
-    return "Instrument Info";
-}
-
-QMimeData* InstrumentInfoDraggable::getMimeData() const
+void InstrumentInfoDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    
-    mimeData->setText("InstrumentInfoDraggable");
-    mimeData->setData("application/x-instrumentinfo", QByteArray());
-    
-    return mimeData;
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/instrument_info.html").arg(Model::getInstance()->getThermalImageIndex()));
+    setMimeData(mimeData);
 }

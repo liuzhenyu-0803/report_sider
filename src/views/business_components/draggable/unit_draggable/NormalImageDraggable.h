@@ -1,7 +1,8 @@
-#pragma once
+﻿#pragma once
 
 #include "UnitDraggable.h"
 #include "views/business_components/more_menu/MoreMenu.h"
+#include "QcCheckBox.h"
 #include <QIcon>
 #include <QMimeData>
 #include <QString>
@@ -15,7 +16,5 @@ public:
     virtual ~NormalImageDraggable();
 
 protected:
-    QString getIcon() const override;
-    QString getText() const override;
-    QMimeData* getMimeData() const override;
+    void mousePressEvent(QMouseEvent *event) override;
 };

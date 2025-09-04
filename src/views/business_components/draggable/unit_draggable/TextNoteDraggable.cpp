@@ -1,32 +1,22 @@
-#include "TextNoteDraggable.h"
+﻿#include "TextNoteDraggable.h"
+#include "models/Model.h"
 #include <QMimeData>
 #include <QIcon>
 
 TextNoteDraggable::TextNoteDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
+    setIcon(":/images/text_note.svg");
+    setText("Text Note");
 }
 
 TextNoteDraggable::~TextNoteDraggable()
 {
 }
 
-QString TextNoteDraggable::getIcon() const
-{
-    return ":/images/text_note.svg";
-}
-
-QString TextNoteDraggable::getText() const
-{
-    return "Text Note";
-}
-
-QMimeData* TextNoteDraggable::getMimeData() const
+void TextNoteDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    
-    mimeData->setText("TextNoteDraggable");
-    mimeData->setData("application/x-textnote", QByteArray());
-    
-    return mimeData;
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/text_note.html").arg(Model::getInstance()->getThermalImageIndex()));
+    setMimeData(mimeData);
 }
