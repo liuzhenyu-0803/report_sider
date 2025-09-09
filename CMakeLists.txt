@@ -95,3 +95,12 @@ if(MSVC)
     set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /DEBUG")
     set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /DEBUG")
 endif()
+
+# 构建后拷贝翻译文件目录到输出目录
+# 直接拷贝整个translations目录到exe目录下
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E echo "Copying translation directory..."
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/translations
+    $<TARGET_FILE_DIR:${PROJECT_NAME}>/translations
+)
