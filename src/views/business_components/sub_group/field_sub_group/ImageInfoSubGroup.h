@@ -2,6 +2,7 @@
 #define IMAGEINFOSUBGROUP_H
 
 #include "FieldSubGroup.h"
+#include "QcRadioButton.h"
 #include "views/business_components/draggable/field_draggable/FieldDraggable.h"
 
 class ImageInfoSubGroup : public FieldSubGroup
@@ -32,11 +33,13 @@ private:
     
     QList<QWidget*> m_elements;
     
-    FieldDraggable *dragElement1;  // image name
-    FieldDraggable *dragElement2;  // detector resolution
-    FieldDraggable *dragElement3;  // image size
-    FieldDraggable *dragElement4;  // shooting time
-    FieldDraggable *dragElement5;  // save path
+    FieldDraggable *dragElement1 = nullptr;  // image name
+    FieldDraggable *dragElement2 = nullptr;  // detector resolution
+    FieldDraggable *dragElement3 = nullptr;  // image size
+    FieldDraggable *dragElement4 = nullptr;  // shooting time
+    FieldDraggable *dragElement5 = nullptr;  // save path
+
+    MicroUI::QcRadioButton *radioButton1 = nullptr;
 };
 
 #endif // IMAGEINFOSUBGROUP_H

@@ -5,8 +5,7 @@
 UnitGroup::UnitGroup(QWidget *parent)
     : Group(parent)
 {
-    // 设置组标题
-    setGroupTitle("Unit Group");
+
 }
 
 UnitGroup::~UnitGroup()

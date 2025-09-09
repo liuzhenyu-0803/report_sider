@@ -7,7 +7,7 @@ QrCodeNoteDraggable::QrCodeNoteDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/qr_code_note.svg");
-    setText("QR Code Note");
+    setText(tr("QRCodeNoteButton"));
 }
 
 QrCodeNoteDraggable::~QrCodeNoteDraggable()

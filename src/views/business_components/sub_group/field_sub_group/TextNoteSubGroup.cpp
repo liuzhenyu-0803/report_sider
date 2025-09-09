@@ -14,7 +14,7 @@
 TextNoteSubGroup::TextNoteSubGroup(QWidget *parent)
     : FieldSubGroup(parent)
 {
-    setGroupTitle("Text Note");
+    setGroupTitle(tr("TextNoteName"));
 }
 
 TextNoteSubGroup::~TextNoteSubGroup()
@@ -56,7 +56,7 @@ bool TextNoteSubGroup::eventFilter(QObject *watched, QEvent *event)
 
 void TextNoteSubGroup::setDragElementText()
 {
-    dragElement_1->setText(tr("text note"));
+    dragElement_1->setText(tr("TextNoteName"));
 }
 
 void TextNoteSubGroup::setDragElementMimeData()

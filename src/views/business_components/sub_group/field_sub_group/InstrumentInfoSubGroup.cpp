@@ -11,7 +11,7 @@
 InstrumentInfoSubGroup::InstrumentInfoSubGroup(QWidget *parent)
     : FieldSubGroup(parent)
 {
-    setGroupTitle(tr("Device Info"));
+    setGroupTitle(tr("DeviceInformation1Name"));
 }
 
 InstrumentInfoSubGroup::~InstrumentInfoSubGroup()
@@ -65,17 +65,17 @@ bool InstrumentInfoSubGroup::eventFilter(QObject *watched, QEvent *event)
 
 void InstrumentInfoSubGroup::setDragElement1Text()
 {
-    dragElement1->setText(tr("instrument info"));
+    dragElement1->setText(tr("InstrumentModelButton"));
 }
 
 void InstrumentInfoSubGroup::setDragElement2Text()
 {
-    dragElement2->setText(tr("Device Serial"));
+    dragElement2->setText(tr("InstrumentSerialNuButton"));
 }
 
 void InstrumentInfoSubGroup::setDragElement3Text()
 {
-    dragElement3->setText(tr("Lens Magnification"));
+    dragElement3->setText(tr("LensMagnificationButton"));
 }
 
 void InstrumentInfoSubGroup::setDragElement1MimeData()

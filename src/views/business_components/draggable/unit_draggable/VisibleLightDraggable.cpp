@@ -8,22 +8,22 @@ VisibleLightDraggable::VisibleLightDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/visible_light.svg");
-    setText("Visible Light");
+    setText(tr("VisiblelightButton"));
 
     setIconButtonVisible(true);
 
-    setMoreMenuTitle(tr("Visible Light Type"));
+    setMoreMenuTitle(tr("VisibleLightTypeName"));
 
     auto contentLayout = getMoreMenuContentLayout();
 
     contentLayout->setSpacing(5);
 
     m_radio1Button = new MicroUI::QcRadioButton();
-    m_radio1Button->setText(tr("Align Visible Light"));
+    m_radio1Button->setText(tr("AlignVisibleLightName"));
     contentLayout->addWidget(m_radio1Button);
 
     m_radio2Button = new MicroUI::QcRadioButton();
-    m_radio2Button->setText(tr("Panoramic Visible Light"));
+    m_radio2Button->setText(tr("PanoramicVisibleLiName"));
     contentLayout->addWidget(m_radio2Button);
 
     m_radio1Button->setChecked(true);

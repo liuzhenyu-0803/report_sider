@@ -24,7 +24,7 @@ TabPage::~TabPage()
 void TabPage::setupUI() {
     // 创建主布局
     m_mainLayout = new QVBoxLayout(this);
-    m_mainLayout->setContentsMargins(16, 0, 16, 0);
+    m_mainLayout->setContentsMargins(8, 0, 8, 0);
     m_mainLayout->setSpacing(0);
     
     // 创建滚动区域

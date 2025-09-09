@@ -11,7 +11,7 @@
 QrCodeNoteSubGroup::QrCodeNoteSubGroup(QWidget *parent)
     : FieldSubGroup(parent)
 {
-    setGroupTitle("QR Code Note");
+    setGroupTitle(tr("QRCodeNoteName"));
 }
 
 QrCodeNoteSubGroup::~QrCodeNoteSubGroup()
@@ -28,7 +28,6 @@ QList<QWidget*> QrCodeNoteSubGroup::getElements()
         contentWidgetLayout->setSpacing(10);
 
         dragElement_1 = new FieldDraggable(this);
-        dragElement_1->setCustomData(QJsonObject{{"text", "Drag Me"}});
         setDragElementText();
         dragElement_1->installEventFilter(this);
         contentWidgetLayout->addWidget(dragElement_1);
@@ -53,7 +52,7 @@ bool QrCodeNoteSubGroup::eventFilter(QObject *watched, QEvent *event)
 
 void QrCodeNoteSubGroup::setDragElementText()
 {
-    dragElement_1->setText(tr("qr code note"));
+    dragElement_1->setText(tr("QRCodeNoteName"));
 }
 
 void QrCodeNoteSubGroup::setDragElementMimeData()

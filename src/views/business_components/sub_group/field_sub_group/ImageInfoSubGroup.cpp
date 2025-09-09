@@ -11,7 +11,7 @@
 ImageInfoSubGroup::ImageInfoSubGroup(QWidget *parent)
     : FieldSubGroup(parent)
 {
-    setGroupTitle("image info");
+    setGroupTitle(tr("ImageInformationName"));
 }
 
 ImageInfoSubGroup::~ImageInfoSubGroup()
@@ -31,6 +31,13 @@ QList<QWidget*> ImageInfoSubGroup::getElements()
         setDragElement1Text();
         dragElement1->installEventFilter(this);
         contentWidgetLayout->addWidget(dragElement1);
+
+        dragElement1->setIconButtonVisible(true);
+        dragElement1->setMoreMenuTitle(tr("ImageNameName"));
+        radioButton1 = new MicroUI::QcRadioButton(this);
+        radioButton1->setText("DisplayFileExtensiName");
+        auto layout = dragElement1->getMoreMenuContentLayout();
+        layout->addWidget(radioButton1);
 
         dragElement2 = new FieldDraggable(this);
         setDragElement2Text();
@@ -80,33 +87,40 @@ bool ImageInfoSubGroup::eventFilter(QObject *watched, QEvent *event)
 
 void ImageInfoSubGroup::setDragElement1Text()
 {
-    dragElement1->setText(tr("image name"));
+    dragElement1->setText(tr("ImageNameButton"));
 }
 
 void ImageInfoSubGroup::setDragElement2Text()
 {
-    dragElement2->setText(tr("detector resolution"));
+    dragElement2->setText(tr("DetectorResolutionButton"));
 }
 
 void ImageInfoSubGroup::setDragElement3Text()
 {
-    dragElement3->setText(tr("image size"));
+    dragElement3->setText(tr("ImageSizeButton"));
 }
 
 void ImageInfoSubGroup::setDragElement4Text()
 {
-    dragElement4->setText(tr("shooting time"));
+    dragElement4->setText(tr("ShootingTimeButton"));
 }
 
 void ImageInfoSubGroup::setDragElement5Text()
 {
-    dragElement5->setText(tr("save path"));
+    dragElement5->setText(tr("SavePathButton"));
 }
 
 void ImageInfoSubGroup::setDragElement1MimeData()
 {
     auto mimeData = new QMimeData();
-    mimeData->setText(QString("rm%1.imgn").arg(Model::getInstance()->getThermalImageIndex()));
+    if (radioButton1->isChecked())
+    {
+        mimeData->setText(QString("rm%1.imgn.ext").arg(Model::getInstance()->getThermalImageIndex()));
+    }
+    else
+    {
+        mimeData->setText(QString("rm%1.imgn").arg(Model::getInstance()->getThermalImageIndex()));
+    }
     dragElement1->setMimeData(mimeData);
 }
 

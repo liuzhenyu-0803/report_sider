@@ -7,7 +7,7 @@ ImageNoteDraggable::ImageNoteDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/image_note.svg");
-    setText("Image Note");
+    setText(tr("ImageCaptionButton"));
 }
 
 ImageNoteDraggable::~ImageNoteDraggable()

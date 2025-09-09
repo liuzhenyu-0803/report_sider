@@ -7,12 +7,13 @@ CoverTableDraggable::CoverTableDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/temperature_parameters.svg");
-    setText("Cover Table");
+    setText(tr("CoverSheetButton"));
 }
 
 CoverTableDraggable::~CoverTableDraggable()
 {
 }
+
 
 void CoverTableDraggable::mousePressEvent(QMouseEvent *event)
 {

@@ -20,9 +20,6 @@ public:
 protected:
     void paintEvent(QPaintEvent *event) override;
 
-    // void loadData() override { loadMimeData(); };
-    // virtual void loadMimeData() {};
-
     // 提供给子类的设置接口
     void setIcon(const QString& iconPath);
     void setText(const QString& text);

@@ -2,6 +2,7 @@
 #define RULETYPETITLESELECTOR_H
 
 #include "views/common_components/TitleSelector.h"
+#include <QList>
 
 class RuleTypeTitleSelector : public TitleSelector
 {
@@ -19,12 +20,16 @@ public:
         Po // 多边形
     };
 
-    explicit RuleTypeTitleSelector(QWidget *parent = nullptr);
+    explicit RuleTypeTitleSelector(QWidget *parent, QList<int> filterTypes = QList<int>());
     ~RuleTypeTitleSelector();
 
     int getCurrentType() const;
-    QString getCurrentTypeText() const;
-    QString getTypeString(int type) const;
+    QString getCurrentTypeName() const;
+    QString getCurrentTypeDescription() const;
+    QString getCurrentTypeProtocal() const;
+    QString getTypeName(int type) const;
+    QString getTypeProtocal(int type) const;
+    QString getTypeDescription(int type) const;
 };
 
 #endif // RULETYPETITLESELECTOR_H

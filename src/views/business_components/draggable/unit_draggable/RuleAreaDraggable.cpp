@@ -10,7 +10,7 @@ RuleAreaDraggable::RuleAreaDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/rule_area.svg");
-    setText("Rule Area");
+    setText(tr("RegulationAreaButton"));
 }
 
 RuleAreaDraggable::~RuleAreaDraggable()

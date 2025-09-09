@@ -7,7 +7,7 @@ ImagePropertyGroup::ImagePropertyGroup(QWidget *parent)
 {
     // 初始化ImagePropertyGroupFrame
     // 设置组标�?
-    setGroupTitle("Image Property Group");
+    setGroupTitle(tr("ImagePropertiesName"));
 }
 
 ImagePropertyGroup::~ImagePropertyGroup()

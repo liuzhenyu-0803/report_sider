@@ -10,7 +10,7 @@ TemperatureParametersDraggable::TemperatureParametersDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/temperature_parameters.svg");
-    setText("Temperature Parameters");  
+    setText(tr("TemperatureMeasurem1Button"));  
 }
 
 TemperatureParametersDraggable::~TemperatureParametersDraggable()

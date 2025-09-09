@@ -1,7 +1,6 @@
 ﻿#ifndef GROUP_H
 #define GROUP_H
 
-#include <QFrame>
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QList>
@@ -9,11 +8,12 @@
 #include <QPushButton>
 #include <QEvent>
 
+#include "QcFrame.h"
 #include "QcLabel.h"
 #include "views/business_components/draggable/Draggable.h"
 
 // 前置声明
-class Group : public QFrame
+class Group : public MicroUI::QcFrame
 {
     Q_OBJECT
 

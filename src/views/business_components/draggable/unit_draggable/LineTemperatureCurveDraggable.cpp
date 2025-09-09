@@ -10,11 +10,11 @@ LineTemperatureCurveDraggable::LineTemperatureCurveDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/line_temperature_curve.svg");
-    setText("Line Temperature Curve");
+    setText(tr("LineTemperatureCurButton"));
 
     setIconButtonVisible(true);
 
-    setMoreMenuTitle(tr("select rule"));
+    setMoreMenuTitle(tr("VisibleLightTypeName"));
 
     getMoreMenu()->setFixedWidth(232);
 
@@ -26,13 +26,18 @@ LineTemperatureCurveDraggable::LineTemperatureCurveDraggable(QWidget *parent)
     hlayout->setContentsMargins(0, 0, 0, 0);
     hlayout->setSpacing(6);
 
-    m_selector = new RuleTypeTitleSelector();
+    m_selector = new RuleTypeTitleSelector(this);
     hlayout->addWidget(m_selector);
 
     m_spinBox = new RuleSequenceTitleSpinBox();
+    m_spinBox->setEnabled(false);
     hlayout->addWidget(m_spinBox);
 
     qobject_cast<QBoxLayout *>(contentLayout)->addLayout(hlayout);
+
+    connect(m_selector, &RuleTypeTitleSelector::currentIndexChanged, this, [=]() {
+        m_spinBox->setEnabled(m_selector->getCurrentType() != RuleTypeTitleSelector::G);
+    });
 }
 
 LineTemperatureCurveDraggable::~LineTemperatureCurveDraggable()
@@ -47,11 +52,11 @@ void LineTemperatureCurveDraggable::mousePressEvent(QMouseEvent *event)
     imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("line temperature")));
     if (m_selector->getCurrentType() == RuleTypeTitleSelector::RuleType::G) 
     {
-        imageCreator.setMetaData(QString("ct:rm%1.lcr.%2").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeText()));
+        imageCreator.setMetaData(QString("ct:rm%1.lcr.%2").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()));
     }
     else 
     {
-         imageCreator.setMetaData(QString("ct:rm%1.lcr.%2%3").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeText()).arg(m_spinBox->value()));
+         imageCreator.setMetaData(QString("ct:rm%1.lcr.%2%3").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_spinBox->value()));
     }
 
     auto imagePath = qApp->applicationDirPath() + "/temperature_line_temperature_curve.png";

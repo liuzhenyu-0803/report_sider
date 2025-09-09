@@ -7,7 +7,7 @@ ChartGroup::ChartGroup(QWidget *parent)
 {
     // 初始化ChartGroupFrame
     // 设置组标题
-    setGroupTitle("Chart Group");
+    setGroupTitle(tr("ChartName"));
 }
 
 ChartGroup::~ChartGroup()

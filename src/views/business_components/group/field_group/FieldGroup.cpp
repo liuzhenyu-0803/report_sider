@@ -31,9 +31,6 @@ void FieldGroup::loadContent()
         layout->addWidget(element);
     }
     
-    // 添加伸展因子以使元素靠上对齐
-    layout->addStretch();
-    
     // 将布局设置到基类的contentWidget
     contentWidget->setLayout(layout);
 }

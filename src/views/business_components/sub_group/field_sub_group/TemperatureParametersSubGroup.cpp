@@ -14,7 +14,7 @@
 TemperatureParametersSubGroup::TemperatureParametersSubGroup(QWidget *parent)
     : FieldSubGroup(parent)
 {
-    setGroupTitle("Temperature Parameters");
+    setGroupTitle(tr("TemperatureMeasuremName1"));
 }
 
 TemperatureParametersSubGroup::~TemperatureParametersSubGroup()
@@ -82,16 +82,16 @@ void TemperatureParametersSubGroup::setDragElementText()
     {
         if (ruleTypeSelector->getCurrentType() == RuleTypeTitleSelector::G)
         {
-            text = QString("n:rm%1.G.%2").arg(Model::getInstance()->getThermalImageIndex()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
+            text = parameterFeatureSelector->getCurrentTypeDescription().arg(ruleTypeSelector->getCurrentTypeDescription());
         }
         else
         {
-            text = QString("n:rm%1.%2%3.%4").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
+            text = parameterFeatureSelector->getCurrentTypeDescription().arg(ruleTypeSelector->getCurrentTypeDescription().arg(ruleSequenceSpinBox->value()));
         }
     }
     else
     {
-        text = QString("n:rm%1.%2").arg(Model::getInstance()->getThermalImageIndex()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
+        text = parameterFeatureSelector->getCurrentTypeDescription();
     }
     dragElement->setText(text);
 }
@@ -108,7 +108,7 @@ void TemperatureParametersSubGroup::setDragElementMimeData()
         }
         else
         {
-            text = QString("n:rm%1.%2%3.%4").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
+            text = QString("n:rm%1.%2%3.%4").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeProtocal()).arg(ruleSequenceSpinBox->value()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
         }
     }
     else

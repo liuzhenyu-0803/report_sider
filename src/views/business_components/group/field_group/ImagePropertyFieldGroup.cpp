@@ -6,7 +6,7 @@
 ImagePropertyFieldGroup::ImagePropertyFieldGroup(QWidget *parent)
     : FieldGroup(parent)
 {
-    setGroupTitle("ImageProperties");
+    setGroupTitle(tr("ImagePropertiesName"));
     createSubGroups();
 }
 

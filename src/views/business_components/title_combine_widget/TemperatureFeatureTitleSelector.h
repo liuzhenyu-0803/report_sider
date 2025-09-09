@@ -20,9 +20,11 @@ public:
     ~TemperatureFeatureTitleSelector();
 
     int getCurrentType() const;
-    QString getCurrentTypeText() const;
+    QString getCurrentTypeTitle() const;
+    QString getCurrentTypeDescription() const;
     QString getCurrentTypeProtocal() const;
-    QString getTypeString(int type) const;
+    QString getTypeTitle(int type) const;
+    QString getTypeDescription(int type) const;
     QString getTypeProtocal(int type) const;
 };
 

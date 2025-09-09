@@ -11,5 +11,6 @@
         <file>html/geographic_info.html</file>
         <file>html/summary_page.html</file>
         <file>html/cover_page.html</file>
+        <file>html/tag_note.html</file>
     </qresource>
 </RCC>

@@ -5,9 +5,7 @@
 UnitImageGroup::UnitImageGroup(QWidget *parent)
     : UnitGroup(parent)
 {
-    // 初始化UnitImageGroupFrame
-    // 设置组标题
-    setGroupTitle("Image Group");
+    setGroupTitle(tr("ImageName"));
 }
 
 UnitImageGroup::~UnitImageGroup()

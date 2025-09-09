@@ -13,7 +13,7 @@
 TemperatureResultSubGroup::TemperatureResultSubGroup(QWidget *parent)
     : FieldSubGroup(parent)
 {
-    setGroupTitle("temperature result");
+    setGroupTitle(tr("TemperatureMeasurem2Name"));
 }
 
 TemperatureResultSubGroup::~TemperatureResultSubGroup()
@@ -35,6 +35,7 @@ QList<QWidget*> TemperatureResultSubGroup::getElements()
         ruleSequenceSpinBox = new RuleSequenceTitleSpinBox(this);
         ruleSequenceSpinBox->setEnabled(false);
         temperatureFeatureSelector = new TemperatureFeatureTitleSelector(this);
+        temperatureFeatureSelector->setEnabled(false);
         hlayout_1->addWidget(ruleTypeSelector);
         hlayout_1->addWidget(ruleSequenceSpinBox);
         hlayout_1->addWidget(temperatureFeatureSelector);
@@ -97,31 +98,13 @@ bool TemperatureResultSubGroup::eventFilter(QObject *watched, QEvent *event)
 void TemperatureResultSubGroup::setDragElement1Text()
 {
     QString text;
-    switch (ruleTypeSelector->getCurrentType())
+    if (ruleTypeSelector->getCurrentType() == RuleTypeTitleSelector::G)
     {
-    case RuleTypeTitleSelector::G:
-        text = QString("%1%2").arg(ruleTypeSelector->getCurrentTypeText()).arg(temperatureFeatureSelector->getCurrentTypeText());
-        break;
-    case RuleTypeTitleSelector::P:
-        text = QString("%1%2").arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value());
-        break;
-    case RuleTypeTitleSelector::L:
-        text = QString("%1%2%3").arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value()).arg(temperatureFeatureSelector->getCurrentTypeText());
-        break;
-    case RuleTypeTitleSelector::Fl:
-        text = QString("%1%2%3").arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value()).arg(temperatureFeatureSelector->getCurrentTypeText());
-        break;
-    case RuleTypeTitleSelector::R:
-        text = QString("%1%2%3").arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value()).arg(temperatureFeatureSelector->getCurrentTypeText());
-        break;
-    case RuleTypeTitleSelector::Ep:
-        text = QString("%1%2%3").arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value()).arg(temperatureFeatureSelector->getCurrentTypeText());
-        break;
-    case RuleTypeTitleSelector::Po:
-        text = QString("%1%2%3").arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value()).arg(temperatureFeatureSelector->getCurrentTypeText());
-        break;
-    default:
-        break;
+        text = temperatureFeatureSelector->getCurrentTypeDescription().arg(ruleTypeSelector->getCurrentTypeDescription());
+    }
+    else
+    {
+        text = temperatureFeatureSelector->getCurrentTypeDescription().arg(ruleTypeSelector->getCurrentTypeDescription().arg(ruleSequenceSpinBox->value()));
     }
     dragElement_1->setText(text);
 }
@@ -139,17 +122,17 @@ void TemperatureResultSubGroup::setDragElement1MimeData()
 
     if (ruleTypeSelector->getCurrentType() == RuleTypeTitleSelector::G)
     {
-         text = QString("{{rm%1.%2.%3}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeText()).arg(temperatureFeatureSelector->getCurrentTypeProtocal());
+         text = QString("{{rm%1.%2.%3}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeProtocal()).arg(temperatureFeatureSelector->getCurrentTypeProtocal());
     }
     else
     {
         if (ruleTypeSelector->getCurrentType() == RuleTypeTitleSelector::P)
         {
-            text = QString("{{rm%1.%2%3.tmp}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value());
+            text = QString("{{rm%1.%2%3.tmp}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeProtocal()).arg(ruleSequenceSpinBox->value());
         }
         else
         {
-            text = QString("{{rm%1.%2%3.%4}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value()).arg(temperatureFeatureSelector->getCurrentTypeText());
+            text = QString("{{rm%1.%2%3.%4}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeProtocal()).arg(ruleSequenceSpinBox->value()).arg(temperatureFeatureSelector->getCurrentTypeTitle());
         }
     }
 

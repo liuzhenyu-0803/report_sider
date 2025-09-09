@@ -7,7 +7,7 @@ InstrumentInfoDraggable::InstrumentInfoDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/instrument_info.svg");
-    setText("Instrument Info");
+    setText(tr("InstrumentInformatiButton"));
 }
 
 InstrumentInfoDraggable::~InstrumentInfoDraggable()

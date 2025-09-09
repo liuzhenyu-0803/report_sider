@@ -8,7 +8,7 @@ NormalImageDraggable::NormalImageDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/normal_image.svg");
-    setText("Normal Image");
+    setText(tr("NormalMapButton"));
 }
 
 NormalImageDraggable::~NormalImageDraggable()

@@ -10,7 +10,7 @@ TemperatureResultDraggable::TemperatureResultDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/temperature_result.svg");
-    setText("Temperature Result");  
+    setText(tr("TemperatureMeasuremButton"));
 }
 
 TemperatureResultDraggable::~TemperatureResultDraggable()

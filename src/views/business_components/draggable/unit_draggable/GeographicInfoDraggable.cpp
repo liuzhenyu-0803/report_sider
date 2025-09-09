@@ -7,7 +7,7 @@ GeographicInfoDraggable::GeographicInfoDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/geographic_info.svg");
-    setText("Geographic Info");  
+    setText(tr("GeographicInformatiButton"));  
 }
 
 GeographicInfoDraggable::~GeographicInfoDraggable()

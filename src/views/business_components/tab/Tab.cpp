@@ -14,14 +14,22 @@ Tab::Tab(QWidget *parent)
     buttonContainer->setStyleSheet(QString("#buttonContainer { margin-left: %1px; margin-right: %2px; }").arg(MARGIN_HORIZONTAL_TAB).arg(MARGIN_HORIZONTAL_TAB));
 
     // 创建按钮
-    unitButton = new QPushButton("Unit", this);
+    unitButton = new QPushButton(tr("UnitButton"), this);
     unitButton->setObjectName("unitButton");
     unitButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     unitButton->setCheckable(true);
-    fieldButton = new QPushButton("Field", this);
+    fieldButton = new QPushButton(tr("FieldButton"), this);
     fieldButton->setObjectName("fieldButton");
     fieldButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     fieldButton->setCheckable(true);
+    
+    // 创建按钮布局
+    buttonLayout = new QHBoxLayout(buttonContainer);
+    buttonLayout->setContentsMargins(0, 0, 0, 0);
+    buttonLayout->setSpacing(0);
+    buttonLayout->addWidget(unitButton);
+    buttonLayout->addWidget(fieldButton);
+    buttonContainer->setLayout(buttonLayout);
 
     // 创建按钮组并添加按钮
     tabButtonGroup = new QButtonGroup(this);
@@ -31,18 +39,10 @@ Tab::Tab(QWidget *parent)
     // 连接按钮组信号到槽函数
     connect(tabButtonGroup, QOverload<int>::of(&QButtonGroup::buttonClicked), this, &Tab::switchTab);
     
-    // 创建按钮布局
-    buttonLayout = new QHBoxLayout(buttonContainer);
-    buttonLayout->setContentsMargins(0, 0, 0, 0);
-    buttonLayout->setSpacing(0);
-    buttonLayout->addWidget(unitButton);
-    buttonLayout->addWidget(fieldButton);
-    buttonContainer->setLayout(buttonLayout);
-    
     // 创建提示信息浏览器
     infoTip = new InnerTip(this);
-    infoTip->setText("Drag/Click to copy the desired content to the corresponding location in the report.");
-    infoTip->setStyleSheet(infoTip->styleSheet() + QString("InnerTip { margin-left: %1px; margin-right: %2px; }").arg(MARGIN_HORIZONTAL_TAB).arg(MARGIN_HORIZONTAL_TAB));
+    infoTip->setText(tr("Drag/clickToCopyTMsg"));
+    infoTip->setStyleSheet(infoTip->styleSheet() + QString("InnerTip { margin-left: %1px; margin-right: %2px; }").arg(8).arg(8));
 
     // 创建堆栈窗口
     stackedWidget = new QStackedWidget(this);
@@ -59,7 +59,7 @@ Tab::Tab(QWidget *parent)
     mainLayout->addWidget(buttonContainer);
     mainLayout->addSpacing(8);
     mainLayout->addWidget(infoTip);
-    mainLayout->addSpacing(16);
+    mainLayout->addSpacing(12);
     mainLayout->addWidget(stackedWidget);
     setLayout(mainLayout);
     

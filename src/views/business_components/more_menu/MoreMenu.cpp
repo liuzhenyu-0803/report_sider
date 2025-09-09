@@ -18,7 +18,7 @@ void MoreMenu::setupUI()
 {
     setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, true); 
-    setBorderRadius(8);
+    setBorderRadius(4);
     setBorderSides(MicroUI::QcFrame::BorderAll);
     setBorderColorParams("border/border_tertairy");
     setBackgroundColorParams("#FFFFFF");
@@ -31,7 +31,7 @@ void MoreMenu::setupUI()
     auto titleFrame = new MicroUI::QcFrame(this);
     titleFrame->setFixedHeight(30);
     auto titleLayout = new QHBoxLayout(titleFrame);
-    titleLayout->setContentsMargins(8, 3, 6, 3);
+    titleLayout->setContentsMargins(8, 0, 6, 0);
     m_titleLabel = new MicroUI::QcLabel(titleFrame);
     m_titleLabel->setText("More Options");
     m_titleLabel->setType(MicroUI::QcLabel::LabelType::Title);
@@ -47,7 +47,7 @@ void MoreMenu::setupUI()
 
     m_contentFrame = new QFrame(this);
     auto contentLayout = new QVBoxLayout(m_contentFrame);
-    contentLayout->setContentsMargins(8, 8, 8, 8);
+    contentLayout->setContentsMargins(8, 3, 8, 8);
     contentLayout->setSpacing(0);
 
     layout->addWidget(titleFrame);

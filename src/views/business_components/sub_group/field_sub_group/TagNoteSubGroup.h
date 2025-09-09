@@ -3,6 +3,9 @@
 
 #include "FieldSubGroup.h"
 #include "views/business_components/draggable/field_draggable/FieldDraggable.h"
+#include "models/model.h"
+#include <QPair>
+#include <QStringList>
 
 class TagNoteSubGroup : public FieldSubGroup
 {
@@ -19,12 +22,19 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
 private:
-    void setDragElementText();
-    void setDragElementMimeData();
+    void updateFieldDraggables();
     
-    FieldDraggable *dragElement_1;
+private slots:
+    void onTemplateSelectionChanged();
+    
+private:
     
     QList<QWidget*> m_elements;
+    QList<QPair<QString, QStringList>> m_templateData;
+    QList<FieldDraggable*> m_fieldDraggables; // 固定10个FieldDraggable
+    class TemplateTitleSelector* m_templateSelector = nullptr;
+    QWidget* m_contentWidget = nullptr;
+    class QVBoxLayout* m_contentLayout = nullptr;
 };
 
 #endif // TAGNOTESUBGROUP_H

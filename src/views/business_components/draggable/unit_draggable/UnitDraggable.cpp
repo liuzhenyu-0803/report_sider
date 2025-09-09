@@ -45,7 +45,7 @@ void UnitDraggable::onIconButtonClicked()
         if (m_moreMenu->isVisible()) 
         {
             // menu左上角与UnitDraggable右上角对齐
-            m_moreMenu->move(mapToGlobal(QPoint(width(), 0)));
+            m_moreMenu->move(mapToGlobal(QPoint(width() + 2, 0)));
         }
     }
 }
@@ -80,7 +80,7 @@ void UnitDraggable::setupUI()
 {
     // 创建垂直布局
     m_layout = new QVBoxLayout(this);
-    m_layout->setContentsMargins(6, 6, 6, 6);
+    m_layout->setContentsMargins(6, 6, 6, 2);
     m_layout->setSpacing(0);
 
     // 创建图标标签
@@ -90,14 +90,22 @@ void UnitDraggable::setupUI()
     m_layout->addWidget(m_iconLabel, 0, Qt::AlignCenter);
 
     // 创建标题标签
-    m_multiLineText = new MicroUI::QcMultiLineText(this);
+    auto multiLineTextFrame = new QFrame(this);
+    multiLineTextFrame->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+    m_layout->addWidget(multiLineTextFrame);
+
+    auto multiLineTextLayout = new QVBoxLayout(multiLineTextFrame);
+    multiLineTextLayout->setContentsMargins(0, 0, 0, 0);
+    multiLineTextLayout->setSpacing(0);
+
+    m_multiLineText = new MicroUI::QcMultiLineText(multiLineTextFrame);
     m_multiLineText->setAlignment(Qt::AlignCenter);
-    m_multiLineText->setHeightAdaptive(true);
     QFont font;
     font.setPixelSize(12);
     m_multiLineText->setFont(font);
     m_multiLineText->setLineCount(2);
-    m_layout->addWidget(m_multiLineText);
+    m_multiLineText->setHeightAdaptive(true);
+    multiLineTextLayout->addWidget(m_multiLineText);
 
     m_iconButton = new MicroUI::QcIconButton(this);
     m_iconButton->setFixedSize(14, 14);

@@ -24,8 +24,6 @@ protected:
     void enterEvent(QEvent *event) override;
     void leaveEvent(QEvent *event) override;
 
-    // virtual void loadData() = 0;
-
 private:
     void startDrag();
     

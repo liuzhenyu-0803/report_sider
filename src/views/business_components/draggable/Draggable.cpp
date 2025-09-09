@@ -5,6 +5,7 @@
 #include <QMimeData>
 #include <QMouseEvent>
 #include "QcApplication.h"
+#include "QcToastManager.h"
 #include <QBitmap>
 #include <QBuffer>
 #include <QUrl>
@@ -48,6 +49,9 @@ void Draggable::mousePressEvent(QMouseEvent *event)
     {
         m_dragStartPos = event->pos();
     }
+
+    // TOAST_MANAGER->showToast(tr("CopySuccessful"), MicroUI::QcToast::Type::Success, window(), false);
+
     QWidget::mousePressEvent(event);
 }
 
@@ -66,6 +70,7 @@ void Draggable::mouseMoveEvent(QMouseEvent *event)
     }
 
     startDrag();
+
     QWidget::mouseMoveEvent(event);
 }
 

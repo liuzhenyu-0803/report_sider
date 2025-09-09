@@ -31,6 +31,7 @@ public:
     QVariant currentData() const;
 
     void setEnabled(bool enabled);
+    bool isEnabled() const;
 
 private:
     MicroUI::QcLabel *m_titleLabel = nullptr;

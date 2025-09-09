@@ -7,16 +7,16 @@ ImageInfoDraggable::ImageInfoDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/image_info.svg");
-    setText("Image Info");
+    setText(tr("ImageInformationButton"));
 
     setIconButtonVisible(true);
 
-    setMoreMenuTitle(tr("image name"));
+    setMoreMenuTitle(tr("PictureName"));
 
     auto contentLayout = getMoreMenuContentLayout();
 
     m_checkBox = new MicroUI::QcCheckBox();
-    m_checkBox->setText(tr("show suffix"));
+    m_checkBox->setText(tr("DisplayFileExtensiName"));
     contentLayout->addWidget(m_checkBox);
 }
 

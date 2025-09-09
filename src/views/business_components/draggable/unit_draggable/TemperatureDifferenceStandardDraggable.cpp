@@ -10,7 +10,7 @@ TemperatureDifferenceStandardDraggable::TemperatureDifferenceStandardDraggable(Q
     : UnitDraggable(parent)
 {
     setIcon(":/images/temperature_difference_standard.svg");
-    setText("Temperature Difference Standard");
+    setText(tr("TemperatureDifferenButton"));
 }
 
 TemperatureDifferenceStandardDraggable::~TemperatureDifferenceStandardDraggable()

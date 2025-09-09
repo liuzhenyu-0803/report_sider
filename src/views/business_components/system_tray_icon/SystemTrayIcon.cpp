@@ -10,7 +10,7 @@ SystemTrayIcon::SystemTrayIcon(QWidget *parent)
     createActions();
     createTrayIcon();
     
-    setIcon(QIcon(":/images/test.png"));
+    setIcon(QIcon(":/images/logo.png"));
     
     connect(this, &QSystemTrayIcon::activated, this, &SystemTrayIcon::onActivated);
     
@@ -29,10 +29,10 @@ void SystemTrayIcon::setMainWindow(QWidget *mainWindow)
 
 void SystemTrayIcon::createActions() 
 {
-    m_showAction = new QAction("Show Main Window", this);
+    m_showAction = new QAction(tr("DisplayWindowButton"), this);
     connect(m_showAction, &QAction::triggered, this, &SystemTrayIcon::showMainWindow);
     
-    m_exitAction = new QAction("Exit", this);
+    m_exitAction = new QAction(tr("ExitButton"), this);
     connect(m_exitAction, &QAction::triggered, this, &SystemTrayIcon::exitApplication);
 }
 

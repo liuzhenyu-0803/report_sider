@@ -7,7 +7,7 @@ NoteGroup::NoteGroup(QWidget *parent)
 {
     // 初始化NoteGroupFrame
     // 设置组标�?
-    setGroupTitle("Note Group");
+    setGroupTitle(tr("NoteName"));
 }
 
 NoteGroup::~NoteGroup()

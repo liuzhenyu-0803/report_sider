@@ -60,3 +60,8 @@ void TitleSelector::setEnabled(bool enabled)
 {
     m_selector->setEnabled(enabled);
 }
+
+bool TitleSelector::isEnabled() const
+{
+    return m_selector->isEnabled();
+}

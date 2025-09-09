@@ -10,7 +10,7 @@
 GeographicInfoSubGroup::GeographicInfoSubGroup(QWidget *parent)
     : FieldSubGroup(parent)
 {
-    setGroupTitle(tr("geometry info"));
+    setGroupTitle(tr("GeographicInformatiName"));
 }
 
 GeographicInfoSubGroup::~GeographicInfoSubGroup()
@@ -62,7 +62,7 @@ void GeographicInfoSubGroup::setDraggable1Text()
 
 void GeographicInfoSubGroup::setDraggable2Text()
 {
-    dragElement2->setText(tr("electronic compass"));
+    dragElement2->setText(tr("ElectronicCompassButton"));
 }
 
 void GeographicInfoSubGroup::setDraggable1MimeData()

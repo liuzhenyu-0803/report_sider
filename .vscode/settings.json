@@ -37,6 +37,8 @@
         "xfunctional": "cpp",
         "xstddef": "cpp",
         "xtr1common": "cpp",
-        "qstring": "cpp"
+        "qstring": "cpp",
+        "vector": "cpp",
+        "qgraphicsopacityeffect": "cpp"
     }
 }

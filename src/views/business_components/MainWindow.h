@@ -1,10 +1,9 @@
 ﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-
 #include "ContentWidget.h"
-#include "views/business_components/system_tray_icon/SystemTrayIcon.h"
 #include "MicroUI/QcIconButton.h"
+#include "views/business_components/system_tray_icon/SystemTrayIcon.h"
 
 #include <QWidget>
 #include <QHBoxLayout>

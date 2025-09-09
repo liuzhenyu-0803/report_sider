@@ -11,9 +11,7 @@
 TemperatureGroup::TemperatureGroup(QWidget *parent)
     : UnitGroup(parent)
 {
-    // 初始化TemperatureGroupFrame
-    // 设置组标题
-    setGroupTitle("Temperature Group");
+    setGroupTitle(tr("TemperatureMeasuremeName"));
 }
 
 TemperatureGroup::~TemperatureGroup()

@@ -7,7 +7,7 @@ TextNoteDraggable::TextNoteDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/text_note.svg");
-    setText("Text Note");
+    setText(tr("TextNoteButton"));
 }
 
 TextNoteDraggable::~TextNoteDraggable()

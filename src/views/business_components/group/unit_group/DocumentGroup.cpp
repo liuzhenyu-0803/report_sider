@@ -24,7 +24,7 @@ DocumentGroup::DocumentGroup(QWidget *parent)
 {
     // 初始化DocumentGroup
     // 设置组标题
-    setGroupTitle("Document Group");
+    setGroupTitle(tr("DocumentName"));
 }
 
 DocumentGroup::~DocumentGroup()

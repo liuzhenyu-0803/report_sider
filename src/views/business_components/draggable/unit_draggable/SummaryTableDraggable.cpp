@@ -7,7 +7,7 @@ SummaryTableDraggable::SummaryTableDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/temperature_result.svg");
-    setText("Summary Table");
+    setText(tr("SummarizeTheTableButton"));
 }
 
 SummaryTableDraggable::~SummaryTableDraggable()

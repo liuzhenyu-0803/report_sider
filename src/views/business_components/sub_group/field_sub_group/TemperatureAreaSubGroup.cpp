@@ -15,7 +15,7 @@
 TemperatureAreaSubGroup::TemperatureAreaSubGroup(QWidget *parent)
     : FieldSubGroup(parent)
 {
-    setGroupTitle("Temperature Area");
+    setGroupTitle(tr("TemperatureMeasurem3Name"));
 }
 
 TemperatureAreaSubGroup::~TemperatureAreaSubGroup()
@@ -34,7 +34,7 @@ QList<QWidget*> TemperatureAreaSubGroup::getElements()
         auto hlayout_1 = new QHBoxLayout();
         hlayout_1->setContentsMargins(0, 0, 0, 0);
         hlayout_1->setSpacing(8);
-        ruleTypeSelector = new RuleTypeTitleSelector(this);
+        ruleTypeSelector = new RuleTypeTitleSelector(this, QList<int>{RuleTypeTitleSelector::G, RuleTypeTitleSelector::P, RuleTypeTitleSelector::L});
         ruleSequenceSpinBox = new RuleSequenceTitleSpinBox(this);
         ruleSequenceSpinBox->setEnabled(false);
         hlayout_1->addWidget(ruleTypeSelector);
@@ -42,7 +42,6 @@ QList<QWidget*> TemperatureAreaSubGroup::getElements()
         contentWidgetLayout->addLayout(hlayout_1);
 
         dragElement = new FieldDraggable(this);
-        dragElement->setCustomData(QJsonObject{{"text", "Drag Me"}});
         setDragElementText();
         dragElement->installEventFilter(this);
         contentWidgetLayout->addWidget(dragElement);
@@ -83,14 +82,7 @@ bool TemperatureAreaSubGroup::eventFilter(QObject *watched, QEvent *event)
 void TemperatureAreaSubGroup::setDragElementText()
 {
     QString text;
-    if (ruleTypeSelector->getCurrentType() == RuleTypeTitleSelector::G)
-    {
-        text = QString(tr("%1 area")).arg(ruleTypeSelector->getCurrentTypeText());
-    }
-    else
-    {
-        text = QString(tr("%1%2 area")).arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value());
-    }
+    text = QString(tr("%1AreaButton")).arg(ruleTypeSelector->getCurrentTypeDescription().arg(ruleSequenceSpinBox->value()));
     dragElement->setText(text);
 }
 
@@ -100,11 +92,11 @@ void TemperatureAreaSubGroup::setDragElementMimeData()
     auto mimeData = new QMimeData();
     if (ruleTypeSelector->getCurrentType() == RuleTypeTitleSelector::G)
     {
-        text = QString("{{rm%1.%2.ara}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeText());
+        text = QString("{{rm%1.%2.ara}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeProtocal());
     }
     else
     {
-        text = QString("{{rm%1.%2%3.ara}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeText()).arg(ruleSequenceSpinBox->value());
+        text = QString("{{rm%1.%2%3.ara}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeProtocal()).arg(ruleSequenceSpinBox->value());
     }
     mimeData->setText(text);
     dragElement->setMimeData(mimeData);

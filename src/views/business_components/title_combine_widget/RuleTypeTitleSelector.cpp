@@ -1,16 +1,24 @@
 ﻿#include "RuleTypeTitleSelector.h"
 
-RuleTypeTitleSelector::RuleTypeTitleSelector(QWidget *parent)
+RuleTypeTitleSelector::RuleTypeTitleSelector(QWidget *parent, QList<int> filterTypes)
     : TitleSelector(parent)
 {
-    setTitle("Rule Type");
-    addItem("Global", G);
-    addItem("Point Rule (P)", P);
-    addItem("Line (L)", L);
-    addItem("Broken Line (FL)", Fl);
-    addItem("Rectangle (R)", R);
-    addItem("Ellipse (Ep)", Ep);
-    addItem("Polygon (Po)", Po);
+    setTitle(tr("RuleTypeName"));
+    
+    if (!filterTypes.contains(G))
+        addItem(getTypeName(G), G);
+    if (!filterTypes.contains(P))
+        addItem(getTypeName(P), P);
+    if (!filterTypes.contains(L))
+        addItem(getTypeName(L), L);
+    if (!filterTypes.contains(Fl))
+        addItem(getTypeName(Fl), Fl);
+    if (!filterTypes.contains(R))
+        addItem(getTypeName(R), R);
+    if (!filterTypes.contains(Ep))
+        addItem(getTypeName(Ep), Ep);
+    if (!filterTypes.contains(Po))
+        addItem(getTypeName(Po), Po);
 }
 
 RuleTypeTitleSelector::~RuleTypeTitleSelector()
@@ -23,12 +31,39 @@ int RuleTypeTitleSelector::getCurrentType() const
     return currentData().toInt();
 }
 
-QString RuleTypeTitleSelector::getCurrentTypeText() const
+QString RuleTypeTitleSelector::getCurrentTypeProtocal() const
 {
-    return getTypeString(getCurrentType());
+    return getTypeProtocal(getCurrentType());
 }
 
-QString RuleTypeTitleSelector::getTypeString(int type) const
+QString RuleTypeTitleSelector::getTypeName(int type) const
+{
+    switch (type) {
+    case G:
+        return tr("Global(G)Button");
+    case P:
+        return tr("Point(P)Button");
+    case L:
+        return tr("Line(L)Button");
+    case Fl:
+        return tr("BrokenLine(Fl)Button");
+    case R:
+        return tr("Rectangle(R)Button");
+    case Ep:
+        return tr("Ellipse(Ep)Button");
+    case Po:
+        return tr("Polygon(Po)Button");
+    default:
+        return QString();
+    }
+}
+
+QString RuleTypeTitleSelector::getCurrentTypeDescription() const
+{
+    return getTypeDescription(getCurrentType());
+}
+
+QString RuleTypeTitleSelector::getTypeProtocal(int type) const
 {
     switch (type) {
     case G:
@@ -45,6 +80,28 @@ QString RuleTypeTitleSelector::getTypeString(int type) const
         return "Ep";
     case Po:
         return "Po";
+    default:
+        return QString();
+    }
+}
+
+QString RuleTypeTitleSelector::getTypeDescription(int type) const
+{
+    switch (type) {
+    case G:
+        return tr("Global(G)Button");
+    case P:
+        return tr("Point(P%1)Button");
+    case L:
+        return tr("Line(L%1)Button");
+    case Fl:
+        return tr("BrokenLine(Fl%1)Button");
+    case R:
+        return tr("Rectangle(R%1)Button");
+    case Ep:
+        return tr("Ellipse(Ep%1)Button");
+    case Po:
+        return tr("Polygon(Po%1)Button");
     default:
         return QString();
     }

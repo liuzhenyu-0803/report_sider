@@ -7,7 +7,7 @@
 NoteFieldGroup::NoteFieldGroup(QWidget *parent)
     : FieldGroup(parent)
 {
-    setGroupTitle(tr("note"));
+    setGroupTitle(tr("RemarkCellName"));
 }
 
 NoteFieldGroup::~NoteFieldGroup()

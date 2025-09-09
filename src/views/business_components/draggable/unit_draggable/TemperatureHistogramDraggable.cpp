@@ -12,11 +12,11 @@ TemperatureHistogramDraggable::TemperatureHistogramDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/temperature_histogram.svg");
-    setText("Temperature Histogram");
+    setText(tr("TemperatureHistograButton"));
 
     setIconButtonVisible(true);
 
-    setMoreMenuTitle(tr("select rule"));
+    setMoreMenuTitle(tr("SelectRuleName"));
 
     getMoreMenu()->setFixedWidth(232);
 
@@ -28,20 +28,25 @@ TemperatureHistogramDraggable::TemperatureHistogramDraggable(QWidget *parent)
     hlayout->setContentsMargins(0, 0, 0, 0);
     hlayout->setSpacing(6);
 
-    m_selector = new RuleTypeTitleSelector();
+    m_selector = new RuleTypeTitleSelector(this);
     hlayout->addWidget(m_selector);
 
     m_spinBox = new RuleSequenceTitleSpinBox();
+    m_spinBox->setEnabled(false);
     hlayout->addWidget(m_spinBox);
 
     qobject_cast<QBoxLayout *>(contentLayout)->addLayout(hlayout);
 
     m_lineEdit = new TitleLineEdit();
-    m_lineEdit->setTitle(tr("group 2-64"));
+    m_lineEdit->setTitle(tr("NumberOfGroups(2-Name"));
     m_lineEdit->setText("2");
     auto validator = new QIntValidator(2, 64, this);
     m_lineEdit->setValidator(validator);
     contentLayout->addWidget(m_lineEdit);
+
+    connect(m_selector, &RuleTypeTitleSelector::currentIndexChanged, this, [=]() {
+        m_spinBox->setEnabled(m_selector->getCurrentType() != RuleTypeTitleSelector::G);
+    });
 }
 
 TemperatureHistogramDraggable::~TemperatureHistogramDraggable()
@@ -57,11 +62,11 @@ void TemperatureHistogramDraggable::mousePressEvent(QMouseEvent *event)
     imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("histogram")));
     if (m_selector->getCurrentType() == RuleTypeTitleSelector::RuleType::G) 
     {
-         imageCreator.setMetaData(QString("ct:rm%1.his.%2.gp%3").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeText()).arg(m_lineEdit->getText()));
+         imageCreator.setMetaData(QString("ct:rm%1.his.%2.gp%3").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_lineEdit->getText()));
     }
     else 
     {
-         imageCreator.setMetaData(QString("ct:rm%1.his.%2%3.gp%4").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeText()).arg(m_spinBox->value()).arg(m_lineEdit->getText()));
+         imageCreator.setMetaData(QString("ct:rm%1.his.%2%3.gp%4").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_spinBox->value()).arg(m_lineEdit->getText()));
     }
 
     auto imagePath = qApp->applicationDirPath() + "/temperature_histogram.png";

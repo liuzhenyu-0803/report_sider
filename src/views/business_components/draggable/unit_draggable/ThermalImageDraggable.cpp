@@ -8,16 +8,16 @@ ThermalImageDraggable::ThermalImageDraggable(QWidget *parent)
     : UnitDraggable(parent)
 {
     setIcon(":/images/thermal_image.svg");
-    setText("Thermal Image");
+    setText(tr("HeatmapButton"));
 
     setIconButtonVisible(true);
 
-    setMoreMenuTitle(tr("Thermal Image Content"));
+    setMoreMenuTitle(tr("HeatmapDisplaysConName"));
 
     auto contentLayout = getMoreMenuContentLayout();
 
     m_checkBox = new MicroUI::QcCheckBox();
-    m_checkBox->setText(tr("pseudocolor"));
+    m_checkBox->setText(tr("PseudoColorBarName"));
     contentLayout->addWidget(m_checkBox);
 }
 

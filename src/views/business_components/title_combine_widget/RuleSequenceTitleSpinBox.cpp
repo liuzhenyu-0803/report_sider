@@ -3,7 +3,7 @@
 RuleSequenceTitleSpinBox::RuleSequenceTitleSpinBox(QWidget *parent)
     : TitleSpinBox(parent)
 {
-    setTitle("Rule Sequence");
+    setTitle(tr("RuleNumberName"));
 
     setRange(1, 100);
     setValue(1);

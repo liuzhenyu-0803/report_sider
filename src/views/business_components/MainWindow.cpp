@@ -16,11 +16,12 @@
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
 { 
-    setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
+    resize(360, 891);
+
+    setWindowFlags(Qt::FramelessWindowHint);
 
     setAttribute(Qt::WA_TranslucentBackground);
 
-    resize(800, 600);
     setMouseTracking(true);   
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
@@ -54,13 +55,14 @@ QWidget* MainWindow::createTitleBar()
     titleLayout->setContentsMargins(15, 0, 8, 0);
     titleLayout->setSpacing(12);
 
-    auto iconLabel = new MicroUI::QcLabel();
+    auto iconLabel = new QLabel();
     iconLabel->setFixedSize(24, 24);
-    iconLabel->SetIconPath(":/images/logo.png");
+    iconLabel->setPixmap(QPixmap(":/images/logo.png").scaled(iconLabel->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     titleLayout->addWidget(iconLabel);
 
     auto titleLabel = new MicroUI::QcLabel();
-    titleLabel->setText("report doc assistant");
+    titleLabel->setMinimumWidth(1);
+    titleLabel->setText(tr("ReportDocumentAssiName"));
     titleLabel->setType(MicroUI::QcLabel::LabelType::H2Title);
     titleLayout->addWidget(titleLabel);
     
@@ -93,8 +95,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     {
         ResizeDirection direction = getResizeDirection(event->pos());
         
-        if (direction != None) {
-            
+        if (direction != None) 
+        {   
             m_isResizing = true;
             m_resizeDirection = direction;
             m_dragPosition = event->globalPos();
@@ -280,11 +282,9 @@ void MainWindow::onTogglePinWindow()
     if (windowFlags() & Qt::WindowStaysOnTopHint)
     {
         setWindowFlag(Qt::WindowStaysOnTopHint, false);
-        if (m_pinBtn) m_pinBtn->setText("P");
     } else
     {
         setWindowFlag(Qt::WindowStaysOnTopHint, true);
-        if (m_pinBtn) m_pinBtn->setText("PIN");
     }
     show();
 }

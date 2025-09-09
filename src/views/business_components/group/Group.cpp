@@ -12,7 +12,7 @@
 #include <QWidget>
 
 Group::Group(QWidget *parent)
-    : QFrame(parent)
+    : MicroUI::QcFrame(parent)
 {
     setupUI();
 
@@ -27,9 +27,14 @@ Group::~Group()
 
 void Group::setupUI() 
 {
+    setBorderSides(MicroUI::QcFrame::BorderSide::BorderAll);
+    setBorderRadius(4);
+    setBorderColorParams("#E0E0E0");
+    setBackgroundColorParams("#FFFFFF");
+
     // 创建主布局
     m_mainLayout = new QVBoxLayout(this);
-    m_mainLayout->setContentsMargins(0, 0, 0, 0);
+    m_mainLayout->setContentsMargins(8, 8, 8, 8);
     m_mainLayout->setSpacing(6);
 
     // 创建标题栏容器
@@ -46,7 +51,7 @@ void Group::setupUI()
     font.setPixelSize(14);
     font.setBold(true);
     m_groupLabel->setFont(font);
-    m_groupLabel->setTextColorParams("#000000, 0.7");
+    m_groupLabel->setTextColorParams("#000000, 0.9");
     m_groupLabel->setText("Group");
     
     // 创建切换按钮
