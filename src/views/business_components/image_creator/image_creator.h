@@ -13,6 +13,7 @@ public:
 
     void setIconPath(const QString &path);
     void setText(const QString &text);
+    void setBorderColorParams(const QString &color);
     void setBackgroundColorParams(const QString &colorParams);
     void setMetaData(const QString &metaData);
     void createImage(const QString &outputPath);
@@ -20,6 +21,7 @@ public:
 private:
     QString m_iconPath;
     QString m_text;
+    QString m_borderColorParams;
     QString m_backgroundColorParams;
     QString m_metaData;
 };

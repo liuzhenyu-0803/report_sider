@@ -3,45 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>总结页</title>
     <style>
         table {
             border-collapse: collapse;
             width: 100%;
-            border: 1px solid #000;
+            border: 1px solid #DDDDDD;
         }
 
-        th, td {
-            border: 1px solid #000;
+        td {
+            border: 1px solid #DDDDDD;
             padding: 8px;
             text-align: left;
         }
-
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-            text-align: center;
+        
+        .field {
+            color: #0A0A0A; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+        
+        .value {
+            color: #ACACAC; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+		      
+        .footer {
+            font-size: 12px;
+            color: #ACACAC; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            text-align: left;
+            padding: 8px;
         }
     </style>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>序号</th>
-                <th>图片名称</th>
-                <th>拍摄时间</th>
-                <th>故障评级</th>
-            </tr>
-        </thead>
+    <table> 
         <tbody>
             <tr>
-                <td>{{@@v pag.table.seq}}</td>
-                <td>{{@@v pag.rm*.imgn}}</td>
-                <td>{{@@v pag.main.cap}}</td>
-                <td>{{@@v pag.main.tgt ​​|​​in1}}</td>
+                <td class="field">%1</td>
+                <td class="field">%2</td>
+                <td class="field">%3</td>
+                <td class="field">%4</td>
+            </tr>
+            <tr>
+                <td class="value">{{@@v pag.table.seq}}</td>
+                <td class="value">{{@@v pag.rm*.imgn}}</td>
+                <td class="value">{{@@v pag.main.cap}}</td>
+                <td class="value">{{@@v pag.main.tgt ​​|​​in1}}</td>
             </tr>
         </tbody>
+		<tfoot>	
+            <tr>
+                <td colspan="4" class="footer">${%5}</td>
+            </tr>
+		</tfoot>
     </table>
 </body>
 </html>

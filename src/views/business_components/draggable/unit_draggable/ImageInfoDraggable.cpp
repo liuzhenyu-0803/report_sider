@@ -27,6 +27,8 @@ ImageInfoDraggable::~ImageInfoDraggable()
 void ImageInfoDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    mimeData->setHtml(MicroUI::GetFileContent(":/html/image_property.html").arg(Model::getInstance()->getThermalImageIndex()).arg(m_checkBox->isChecked() ? ".ext" : ""));
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/image_property.html").arg(Model::getInstance()->getThermalImageIndex()).arg(m_checkBox->isChecked() ? ".ext" : "").arg("ImageInformationName").arg("ImageNameName").arg("DetectorResolutionName").arg("ImageSizeName").arg("ShootingTimeName").arg("ImagePathName"));
     setMimeData(mimeData);
+
+    UnitDraggable::mousePressEvent(event);
 }

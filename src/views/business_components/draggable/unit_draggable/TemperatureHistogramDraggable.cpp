@@ -57,9 +57,10 @@ TemperatureHistogramDraggable::~TemperatureHistogramDraggable()
 void TemperatureHistogramDraggable::mousePressEvent(QMouseEvent *event)
 {
     ImageCreator imageCreator;
-    imageCreator.setBackgroundColorParams("#BFD990");
+    imageCreator.setBorderColorParams("#BFD990");
+    imageCreator.setBackgroundColorParams("#EFF9DC");
     imageCreator.setIconPath(":/images/temperature_histogram.svg");
-    imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("histogram")));
+    imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("HistogramName")));
     if (m_selector->getCurrentType() == RuleTypeTitleSelector::RuleType::G) 
     {
          imageCreator.setMetaData(QString("ct:rm%1.his.%2.gp%3").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_lineEdit->getText()));

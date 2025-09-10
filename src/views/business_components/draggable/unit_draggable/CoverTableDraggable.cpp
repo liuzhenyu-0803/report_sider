@@ -18,6 +18,8 @@ CoverTableDraggable::~CoverTableDraggable()
 void CoverTableDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    mimeData->setHtml(MicroUI::GetFileContent(":/html/cover_page.html").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/cover_page.html").arg(tr("CoverFormName")).arg(tr("CustomerName")).arg(tr("AddressName")).arg(tr("DateName")).arg(tr("InspectorName")));
     setMimeData(mimeData);
+
+    UnitDraggable::mousePressEvent(event);
 }

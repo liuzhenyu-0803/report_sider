@@ -37,16 +37,17 @@ VisibleLightDraggable::~VisibleLightDraggable()
 void VisibleLightDraggable::mousePressEvent(QMouseEvent *event)
 {
     ImageCreator imageCreator;
-    imageCreator.setBackgroundColorParams("#B5D4FF");
+    imageCreator.setBorderColorParams("#B5D4FF");
+    imageCreator.setBackgroundColorParams("#E7F1FF");
     imageCreator.setIconPath(":/images/visible_light.svg");
     if (m_radio1Button->isChecked()) 
     {
-        imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("align visible light")));
+        imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("VisibleLightName")));
         imageCreator.setMetaData(QString("img:rm%1.val").arg(Model::getInstance()->getThermalImageIndex()));
     } 
     else 
     {
-        imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("panoramic visible light")));
+        imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("VisibleLightName")));
         imageCreator.setMetaData(QString("img:rm%1.vfw").arg(Model::getInstance()->getThermalImageIndex()));
     }
 

@@ -29,9 +29,10 @@ ThermalImageDraggable::~ThermalImageDraggable()
 void ThermalImageDraggable::mousePressEvent(QMouseEvent *event)
 {
     ImageCreator imageCreator;
+    imageCreator.setBorderColorParams("#FFD0C6");
     imageCreator.setBackgroundColorParams("#FFF1EE");
     imageCreator.setIconPath(":/images/thermal_image.svg");
-    imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("thermal image")));
+    imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("HeatmapName")));
     if (m_checkBox->isChecked()) 
     {
         imageCreator.setMetaData(QString("img:rm%1.pal").arg(Model::getInstance()->getThermalImageIndex()));

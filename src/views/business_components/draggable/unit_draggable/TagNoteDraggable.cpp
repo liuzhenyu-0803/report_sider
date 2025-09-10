@@ -42,8 +42,6 @@ TagNoteDraggable::TagNoteDraggable(QWidget *parent)
         
         m_radioButtons.append(radioButton);
         contentLayout->addWidget(radioButton);
-        
-        qDebug() << "Created radio button for template:" << fileName;
     }
     
     // 默认选中第一个RadioButton
@@ -68,7 +66,6 @@ void TagNoteDraggable::mousePressEvent(QMouseEvent *event)
     }
     
     if (!hasValidTemplate) {
-        qDebug() << "No valid templates available, skipping MimeData setting";
         // 调用父类的mousePressEvent但不设置MimeData
         UnitDraggable::mousePressEvent(event);
         return;
@@ -90,7 +87,7 @@ void TagNoteDraggable::mousePressEvent(QMouseEvent *event)
             QString tableRows = generateTableRows(keys);
             
             QMimeData *mimeData = new QMimeData();
-            mimeData->setHtml(MicroUI::GetFileContent(":/html/tag_note.html").arg(tableRows));
+            mimeData->setHtml(MicroUI::GetFileContent(":/html/tag_note.html").arg(tableRows).arg("LabelNotesName"));
             setMimeData(mimeData);
             
             qDebug() << "Generated HTML table for template:" << m_templateData[selectedIndex].first;

@@ -1,42 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 8px;
-  text-align: left;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地理位置</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #DDDDDD;
+        }
+
+        th, td {
+            border: 1px solid #DDDDDD;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .header {
+            background-color: #f4f3f3; /* 灰色表头 */
+            text-align: left; /* 左对齐 */
+            font-weight: bold;
+        }
+        
+        .field {
+            color: #0A0A0A; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+        
+        .value {
+            color: #ACACAC; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+    </style>
 </head>
 <body>
 
-<h2>测温参数表</h2>
-
 <table>
-  <tr>
-    <td>图像:发射率</td>
-    <td>{{rm%1.G.ems}}</td>
-  </tr>
-  <tr>
-    <td>图像:反射温度</td>
-    <td>{{rm%1.G.dstr}}</td>
-  </tr>
-  <tr>
-    <td>图像:距离</td>
-    <td>{{rm%1.G.rft}}</td>
-  </tr>
-  <tr>
-    <td>图像:环境温度</td>
-    <td>{{rm%1.G.atm}}</td>
-  </tr>
-  <tr>
-    <td>图像:湿度</td>
-    <td>{{rm%1.G.hum}}</td>
-  </tr>
+	<thead>
+		<tr>
+			<th class="header" colspan="2">%2</th>
+		</tr>
+	</thead>
+	<tbody>
+	  <tr>
+		<td class="field">%3</td>
+		<td class="value">{{rm%1.G.ems}}</td>
+	  </tr>
+	  <tr>
+		<td class="field">%4</td>
+		<td class="value">{{rm%1.G.dstr}}</td>
+	  </tr>
+	  <tr>
+		<td class="field">%5</td>
+		<td class="value">{{rm%1.G.rft}}</td>
+	  </tr>
+	  <tr>
+		<td class="field">%6</td>
+		<td class="value">{{rm%1.G.atm}}</td>
+	  </tr>
+	  <tr>
+		<td class="field">%7</td>
+		<td class="value">{{rm%1.G.hum}}</td>
+	  </tr>
+	</tbody>
 </table>
 
 </body>

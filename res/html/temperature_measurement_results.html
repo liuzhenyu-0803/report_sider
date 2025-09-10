@@ -8,11 +8,11 @@
         table {
             border-collapse: collapse;
             width: 100%;
-            border: 1px solid #000;
+            border: 1px solid #DDDDDD;
         }
 
         th, td {
-            border: 1px solid #000;
+            border: 1px solid #DDDDDD;
             padding: 8px;
             text-align: left;
         }
@@ -22,43 +22,61 @@
             font-weight: bold;
             text-align: center;
         }
+        
+        .header {
+            background-color: #f4f3f3; /* 灰色表头 */
+            text-align: left; /* 左对齐 */
+            font-weight: bold;
+        }
+        
+        .field {
+            color: #0A0A0A; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+        
+        .value {
+            color: #ACACAC; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
     </style>
 </head>
 <body>
     <table>
         <thead>
             <tr>
-                <th colspan="2">测温结果表</th>
+                <th class="header" colspan="2">%2</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>图像: 最高温</td>
-                <td>{{rm%1.G.maxT}}</td>
+                <td class="field">%3</td>
+                <td class="value">{{rm%1.G.maxT}}</td>
             </tr>
             <tr>
-                <td>图像: 最低温</td>
-                <td>{{rm%1.G.minT}}</td>
+                <td class="field">%4</td>
+                <td class="value">{{rm%1.G.minT}}</td>
             </tr>
             <tr>
-                <td>图像: 平均温</td>
-                <td>{{rm%1.G.avgT}}</td>
+                <td class="field">%5</td>
+                <td class="value">{{rm%1.G.avgT}}</td>
             </tr>
             <tr>
-                <td>图像: 中心温</td>
-                <td>{{rm%1.G.cenT}}</td>
+                <td class="field">%6</td>
+                <td class="value">{{rm%1.G.cenT}}</td>
             </tr>
             <tr>
-                <td>R1: 最高温</td>
-                <td>{{rm%1.R1.maxT}}</td>
+                <td class="field">%7</td>
+                <td class="value">{{rm%1.R1.maxT}}</td>
             </tr>
             <tr>
-                <td>R1: 最低温</td>
-                <td>{{rm%1.R1.minT}}</td>
+                <td class="field">%8</td>
+                <td class="value">{{rm%1.R1.minT}}</td>
             </tr>
             <tr>
-                <td>R1: 平均温</td>
-                <td>{{rm%1.R1.avgT}}</td>
+                <td class="field">%9</td>
+                <td class="value">{{rm%1.R1.avgT}}</td>
             </tr>
         </tbody>
     </table>

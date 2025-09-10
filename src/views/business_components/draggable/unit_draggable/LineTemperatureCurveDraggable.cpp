@@ -47,9 +47,10 @@ LineTemperatureCurveDraggable::~LineTemperatureCurveDraggable()
 void LineTemperatureCurveDraggable::mousePressEvent(QMouseEvent *event)
 {
     ImageCreator imageCreator;
-    imageCreator.setBackgroundColorParams("#D2B3FF");
+    imageCreator.setBorderColorParams("#D2B3FF");
+    imageCreator.setBackgroundColorParams("#F4ECFF");
     imageCreator.setIconPath(":/images/line_temperature_curve.svg");
-    imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("line temperature")));
+    imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("LineTemperatureChaName")));
     if (m_selector->getCurrentType() == RuleTypeTitleSelector::RuleType::G) 
     {
         imageCreator.setMetaData(QString("ct:rm%1.lcr.%2").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()));

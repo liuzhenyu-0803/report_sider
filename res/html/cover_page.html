@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>封面页</title>
     <style>
         table {
             border-collapse: collapse;
             width: 100%;
-            border: 1px solid #000;
+            border: 1px solid #DDDDDD;
         }
 
         th, td {
-            border: 1px solid #000;
+            border: 1px solid #DDDDDD;
             padding: 8px;
             text-align: left;
         }
@@ -22,26 +21,38 @@
             font-weight: bold;
             text-align: center;
         }
+        
+        .field {
+            color: #0A0A0A; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+        
+        .value {
+            color: #ACACAC; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
     </style>
 </head>
 <body>
     <table>
         <tbody>
             <tr>
-                <td>客户</td>
-                <td>{{doc.cli}}</td>
+                <td class="field">%2</td>
+                <td class="value">{{doc.cli}}</td>
             </tr>
             <tr>
-                <td>地址</td>
-                <td>{{doc.loc}}</td>
+                <td class="field">%3</td>
+                <td class="value">{{doc.loc}}</td>
             </tr>
             <tr>
-                <td>日期</td>
-                <td>{{doc.dat}}</td>
+                <td class="field">%4</td>
+                <td class="value">{{doc.dat}}</td>
             </tr>
             <tr>
-                <td>检查者</td>
-                <td>{{doc.ins}}</td>
+                <td class="field">%5</td>
+                <td class="value">{{doc.ins}}</td>
             </tr>
         </tbody>
     </table>

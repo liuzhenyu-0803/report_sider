@@ -48,6 +48,15 @@ void Draggable::mousePressEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton) 
     {
         m_dragStartPos = event->pos();
+
+        if (m_customMimeData)
+        {
+            auto mimeData = new QMimeData();
+            mimeData->setUrls(m_customMimeData->urls());
+            mimeData->setHtml(m_customMimeData->html());
+            mimeData->setText(m_customMimeData->text());
+            qApp->clipboard()->setMimeData(mimeData);
+        }
     }
 
     // TOAST_MANAGER->showToast(tr("CopySuccessful"), MicroUI::QcToast::Type::Success, window(), false);

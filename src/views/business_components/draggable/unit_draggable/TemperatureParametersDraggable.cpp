@@ -20,6 +20,8 @@ TemperatureParametersDraggable::~TemperatureParametersDraggable()
 void TemperatureParametersDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    mimeData->setHtml(MicroUI::GetFileContent(":/html/temperature_measurement_parameters.html").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/temperature_measurement_parameters.html").arg(Model::getInstance()->getThermalImageIndex()).arg("TemperatureMeasurem4Name").arg("ImageAmbientTemperaName").arg("ImageHumidityName").arg("ImageEmissivityName").arg("ImageDistanceName").arg("ImageReflectedTempeName"));
     setMimeData(mimeData);
+
+    UnitDraggable::mousePressEvent(event);
 }

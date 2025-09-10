@@ -17,6 +17,8 @@ TextNoteDraggable::~TextNoteDraggable()
 void TextNoteDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    mimeData->setHtml(MicroUI::GetFileContent(":/html/text_note.html").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/text_note.html").arg(Model::getInstance()->getThermalImageIndex()).arg("TextNoteName"));
     setMimeData(mimeData);
+
+    UnitDraggable::mousePressEvent(event);
 }

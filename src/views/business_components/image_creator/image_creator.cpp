@@ -36,6 +36,11 @@ void ImageCreator::setText(const QString &text)
     m_text = text;
 }
 
+void ImageCreator::setBorderColorParams(const QString &color)
+{
+    m_borderColorParams = color;
+}
+
 void ImageCreator::setBackgroundColorParams(const QString &colorParams)
 {
     m_backgroundColorParams = colorParams;
@@ -44,15 +49,15 @@ void ImageCreator::setBackgroundColorParams(const QString &colorParams)
 void ImageCreator::createImage(const QString &outputPath)
 {
     // 创建QImage 然后绘制一个圆角矩形 左上角绘制m_iconPath图标 然后是文字 最后保存
-    QImage image(200, 100, QImage::Format_ARGB32);
+    QImage image(260, 200, QImage::Format_ARGB32);
     image.fill(Qt::transparent);
 
     QPainter painter(&image);
     painter.setRenderHint(QPainter::Antialiasing);
 
     painter.save();
+    painter.setPen(GET_COLOR(m_borderColorParams));
     painter.setBrush(GET_COLOR(m_backgroundColorParams));
-    painter.setPen(Qt::NoPen);
     painter.drawRoundedRect(0, 0, image.width(), image.height(), 10, 10);
     painter.restore();
 

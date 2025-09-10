@@ -8,11 +8,11 @@
         table {
             border-collapse: collapse;
             width: 100%;
-            border: 1px solid #000;
+            border: 1px solid #DDDDDD;
         }
 
         th, td {
-            border: 1px solid #000;
+            border: 1px solid #DDDDDD;
             padding: 8px;
             text-align: left;
         }
@@ -22,35 +22,53 @@
             font-weight: bold;
             text-align: center;
         }
+        
+        .header {
+            background-color: #f4f3f3; /* 灰色表头 */
+            text-align: left; /* 左对齐 */
+            font-weight: bold;
+        }
+        
+        .field {
+            color: #0A0A0A; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+        
+        .value {
+            color: #ACACAC; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
     </style>
 </head>
 <body>
     <table>
         <thead>
             <tr>
-                <th colspan="2">图片信息</th>
+                <th class="header" colspan="2">%3</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>图片名称</td>
-                <td>{{rm%1.imgn%2}}</td>
+                <td class="field">%4</td>
+                <td class="value">{{rm%1.imgn%2}}</td>
             </tr>
             <tr>
-                <td>探测器分辨率</td>
-                <td>{{rm%1.IRr}}</td>
+                <td class="field">%5</td>
+                <td class="value">{{rm%1.IRr}}</td>
             </tr>
             <tr>
-                <td>图片大小</td>
-                <td>{{rm%1.psz}}</td>
+                <td class="field">%6</td>
+                <td class="value">{{rm%1.psz}}</td>
             </tr>
             <tr>
-                <td>拍摄时间</td>
-                <td>{{rm%1.cap}}</td>
+                <td class="field">%7</td>
+                <td class="value">{{rm%1.cap}}</td>
             </tr>
             <tr>
-                <td>图片路径</td>
-                <td>{{rm%1.fpt}}</td>
+                <td class="field">%8</td>
+                <td class="value">{{rm%1.fpt}}</td>
             </tr>
         </tbody>
     </table>

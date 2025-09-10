@@ -8,11 +8,11 @@
         table {
             border-collapse: collapse;
             width: 100%;
-            border: 1px solid #000;
+            border: 1px solid #DDDDDD;
         }
 
         th, td {
-            border: 1px solid #000;
+            border: 1px solid #DDDDDD;
             padding: 8px;
             text-align: left;
         }
@@ -22,27 +22,63 @@
             font-weight: bold;
             text-align: center;
         }
+        
+        .header {
+            background-color: #f4f3f3; /* 灰色表头 */
+            text-align: left; /* 左对齐 */
+            font-weight: bold;
+        }
+
+        .field_nor {
+            color: green; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+
+        .field_ntc {
+            color: blue; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+
+        .field_rpl {
+            color: orange; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+
+        .field_rpi {
+            color: red; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
+        
+        .value {
+            color: #ACACAC; /* 字体颜色 */
+            font-weight: 500; /* 字重 */
+            font-size: 12px; /* 字号 */
+        }
     </style>
 </head>
 <body>
     <table>
         <thead>
             <tr>
-                <th colspan="2">判断标准（基于温差）</th>
+                <th class="header" colspan="4">%2</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>正常</td>
-                <td>{{rm%1.nor}}</td>
+                <td class="field_nor">%3</td>
+                <td class="field_ntc">%4</td>
+                <td class="field_rpl">%5</td>
+                <td class="field_rpi">%6</td>
             </tr>
             <tr>
-                <td>稍后维修</td>
-                <td>{{rm%1.ntc}}</td>
-            </tr>
-            <tr>
-                <td>立即维修</td>
-                <td>{{rm%1.rpl}}</td>
+                <td class="value">{{rm%1.nor}}</td>
+                <td class="value">{{rm%1.ntc}}</td>
+                <td class="value">{{rm%1.rpl}}</td>
+                <td class="value">{{rm%1.rpi}}</td>
             </tr>
         </tbody>
     </table>

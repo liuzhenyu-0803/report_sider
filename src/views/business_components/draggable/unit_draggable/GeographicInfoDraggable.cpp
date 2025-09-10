@@ -16,8 +16,10 @@ GeographicInfoDraggable::~GeographicInfoDraggable()
 }
 
 void GeographicInfoDraggable::mousePressEvent(QMouseEvent *event)
-{
+{    
     QMimeData *mimeData = new QMimeData();
-    mimeData->setHtml(MicroUI::GetFileContent(":/html/geographic_info.html").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/geographic_info.html").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("GeographicalLocatioName")).arg(tr("ElectronicCompassName")));
     setMimeData(mimeData);
+
+    UnitDraggable::mousePressEvent(event);
 }

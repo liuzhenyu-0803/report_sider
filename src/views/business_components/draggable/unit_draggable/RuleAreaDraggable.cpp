@@ -20,6 +20,8 @@ RuleAreaDraggable::~RuleAreaDraggable()
 void RuleAreaDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    mimeData->setHtml(MicroUI::GetFileContent("://html/rule_area.html").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setHtml(MicroUI::GetFileContent("://html/rule_area.html").arg(Model::getInstance()->getThermalImageIndex()).arg("RegulationAreaTablName").arg("R1AreaName").arg("Ep1AreaName").arg("Po1AreaName"));
     setMimeData(mimeData);
+
+    UnitDraggable::mousePressEvent(event);
 }
