@@ -39,7 +39,7 @@ TemperatureHistogramDraggable::TemperatureHistogramDraggable(QWidget *parent)
 
     m_lineEdit = new TitleLineEdit();
     m_lineEdit->setTitle(tr("NumberOfGroups(2-Name"));
-    m_lineEdit->setText("2");
+    m_lineEdit->setText("25");
     auto validator = new QIntValidator(2, 64, this);
     m_lineEdit->setValidator(validator);
     contentLayout->addWidget(m_lineEdit);
@@ -63,11 +63,11 @@ void TemperatureHistogramDraggable::mousePressEvent(QMouseEvent *event)
     imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("HistogramName")));
     if (m_selector->getCurrentType() == RuleTypeTitleSelector::RuleType::G) 
     {
-         imageCreator.setMetaData(QString("ct:rm%1.his.%2.gp%3").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_lineEdit->getText()));
+         imageCreator.setMetaData(QString("{{ct:rm%1.his.%2.gp%3}}").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_lineEdit->getText()));
     }
     else 
     {
-         imageCreator.setMetaData(QString("ct:rm%1.his.%2%3.gp%4").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_spinBox->value()).arg(m_lineEdit->getText()));
+         imageCreator.setMetaData(QString("{{ct:rm%1.his.%2%3.gp%4}}").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_spinBox->value()).arg(m_lineEdit->getText()));
     }
 
     auto imagePath = qApp->applicationDirPath() + "/temperature_histogram.png";

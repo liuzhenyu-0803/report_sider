@@ -26,18 +26,13 @@ LineTemperatureCurveDraggable::LineTemperatureCurveDraggable(QWidget *parent)
     hlayout->setContentsMargins(0, 0, 0, 0);
     hlayout->setSpacing(6);
 
-    m_selector = new RuleTypeTitleSelector(this);
+    m_selector = new RuleTypeTitleSelector(this, {RuleTypeTitleSelector::G, RuleTypeTitleSelector::P, RuleTypeTitleSelector::R, RuleTypeTitleSelector::Ep, RuleTypeTitleSelector::Po});
     hlayout->addWidget(m_selector);
 
     m_spinBox = new RuleSequenceTitleSpinBox();
-    m_spinBox->setEnabled(false);
     hlayout->addWidget(m_spinBox);
 
     qobject_cast<QBoxLayout *>(contentLayout)->addLayout(hlayout);
-
-    connect(m_selector, &RuleTypeTitleSelector::currentIndexChanged, this, [=]() {
-        m_spinBox->setEnabled(m_selector->getCurrentType() != RuleTypeTitleSelector::G);
-    });
 }
 
 LineTemperatureCurveDraggable::~LineTemperatureCurveDraggable()
@@ -53,11 +48,11 @@ void LineTemperatureCurveDraggable::mousePressEvent(QMouseEvent *event)
     imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("LineTemperatureChaName")));
     if (m_selector->getCurrentType() == RuleTypeTitleSelector::RuleType::G) 
     {
-        imageCreator.setMetaData(QString("ct:rm%1.lcr.%2").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()));
+        imageCreator.setMetaData(QString("{{ct:rm%1.lcr.%2}}").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()));
     }
     else 
     {
-         imageCreator.setMetaData(QString("ct:rm%1.lcr.%2%3").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_spinBox->value()));
+         imageCreator.setMetaData(QString("{{ct:rm%1.lcr.%2%3}}").arg(Model::getInstance()->getThermalImageIndex()).arg(m_selector->getCurrentTypeProtocal()).arg(m_spinBox->value()));
     }
 
     auto imagePath = qApp->applicationDirPath() + "/temperature_line_temperature_curve.png";

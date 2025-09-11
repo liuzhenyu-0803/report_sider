@@ -35,11 +35,11 @@ void ThermalImageDraggable::mousePressEvent(QMouseEvent *event)
     imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("HeatmapName")));
     if (m_checkBox->isChecked()) 
     {
-        imageCreator.setMetaData(QString("img:rm%1.pal").arg(Model::getInstance()->getThermalImageIndex()));
+        imageCreator.setMetaData(QString("{{img:rm%1.pal}}").arg(Model::getInstance()->getThermalImageIndex()));
     } 
     else 
     {
-        imageCreator.setMetaData(QString("img:rm%1").arg(Model::getInstance()->getThermalImageIndex()));
+        imageCreator.setMetaData(QString("{{img:rm%1}}").arg(Model::getInstance()->getThermalImageIndex()));
     }
 
     auto imagePath = qApp->applicationDirPath() + "/thermal_image.png";

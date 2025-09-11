@@ -104,16 +104,16 @@ void TemperatureParametersSubGroup::setDragElementMimeData()
     {
         if (ruleTypeSelector->getCurrentType() == RuleTypeTitleSelector::G)
         {
-            text = QString("n:rm%1.G.%2").arg(Model::getInstance()->getThermalImageIndex()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
+            text = QString("{{n:rm%1.G.%2}}").arg(Model::getInstance()->getThermalImageIndex()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
         }
         else
         {
-            text = QString("n:rm%1.%2%3.%4").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeProtocal()).arg(ruleSequenceSpinBox->value()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
+            text = QString("{{n:rm%1.%2%3.%4}}").arg(Model::getInstance()->getThermalImageIndex()).arg(ruleTypeSelector->getCurrentTypeProtocal()).arg(ruleSequenceSpinBox->value()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
         }
     }
     else
     {
-        text = QString("n:rm%1.%2").arg(Model::getInstance()->getThermalImageIndex()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
+        text = QString("{{n:rm%1.%2}}").arg(Model::getInstance()->getThermalImageIndex()).arg(parameterFeatureSelector->getCurrentTypeProtocal());
     }
     mimeData->setText(text);
     dragElement->setMimeData(mimeData);

@@ -17,7 +17,7 @@ SummaryTableDraggable::~SummaryTableDraggable()
 void SummaryTableDraggable::mousePressEvent(QMouseEvent *event)
 {
     QMimeData *mimeData = new QMimeData();
-    mimeData->setHtml(MicroUI::GetFileContent(":/html/summary_page.html").arg(tr("OrderNumberName")).arg(tr("ImageNameName")).arg(tr("ShootingTimeButton")).arg(tr("ShootingTimeButton")).arg(tr("SummaryTablesWillName")));
+    mimeData->setHtml(MicroUI::GetFileContent(":/html/summary_page.html").arg(tr("OrderNumberName")).arg(tr("ImageNameName")).arg(tr("ShootingTimeName")).arg(tr("FaultRating1Name")).arg(tr("TipsTheFollowingDaMsg")));
     setMimeData(mimeData);
 
     UnitDraggable::mousePressEvent(event);

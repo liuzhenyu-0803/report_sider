@@ -61,15 +61,21 @@ void ImageCreator::createImage(const QString &outputPath)
     painter.drawRoundedRect(0, 0, image.width(), image.height(), 10, 10);
     painter.restore();
 
-    auto imageRect = QRect(10, 10, 24, 24);
+    auto iconRect = QRect(10, 10, 24, 24);
     painter.save();
     painter.setPen(Qt::NoPen);
-    painter.drawPixmap(imageRect, QPixmap(m_iconPath));
+    painter.drawPixmap(iconRect, QPixmap(m_iconPath));
     painter.restore();
 
     painter.save();
-    painter.drawText(QRect(imageRect.right() + 10, imageRect.top(), width(), imageRect.height()), Qt::AlignLeft | Qt::AlignVCenter, m_text);
+    painter.drawText(QRect(iconRect.right() + 10, iconRect.top(), width(), iconRect.height()), Qt::AlignLeft | Qt::AlignVCenter, m_text);
     qDebug() << m_text;
+    painter.restore();
+
+    painter.save();
+    painter.setPen(GET_COLOR("#ACACAC"));
+    painter.drawText(QRect(iconRect.left(), iconRect.bottom() + 5, width(), iconRect.height()), Qt::AlignLeft | Qt::AlignVCenter, m_metaData);
+    qDebug() << m_metaData;
     painter.restore();
 
     image.save(outputPath);

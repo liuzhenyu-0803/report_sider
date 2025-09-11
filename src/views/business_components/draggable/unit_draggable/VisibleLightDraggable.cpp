@@ -43,12 +43,12 @@ void VisibleLightDraggable::mousePressEvent(QMouseEvent *event)
     if (m_radio1Button->isChecked()) 
     {
         imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("VisibleLightName")));
-        imageCreator.setMetaData(QString("img:rm%1.val").arg(Model::getInstance()->getThermalImageIndex()));
+        imageCreator.setMetaData(QString("{{img:rm%1.val}}").arg(Model::getInstance()->getThermalImageIndex()));
     } 
     else 
     {
         imageCreator.setText(QString("%1-%2").arg(Model::getInstance()->getThermalImageIndex()).arg(tr("VisibleLightName")));
-        imageCreator.setMetaData(QString("img:rm%1.vfw").arg(Model::getInstance()->getThermalImageIndex()));
+        imageCreator.setMetaData(QString("{{img:rm%1.vfw}}").arg(Model::getInstance()->getThermalImageIndex()));
     }
 
     auto imagePath = qApp->applicationDirPath() + "/visible_light.png";

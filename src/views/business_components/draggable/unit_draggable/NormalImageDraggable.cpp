@@ -22,7 +22,7 @@ void NormalImageDraggable::mousePressEvent(QMouseEvent *event)
     imageCreator.setBackgroundColorParams("#FFFAEA");
     imageCreator.setIconPath(":/images/normal_image.svg");
     imageCreator.setText(tr("NormalGraphName"));
-    imageCreator.setMetaData(QString("img:oim1"));
+    imageCreator.setMetaData(QString("{{img:oim1}}"));
 
     auto imagePath = qApp->applicationDirPath() + "/normal_image.png";
     imageCreator.createImage(imagePath);

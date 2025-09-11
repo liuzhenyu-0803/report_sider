@@ -115,11 +115,11 @@ void ImageInfoSubGroup::setDragElement1MimeData()
     auto mimeData = new QMimeData();
     if (radioButton1->isChecked())
     {
-        mimeData->setText(QString("rm%1.imgn.ext").arg(Model::getInstance()->getThermalImageIndex()));
+        mimeData->setText(QString("{{rm%1.imgn.ext}}").arg(Model::getInstance()->getThermalImageIndex()));
     }
     else
     {
-        mimeData->setText(QString("rm%1.imgn").arg(Model::getInstance()->getThermalImageIndex()));
+        mimeData->setText(QString("{{rm%1.imgn}}").arg(Model::getInstance()->getThermalImageIndex()));
     }
     dragElement1->setMimeData(mimeData);
 }
@@ -127,27 +127,27 @@ void ImageInfoSubGroup::setDragElement1MimeData()
 void ImageInfoSubGroup::setDragElement2MimeData()
 {
     auto mimeData = new QMimeData();
-    mimeData->setText(QString("rm%1.IRr").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setText(QString("{{rm%1.IRr}}").arg(Model::getInstance()->getThermalImageIndex()));
     dragElement2->setMimeData(mimeData);
 }
 
 void ImageInfoSubGroup::setDragElement3MimeData()
 {
     auto mimeData = new QMimeData();
-    mimeData->setText(QString("rm%1.psz").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setText(QString("{{rm%1.psz}}").arg(Model::getInstance()->getThermalImageIndex()));
     dragElement3->setMimeData(mimeData);
 }
 
 void ImageInfoSubGroup::setDragElement4MimeData()
 {
     auto mimeData = new QMimeData();
-    mimeData->setText(QString("rm%1.cap").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setText(QString("{{rm%1.cap}}").arg(Model::getInstance()->getThermalImageIndex()));
     dragElement4->setMimeData(mimeData);
 }
 
 void ImageInfoSubGroup::setDragElement5MimeData()
 {
     auto mimeData = new QMimeData();
-    mimeData->setText(QString("rm%1.fpt").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setText(QString("{{rm%1.fpt}}").arg(Model::getInstance()->getThermalImageIndex()));
     dragElement5->setMimeData(mimeData);
 }

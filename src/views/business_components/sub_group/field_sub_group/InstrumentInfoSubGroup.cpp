@@ -81,20 +81,20 @@ void InstrumentInfoSubGroup::setDragElement3Text()
 void InstrumentInfoSubGroup::setDragElement1MimeData()
 {
     auto mimeData = new QMimeData();
-    mimeData->setText(QString("rm%1.dev").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setText(QString("{{rm%1.dev}}").arg(Model::getInstance()->getThermalImageIndex()));
     dragElement1->setMimeData(mimeData);
 }
 
 void InstrumentInfoSubGroup::setDragElement2MimeData()
 {
     auto mimeData = new QMimeData();
-    mimeData->setText(QString("rm%1.sno").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setText(QString("{{rm%1.sno}}").arg(Model::getInstance()->getThermalImageIndex()));
     dragElement2->setMimeData(mimeData);
 }
 
 void InstrumentInfoSubGroup::setDragElement3MimeData()
 {
     auto mimeData = new QMimeData();
-    mimeData->setText(QString("rm%1.len").arg(Model::getInstance()->getThermalImageIndex()));
+    mimeData->setText(QString("{{rm%1.len}}").arg(Model::getInstance()->getThermalImageIndex()));
     dragElement3->setMimeData(mimeData);
 }
