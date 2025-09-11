@@ -4,7 +4,7 @@ TemperatureDifferenceTitleSelector::TemperatureDifferenceTitleSelector(QWidget *
     : TitleSelector(parent)
 {
     setTitle(tr("TemperatureDifferenName1"));
-    addItem(tr("TemperatureDifferenName1"), "");
+    addItem(tr("TemperatureDifferenButton"), "");
     setEnabled(false);
 }
 
@@ -25,5 +25,5 @@ QString TemperatureDifferenceTitleSelector::getCurrentTypeProtocal() const
 
 QString TemperatureDifferenceTitleSelector::getCurrentTypeDescription() const
 {
-    return tr("TemperatureDifferenceButton");
+    return tr("TemperatureDifferen1Button");
 }

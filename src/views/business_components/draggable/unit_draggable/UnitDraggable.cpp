@@ -58,6 +58,14 @@ void UnitDraggable::setIconButtonVisible(bool visible)
     }
 }
 
+void UnitDraggable::setIconButtonEnabled(bool enabled)
+{
+    if (m_iconButton) 
+    {
+        m_iconButton->setEnabled(enabled);
+    }
+}
+
 QWidget *UnitDraggable::getMoreMenu() const
 {
     return m_moreMenu;

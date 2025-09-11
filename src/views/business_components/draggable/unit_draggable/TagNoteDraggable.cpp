@@ -29,7 +29,7 @@ TagNoteDraggable::TagNoteDraggable(QWidget *parent)
     }
     
     // 根据是否有有效模板设置图标按钮可见性
-    setIconButtonVisible(hasValidTemplate);
+    setIconButtonEnabled(hasValidTemplate);
     
     // 为每个模板文件创建RadioButton
     for (int i = 0; i < m_templateData.size(); ++i) {

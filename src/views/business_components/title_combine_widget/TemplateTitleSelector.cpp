@@ -14,6 +14,7 @@ TemplateTitleSelector::TemplateTitleSelector(QWidget *parent)
     if (templateData.isEmpty())
     {
         templateNames << tr("NoTemplateAvailablButton"); // 添加默认的"无"选项
+        setEnabled(false);
     }
     
     // 添加模板文件名

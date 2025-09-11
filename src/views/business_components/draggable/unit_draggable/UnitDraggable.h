@@ -27,6 +27,7 @@ protected:
     void onIconButtonClicked();
 
     void setIconButtonVisible(bool visible);
+    void setIconButtonEnabled(bool enabled);
 
     QWidget *getMoreMenu() const;
     void setMoreMenuTitle(const QString &title);

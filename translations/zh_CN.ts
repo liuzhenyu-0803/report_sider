@@ -16,6 +16,31 @@
         <source>CoverSheetButton</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/CoverTableDraggable.cpp" line="21"/>
+        <source>CoverFormName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/CoverTableDraggable.cpp" line="21"/>
+        <source>CustomerName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/CoverTableDraggable.cpp" line="21"/>
+        <source>AddressName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/CoverTableDraggable.cpp" line="21"/>
+        <source>DateName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/CoverTableDraggable.cpp" line="21"/>
+        <source>InspectorName</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DocumentGroup</name>
@@ -30,6 +55,16 @@
     <message>
         <location filename="../src/views/business_components/draggable/unit_draggable/GeographicInfoDraggable.cpp" line="10"/>
         <source>GeographicInformatiButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/GeographicInfoDraggable.cpp" line="21"/>
+        <source>GeographicalLocatioName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/GeographicInfoDraggable.cpp" line="21"/>
+        <source>ElectronicCompassName</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -138,6 +173,26 @@
         <source>InstrumentInformatiButton</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/InstrumentInfoDraggable.cpp" line="20"/>
+        <source>InstrumentInformatiName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/InstrumentInfoDraggable.cpp" line="20"/>
+        <source>InstrumentModelName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/InstrumentInfoDraggable.cpp" line="20"/>
+        <source>InstrumentSerialNuName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/InstrumentInfoDraggable.cpp" line="20"/>
+        <source>LensMagnificationName</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InstrumentInfoSubGroup</name>
@@ -175,15 +230,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/views/business_components/draggable/unit_draggable/LineTemperatureCurveDraggable.cpp" line="52"/>
-        <source>line temperature</source>
+        <location filename="../src/views/business_components/draggable/unit_draggable/LineTemperatureCurveDraggable.cpp" line="48"/>
+        <source>LineTemperatureChaName</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../src/views/business_components/MainWindow.cpp" line="65"/>
+        <location filename="../src/views/business_components/MainWindow.cpp" line="80"/>
         <source>ReportDocumentAssiName</source>
         <translation>报告模板助手</translation>
     </message>
@@ -196,15 +251,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/views/business_components/draggable/unit_draggable/NormalImageDraggable.cpp" line="23"/>
-        <source>1-normal image</source>
+        <location filename="../src/views/business_components/draggable/unit_draggable/NormalImageDraggable.cpp" line="24"/>
+        <source>NormalGraphName</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>NoteFieldGroup</name>
     <message>
-        <location filename="../src/views/business_components/group/field_group/NoteFieldGroup.cpp" line="10"/>
+        <location filename="../src/views/business_components/group/field_group/NoteFieldGroup.cpp" line="9"/>
         <source>RemarkCellName</source>
         <translation type="unfinished"></translation>
     </message>
@@ -214,6 +269,29 @@
     <message>
         <location filename="../src/views/business_components/group/unit_group/NoteGroup.cpp" line="10"/>
         <source>NoteName</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NoteInfoGroup</name>
+    <message>
+        <location filename="../src/views/business_components/sub_group/field_sub_group/NoteInfoSubGroup.cpp" line="17"/>
+        <source>RemarkInformationName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/sub_group/field_sub_group/NoteInfoSubGroup.cpp" line="74"/>
+        <source>TextNoteButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/sub_group/field_sub_group/NoteInfoSubGroup.cpp" line="79"/>
+        <source>QRCodeNoteButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/sub_group/field_sub_group/NoteInfoSubGroup.cpp" line="84"/>
+        <source>FaultRatingButton</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -280,15 +358,6 @@
     <message>
         <location filename="../src/views/business_components/draggable/unit_draggable/QrCodeNoteDraggable.cpp" line="10"/>
         <source>QRCodeNoteButton</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QrCodeNoteSubGroup</name>
-    <message>
-        <location filename="../src/views/business_components/sub_group/field_sub_group/QrCodeNoteSubGroup.cpp" line="14"/>
-        <location filename="../src/views/business_components/sub_group/field_sub_group/QrCodeNoteSubGroup.cpp" line="55"/>
-        <source>QRCodeNoteName</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -363,7 +432,7 @@
     </message>
     <message>
         <location filename="../src/views/business_components/title_combine_widget/RuleTypeTitleSelector.cpp" line="98"/>
-        <source>BrokenLine(Fl%1)Button</source>
+        <source>Line(Fl%1)Button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -387,6 +456,31 @@
     <message>
         <location filename="../src/views/business_components/draggable/unit_draggable/SummaryTableDraggable.cpp" line="10"/>
         <source>SummarizeTheTableButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/SummaryTableDraggable.cpp" line="20"/>
+        <source>OrderNumberName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/SummaryTableDraggable.cpp" line="20"/>
+        <source>ImageNameName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/SummaryTableDraggable.cpp" line="20"/>
+        <source>ShootingTimeName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/SummaryTableDraggable.cpp" line="20"/>
+        <source>FaultRating1Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/views/business_components/draggable/unit_draggable/SummaryTableDraggable.cpp" line="20"/>
+        <source>TipsTheFollowingDaMsg</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -467,13 +561,17 @@
     <name>TemperatureDifferenceTitleSelector</name>
     <message>
         <location filename="../src/views/business_components/title_combine_widget/TemperatureDifferenceTitleSelector.cpp" line="6"/>
-        <location filename="../src/views/business_components/title_combine_widget/TemperatureDifferenceTitleSelector.cpp" line="7"/>
         <source>TemperatureDifferenName1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/views/business_components/title_combine_widget/TemperatureDifferenceTitleSelector.cpp" line="7"/>
+        <source>TemperatureDifferenButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/views/business_components/title_combine_widget/TemperatureDifferenceTitleSelector.cpp" line="28"/>
-        <source>TemperatureDifferenceButton</source>
+        <source>TemperatureDifferen1Button</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -551,8 +649,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/views/business_components/draggable/unit_draggable/TemperatureHistogramDraggable.cpp" line="62"/>
-        <source>histogram</source>
+        <location filename="../src/views/business_components/draggable/unit_draggable/TemperatureHistogramDraggable.cpp" line="63"/>
+        <source>HistogramName</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -613,15 +711,6 @@
     </message>
 </context>
 <context>
-    <name>TextNoteSubGroup</name>
-    <message>
-        <location filename="../src/views/business_components/sub_group/field_sub_group/TextNoteSubGroup.cpp" line="17"/>
-        <location filename="../src/views/business_components/sub_group/field_sub_group/TextNoteSubGroup.cpp" line="59"/>
-        <source>TextNoteName</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ThermalImageDraggable</name>
     <message>
         <location filename="../src/views/business_components/draggable/unit_draggable/ThermalImageDraggable.cpp" line="11"/>
@@ -639,8 +728,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/views/business_components/draggable/unit_draggable/ThermalImageDraggable.cpp" line="34"/>
-        <source>thermal image</source>
+        <location filename="../src/views/business_components/draggable/unit_draggable/ThermalImageDraggable.cpp" line="35"/>
+        <source>HeatmapName</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -688,13 +777,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/views/business_components/draggable/unit_draggable/VisibleLightDraggable.cpp" line="44"/>
-        <source>align visible light</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/views/business_components/draggable/unit_draggable/VisibleLightDraggable.cpp" line="49"/>
-        <source>panoramic visible light</source>
+        <location filename="../src/views/business_components/draggable/unit_draggable/VisibleLightDraggable.cpp" line="45"/>
+        <location filename="../src/views/business_components/draggable/unit_draggable/VisibleLightDraggable.cpp" line="50"/>
+        <source>VisibleLightName</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -95,7 +95,7 @@ QString RuleTypeTitleSelector::getTypeDescription(int type) const
     case L:
         return tr("Line(L%1)Button");
     case Fl:
-        return tr("BrokenLine(Fl%1)Button");
+        return tr("Line(Fl%1)Button");
     case R:
         return tr("Rectangle(R%1)Button");
     case Ep:
